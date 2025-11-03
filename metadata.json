@@ -1,0 +1,5 @@
+{
+  "name": "Impostor Prompt",
+  "description": "A local party game where players try to identify the impostor who has a slightly different prompt. Players join from their phones and a central screen displays the game progress. Built with React, TypeScript, and Tailwind CSS, with a mock backend service.",
+  "requestFramePermissions": []
+}
