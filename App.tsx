@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { GameState, Player, GameStatus, ClientView } from './types';
 import { GameContext } from './contexts/GameContext';
-import { mockSocket, MockSocket } from './services/mockSocketService';
+import { mockSocket } from './services/mockSocketService';
+import { createServerSocket, ISocketLike } from './services/socketService';
 import DisplayView from './components/Display/DisplayView';
 import PlayerView from './components/Player/PlayerView';
+import HostSetup from './components/Display/HostSetup';
 
 const App: React.FC = () => {
     const [gameState, setGameState] = useState<GameState | null>(null);
@@ -11,16 +13,23 @@ const App: React.FC = () => {
     const [playerId, setPlayerId] = useState<string | null>(null);
     const [privatePrompt, setPrivatePrompt] = useState<{ text: string; role: 'citizen' | 'impostor' } | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [socket] = useState<MockSocket>(() => mockSocket);
+    const [socket] = useState<ISocketLike>(() => {
+        try {
+            return createServerSocket();
+        } catch {
+            return mockSocket as unknown as ISocketLike;
+        }
+    });
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const code = params.get('code');
-        if (code) {
-            setView({ type: 'display', code });
-        } else {
-            setView({ type: 'player' });
-        }
+        const host = params.get('host');
+        const path = window.location.pathname;
+
+        if (code) setView({ type: 'display', code });
+        else if (host || path === '/host') setView({ type: 'host' });
+        else setView({ type: 'player' });
     }, []);
 
     const handleJoin = useCallback((code: string, name: string, role: 'display' | 'player' = 'player') => {
@@ -78,6 +87,8 @@ const App: React.FC = () => {
             startGame: () => socket.emit('room:start'),
             submitAnswer: (text: string) => socket.emit('answer:submit', { text }),
             submitVote: (targetMemberId: string) => socket.emit('vote:submit', { targetMemberId }),
+            restartGame: () => socket.emit('room:restart'),
+            completeReveal: () => socket.emit('reveal:done'),
         }
     };
 
@@ -88,7 +99,13 @@ const App: React.FC = () => {
     return (
         <GameContext.Provider value={contextValue}>
             <div className="w-full min-h-screen bg-gray-900 text-white antialiased">
-                {view.type === 'display' ? <DisplayView /> : <PlayerView />}
+                {view.type === 'display' ? (
+                    <DisplayView />
+                ) : view.type === 'host' ? (
+                    <HostSetup />
+                ) : (
+                    <PlayerView />
+                )}
             </div>
         </GameContext.Provider>
     );

@@ -9,21 +9,34 @@ const DisplayLobby: React.FC = () => {
     const [joinUrl, setJoinUrl] = useState('');
     const [copied, setCopied] = useState(false);
 
-    useEffect(() => {
-        setJoinUrl(window.location.origin);
-    }, []);
+	useEffect(() => {
+		// Show the player join URL without the display code parameter
+		setJoinUrl(`${window.location.origin}`);
+	}, [gameState?.code]);
 
-    const handleCopy = () => {
-        navigator.clipboard.writeText(joinUrl).then(() => {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        });
-    };
+	const handleCopy = () => {
+		if (navigator.clipboard && window.isSecureContext) {
+			navigator.clipboard.writeText(joinUrl).then(() => {
+				setCopied(true);
+				setTimeout(() => setCopied(false), 2000);
+			});
+		} else {
+			// Fallback for insecure contexts: temporary textarea
+			const textarea = document.createElement('textarea');
+			textarea.value = joinUrl;
+			document.body.appendChild(textarea);
+			textarea.select();
+			try { document.execCommand('copy'); setCopied(true); setTimeout(() => setCopied(false), 2000); } finally {
+				document.body.removeChild(textarea);
+			}
+		}
+	};
 
     if (!gameState) return null;
 
     const players = gameState.players.filter(p => !p.isDisplay);
-    const canStart = players.length >= 4;
+    const minPlayers = gameState.config?.minPlayersToStart ?? 4;
+    const canStart = players.length >= minPlayers;
 
     return (
         <div className="flex flex-col md:flex-row h-[calc(100vh-4rem)] gap-8">
@@ -37,8 +50,8 @@ const DisplayLobby: React.FC = () => {
                         <span className="text-5xl font-mono tracking-widest text-white">{gameState.code}</span>
                     </div>
                     
-                    <div className="p-4 bg-white rounded-lg">
-                        <QRCodeSVG value={joinUrl} size={192} />
+					<div className="p-4 bg-white rounded-lg">
+						<QRCodeSVG value={joinUrl} size={192} />
                     </div>
 
                     <div className="text-center">
@@ -56,7 +69,7 @@ const DisplayLobby: React.FC = () => {
             <div className="w-full md:w-96 flex flex-col bg-gray-800 p-8 rounded-2xl">
                 <div className="flex items-center gap-3 mb-6">
                     <UserGroupIcon className="h-8 w-8 text-indigo-400" />
-                    <h2 className="text-3xl font-bold">Players ({players.length}/10)</h2>
+                    <h2 className="text-3xl font-bold">Players ({players.length}/{Math.max(minPlayers, 10)})</h2>
                 </div>
                 <div className="flex-1 space-y-3 overflow-y-auto pr-2">
                     {players.map(player => (
@@ -69,7 +82,7 @@ const DisplayLobby: React.FC = () => {
                 </div>
                 <div className="mt-6">
                     <Button onClick={actions.startGame} disabled={!canStart}>
-                        {canStart ? 'Start Game' : `Need ${4 - players.length} more players`}
+                        {canStart ? 'Start Game' : `Need ${Math.max(minPlayers - players.length, 0)} more players`}
                     </Button>
                 </div>
             </div>

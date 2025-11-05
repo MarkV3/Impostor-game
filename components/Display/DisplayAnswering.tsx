@@ -1,8 +1,8 @@
 
 import React, { useContext } from 'react';
 import { GameContext } from '../../contexts/GameContext';
-import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import CountdownTimer from '../shared/CountdownTimer';
+import TableLayout from './TableLayout';
 
 const DisplayAnswering: React.FC = () => {
     const { gameState } = useContext(GameContext);
@@ -11,38 +11,32 @@ const DisplayAnswering: React.FC = () => {
     const { players, answers, currentRound, totalRounds } = gameState;
     const gamePlayers = players.filter(p => !p.isDisplay);
     const answeredPlayerIds = new Set(answers.map(a => a.playerId));
+    const annotations = gamePlayers.reduce((acc, p) => {
+        acc[p.id] = answeredPlayerIds.has(p.id) ? 'Answered' : 'Thinking...';
+        return acc;
+    }, {} as Record<string, string>);
 
     return (
-        <div className="flex flex-col items-center justify-center h-[calc(100vh-4rem)] text-center">
-            <div className="absolute top-8 right-8 flex items-center gap-4">
-                <span className="text-2xl font-bold">Round {currentRound}/{totalRounds}</span>
-                <CountdownTimer endsAt={gameState.answeringEndsAt} totalDuration={60 * 1000} size={80} strokeWidth={8} />
-            </div>
-
-            <h1 className="text-6xl font-extrabold mb-12">Who's the Impostor?</h1>
-            <p className="text-3xl text-gray-300 mb-12">A prompt has been sent. Submit your answers now!</p>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full max-w-6xl">
-                {gamePlayers.map(player => (
-                    <div
-                        key={player.id}
-                        className={`p-6 rounded-xl shadow-lg transition-all duration-300 ${
-                            answeredPlayerIds.has(player.id)
-                                ? 'bg-green-600'
-                                : 'bg-gray-700'
-                        }`}
-                    >
-                        <div className="flex items-center justify-center gap-3">
-                             {answeredPlayerIds.has(player.id) && (
-                                <CheckCircleIcon className="h-8 w-8 text-white" />
-                            )}
-                            <span className="text-2xl font-bold truncate">{player.name}</span>
-                        </div>
-                        <p className="text-lg mt-1 text-gray-200">{answeredPlayerIds.has(player.id) ? 'Answered' : 'Thinking...'}</p>
+        <TableLayout
+            players={players}
+            annotations={annotations}
+            answeredIds={answeredPlayerIds}
+            hud={(
+                <>
+                    <div className="absolute top-6 left-6 z-20 text-sm px-3 py-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20">
+                        <span className="font-semibold">Round {currentRound}/{totalRounds}</span>
                     </div>
-                ))}
+                    <div className="absolute top-6 right-6 z-20">
+                        <CountdownTimer endsAt={gameState.answeringEndsAt} totalDuration={(gameState.config?.answeringSeconds ?? 60) * 1000} size={76} strokeWidth={8} />
+                    </div>
+                </>
+            )}
+        >
+            <div className="text-center bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl max-w-xl">
+                <h1 className="text-5xl font-extrabold mb-4">Who's the Impostor?</h1>
+                <p className="text-2xl text-gray-300">A prompt has been sent. Submit your answers now!</p>
             </div>
-        </div>
+        </TableLayout>
     );
 };
 

@@ -12,6 +12,8 @@ interface GameContextType {
         startGame: () => void;
         submitAnswer: (text: string) => void;
         submitVote: (targetMemberId: string) => void;
+        restartGame: () => void;
+        completeReveal: () => void;
     };
 }
 
@@ -25,5 +27,7 @@ export const GameContext = createContext<GameContextType>({
         startGame: () => {},
         submitAnswer: () => {},
         submitVote: () => {},
+        restartGame: () => {},
+        completeReveal: () => {},
     },
 });

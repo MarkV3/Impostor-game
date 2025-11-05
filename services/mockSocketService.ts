@@ -52,6 +52,10 @@ export class MockSocket {
     private generateId(): string {
         return Math.random().toString(36).substr(2, 9);
     }
+
+    private generateRoomCode(): string {
+        return Math.random().toString(36).substring(2, 8).toUpperCase();
+    }
     
     private getRandomPromptPair(roomCode: string): { main: Prompt, impostor: Prompt } | null {
         if (!this.usedPromptKeys.has(roomCode)) {
@@ -91,10 +95,13 @@ export class MockSocket {
         this.listeners.get(event)?.forEach(listener => listener(data));
     }
 
-    emit(event: string, data?: any) {
+    emit(event: string, data?: any, cb?: (arg?: any) => void) {
         // This simulates client sending message to server
         console.log(`[CLIENT EMIT] ${event}`, data);
         switch (event) {
+            case 'room:create':
+                this.handleCreate(data, cb);
+                break;
             case 'room:join':
                 this.handleJoin(data);
                 break;
@@ -107,10 +114,39 @@ export class MockSocket {
             case 'vote:submit':
                 this.handleVote(this.ownPlayerId!, data.targetMemberId);
                 break;
+            case 'reveal:done':
+                this.handleRevealDone(this.ownPlayerId!);
+                break;
         }
     }
 
     // Server-side logic handlers
+    private handleCreate({ minPlayersToStart, answeringSeconds, votingSeconds, totalRounds }: any, cb?: (arg?: any) => void) {
+        let code: string;
+        do {
+            code = this.generateRoomCode();
+        } while (this.rooms.has(code));
+
+        const room: GameState = {
+            code,
+            status: GameStatus.LOBBY,
+            players: [],
+            leaderboard: {},
+            currentRound: 0,
+            totalRounds,
+            answers: [],
+            votes: [],
+            config: {
+                minPlayersToStart,
+                answeringSeconds,
+                votingSeconds,
+            }
+        };
+
+        this.rooms.set(code, room);
+        cb?.({ ok: true, code });
+    }
+
     private handleJoin({ code, name, role }: { code: string, name: string, role: 'player' | 'display' }) {
         const playerId = this.generateId();
         this.ownPlayerId = playerId;
@@ -242,7 +278,18 @@ export class MockSocket {
         });
 
         this.updateRoom(roomId, { status: GameStatus.REVEAL, answers: room.answers });
-        setTimeout(() => this.startVotingPhase(roomId), 4000);
+        // Wait for display to finish reveal; fallback after 2 minutes
+        const timerId = setTimeout(() => this.startVotingPhase(roomId), 120000);
+        this.timers.set(`${roomId}-reveal`, timerId);
+    }
+
+    private handleRevealDone(playerId: string) {
+        const roomId = this.playerToRoom.get(playerId);
+        if (!roomId) return;
+        const t = this.timers.get(`${roomId}-reveal`);
+        if (t) clearTimeout(t);
+        this.timers.delete(`${roomId}-reveal`);
+        this.startVotingPhase(roomId);
     }
 
     private startVotingPhase(roomId: string) {
@@ -269,6 +316,14 @@ export class MockSocket {
             room.votes.push({ voterId: playerId, targetId });
         }
         this.updateRoom(roomId, { votes: room.votes });
+
+        // Check if all players have voted
+        const gamePlayersCount = room.players.filter(p => !p.isDisplay).length;
+        if (room.votes.length === gamePlayersCount) {
+            const timerId = this.timers.get(`${roomId}-voting`);
+            if (timerId) clearTimeout(timerId);
+            this.endVotingPhase(roomId);
+        }
     }
     
     private endVotingPhase(roomId: string) {

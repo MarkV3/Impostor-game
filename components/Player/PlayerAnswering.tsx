@@ -27,8 +27,7 @@ const PlayerAnswering: React.FC = () => {
             </div>
             <div className="w-full max-w-md">
                 <Card className="bg-indigo-900 border-indigo-700">
-                    <p className="text-indigo-300 text-sm font-bold uppercase tracking-wider">{privatePrompt.role}</p>
-                    <p className="text-2xl font-bold mt-2 text-white">{privatePrompt.text}</p>
+                    <p className="text-2xl font-bold text-white">{privatePrompt.text}</p>
                 </Card>
 
                 <form onSubmit={handleSubmit} className="mt-6">

@@ -31,7 +31,7 @@ const PlayerView: React.FC = () => {
                 : <PlayerAnswering />;
         }
         case GameStatus.REVEAL:
-            return <PlayerWaiting title="Answers Revealed!" message="Check the main screen to see what everyone said." />;
+            return <PlayerWaiting title="Revealing Answers" message="Answers are being revealed one by one on the main screen." />;
         case GameStatus.DISCUSS_AND_VOTE: {
              const hasVoted = gameState.votes.some(v => v.voterId === me.id);
             return <PlayerVoting hasVoted={hasVoted} />;

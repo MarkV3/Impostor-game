@@ -43,12 +43,18 @@ export interface GameState {
     mainQuestion?: string;
     votes: Vote[];
     pointsThisRound?: Record<string, number>;
+    config?: {
+        minPlayersToStart: number;
+        answeringSeconds: number;
+        votingSeconds: number;
+    };
 }
 
 export type ClientView = 
     | { type: 'loading' }
     | { type: 'display', code: string }
-    | { type: 'player' };
+    | { type: 'player' }
+    | { type: 'host' };
 
 export interface Prompt {
     id: string;

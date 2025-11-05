@@ -28,9 +28,13 @@ const PlayerJoin: React.FC = () => {
                                 id="code"
                                 type="text"
                                 value={code}
-                                onChange={(e) => setCode(e.target.value)}
-                                placeholder="ABCD"
-                                maxLength={4}
+                                onChange={(e) => {
+                                    const upper = e.target.value.toUpperCase();
+                                    const lettersOnly = upper.replace(/[^A-Z]/g, '');
+                                    setCode(lettersOnly);
+                                }}
+                                placeholder="ABCDEF"
+                                maxLength={6}
                                 className="w-full bg-gray-700 text-white text-center text-2xl font-mono tracking-[.5em] p-3 rounded-lg border-2 border-gray-600 focus:border-indigo-500 focus:ring-indigo-500 uppercase"
                                 required
                             />

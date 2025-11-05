@@ -9,6 +9,7 @@ import DisplayDiscussVote from './DisplayDiscussVote';
 import DisplaySummary from './DisplaySummary';
 import DisplayGameOver from './DisplayGameOver';
 import Spinner from '../shared/Spinner';
+import PhaseTransition from '../shared/PhaseTransition';
 
 const DisplayView: React.FC = () => {
     const { gameState } = useContext(GameContext);
@@ -50,7 +51,13 @@ const DisplayView: React.FC = () => {
         }
     };
 
-    return <div className="p-4 md:p-8">{renderContent()}</div>;
+    return (
+        <div className="p-4 md:p-8">
+            <PhaseTransition statusKey={gameState.status}>
+                {renderContent()}
+            </PhaseTransition>
+        </div>
+    );
 };
 
 export default DisplayView;
