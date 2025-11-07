@@ -1,5 +1,29 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Player } from '../../types';
+
+const AVATAR_DIAMETER = 80; // Tailwind w-20 -> 80px
+const SEAT_OFFSET = 28; // Move seats farther from the table ring
+const SEAT_SPACING = SEAT_OFFSET + AVATAR_DIAMETER / 2;
+const FALLBACK_RADIUS_FRACTION = 0.40;
+const ANSWER_RING_MARGIN = 32;
+const DEFAULT_ANSWER_HALF_WIDTH = 140;
+const DEFAULT_ANSWER_HALF_HEIGHT = 50;
+
+const sizesEqual = (
+    a: Record<string, { width: number; height: number }>,
+    b: Record<string, { width: number; height: number }>
+) => {
+    const aKeys = Object.keys(a);
+    const bKeys = Object.keys(b);
+    if (aKeys.length !== bKeys.length) return false;
+    for (const key of aKeys) {
+        const av = a[key];
+        const bv = b[key];
+        if (!bv) return false;
+        if (Math.abs(av.width - bv.width) > 0.5 || Math.abs(av.height - bv.height) > 0.5) return false;
+    }
+    return true;
+};
 
 interface TableLayoutProps {
     players: Player[];
@@ -22,8 +46,10 @@ interface TableLayoutProps {
 const TableLayout: React.FC<TableLayoutProps> = ({ players, children, showScores = false, scores = {}, animateDrumRoll = false, highlightImpostor, annotations = {}, shakeNames = false, hud, answeredIds, activeRevealPlayerId, revealedAnswers = {}, ringTopOverlay, recentlyRevealedPlayerId, overlay }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const ringRef = useRef<HTMLDivElement>(null);
+    const answerRefs = useRef<Record<string, HTMLDivElement | null>>({});
     const [containerSize, setContainerSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
     const [ringRadius, setRingRadius] = useState<number>(0);
+    const [answerSizes, setAnswerSizes] = useState<Record<string, { width: number; height: number }>>({});
 
     useLayoutEffect(() => {
         const el = containerRef.current;
@@ -66,12 +92,37 @@ const TableLayout: React.FC<TableLayoutProps> = ({ players, children, showScores
     const gamePlayers = players.filter(p => !p.isDisplay);
     const numPlayers = gamePlayers.length;
 
+    useLayoutEffect(() => {
+        if (!revealedAnswers) {
+            if (Object.keys(answerSizes).length > 0) setAnswerSizes({});
+            return;
+        }
+        const nextSizes: Record<string, { width: number; height: number }> = {};
+        Object.keys(revealedAnswers).forEach(playerId => {
+            const el = answerRefs.current[playerId];
+            if (!el) return;
+            const rect = el.getBoundingClientRect();
+            nextSizes[playerId] = { width: rect.width, height: rect.height };
+        });
+        if (!sizesEqual(answerSizes, nextSizes)) {
+            setAnswerSizes(nextSizes);
+        }
+    }, [revealedAnswers, containerSize, ringRadius]);
+
+    const registerAnswerRef = useMemo(() => (
+        playerId: string
+    ) => (el: HTMLDivElement | null) => {
+        if (el) {
+            answerRefs.current[playerId] = el;
+        } else {
+            delete answerRefs.current[playerId];
+        }
+    }, []);
+
     // Calculate positions for players around the table
     const getPlayerPosition = (index: number) => {
         const angle = (index / numPlayers) * 2 * Math.PI - Math.PI / 2; // Start from top
-        const AVATAR_DIAMETER = 80; // Tailwind w-20 -> 80px
-        const SEAT_OFFSET = 28; // move seats farther from the table ring
-        const radiusFraction = 0.40; // fallback fraction of container if ring not measured yet
+        const radiusFraction = FALLBACK_RADIUS_FRACTION; // fallback fraction of container if ring not measured yet
         const { width, height } = containerSize;
         if (width === 0 || height === 0 || ringRadius === 0) {
             // Conservative fallback before first layout pass: keep seats near center
@@ -81,7 +132,7 @@ const TableLayout: React.FC<TableLayoutProps> = ({ players, children, showScores
             return { left: `${x}%`, top: `${y}%` } as const;
         }
         const fallbackR = Math.min(width, height) * radiusFraction;
-        const seatCenterRadius = (ringRadius || fallbackR) + SEAT_OFFSET + AVATAR_DIAMETER / 2;
+        const seatCenterRadius = (ringRadius || fallbackR) + SEAT_SPACING;
         const cx = width / 2;
         const cy = height / 2;
         const left = cx + seatCenterRadius * Math.cos(angle);
@@ -102,6 +153,19 @@ const TableLayout: React.FC<TableLayoutProps> = ({ players, children, showScores
                     </div>
                 )}
             </div>
+
+            {ringRadius > 0 && (
+                (() => {
+                    const answerRingRadius = ringRadius + SEAT_SPACING * 2;
+                    const diameter = answerRingRadius * 2;
+                    return (
+                        <div
+                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-indigo-200/15 pointer-events-none"
+                            style={{ width: `${diameter}px`, height: `${diameter}px` }}
+                        ></div>
+                    );
+                })()
+            )}
 
             {/* Overlay positioned relative to the table container with seat positions */}
             {(containerSize.width > 0 && containerSize.height > 0 && ringRadius > 0 && overlay) && (() => {
@@ -130,10 +194,17 @@ const TableLayout: React.FC<TableLayoutProps> = ({ players, children, showScores
                 const centerY = containerSize.height / 2;
                 const vx = (position as any).left - centerX;
                 const vy = (position as any).top - centerY;
-                const len = Math.max(1, Math.hypot(vx, vy));
-                const ux = vx / len;
-                const uy = vy / len;
-                const bubbleOffset = Math.min(180, Math.max(110, ringRadius * 0.25));
+                const seatRadius = Math.max(1, Math.hypot(vx, vy));
+                const ux = vx / seatRadius;
+                const uy = vy / seatRadius;
+                const guideRingRadius = ringRadius > 0 ? ringRadius + SEAT_SPACING * 2 : seatRadius + SEAT_SPACING;
+                const size = answerSizes[player.id];
+                const halfWidth = size ? size.width / 2 : DEFAULT_ANSWER_HALF_WIDTH;
+                const halfHeight = size ? size.height / 2 : DEFAULT_ANSWER_HALF_HEIGHT;
+                const projectedHalfSize = Math.abs(ux) * halfWidth + Math.abs(uy) * halfHeight;
+                const desiredInnerRadius = guideRingRadius + ANSWER_RING_MARGIN;
+                const desiredCenterRadius = desiredInnerRadius + projectedHalfSize;
+                const bubbleOffset = Math.max(40, desiredCenterRadius - seatRadius);
                 const dx = ux * bubbleOffset;
                 const dy = uy * bubbleOffset;
 
@@ -151,9 +222,12 @@ const TableLayout: React.FC<TableLayoutProps> = ({ players, children, showScores
                                 className="absolute left-1/2 top-1/2"
                                 style={{ transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px)` }}
                             >
-                                <div className={`max-w-[22rem] text-sm text-gray-100 bg-gray-800/95 border rounded-xl px-3 py-2 shadow-2xl transition-all duration-500 ${
-                                    recentlyRevealedPlayerId === player.id ? 'border-emerald-400 ring-2 ring-emerald-400/50 scale-105' : 'border-gray-600'
-                                }`}>
+                                <div
+                                    ref={registerAnswerRef(player.id)}
+                                    className={`max-w-[32rem] min-w-[18rem] text-lg font-semibold text-gray-100 bg-gray-800/95 border-2 rounded-2xl px-5 py-4 shadow-2xl transition-all duration-500 ${
+                                    recentlyRevealedPlayerId === player.id ? 'border-emerald-400 ring-4 ring-emerald-400/50 scale-105' : 'border-gray-500'
+                                }`}
+                                >
                                     {revealedAnswers[player.id]}
                                 </div>
                             </div>
@@ -174,7 +248,7 @@ const TableLayout: React.FC<TableLayoutProps> = ({ players, children, showScores
                             </div>
 
                             {/* Labels positioned absolutely below so they don't affect centering */}
-                            <div className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+0.5rem)] text-center">
+                            <div className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+1.75rem)] text-center">
                                 <div className={`font-bold text-sm px-3 py-1 rounded-lg shadow-md ${
                                     isImpostor ? 'text-red-300 bg-red-900 border border-red-500' :
                                     isCitizen ? 'text-green-300 bg-green-900 border border-green-500' :

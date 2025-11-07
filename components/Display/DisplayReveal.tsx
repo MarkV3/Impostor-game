@@ -58,10 +58,6 @@ const DisplayReveal: React.FC = () => {
             if (cancelled) return;
             if (idx >= sequencePlayerIds.length) {
                 setStage('question');
-                const t = window.setTimeout(() => {
-                    actions.completeReveal();
-                }, 1500);
-                timers.push(t);
                 return;
             }
             const playerId = sequencePlayerIds[idx];
@@ -115,6 +111,14 @@ const DisplayReveal: React.FC = () => {
             timers.forEach(id => window.clearTimeout(id));
         };
     }, [stage, sequencePlayerIds, answersByPlayerId]);
+
+    useEffect(() => {
+        if (stage !== 'question') return;
+        const t = window.setTimeout(() => {
+            actions.completeReveal();
+        }, 2000);
+        return () => window.clearTimeout(t);
+    }, [stage, actions]);
 
     const answeredIdsSet = useMemo(() => new Set(answers.map(a => a.playerId)), [answers]);
     const announceAnnotations = useMemo(() => {

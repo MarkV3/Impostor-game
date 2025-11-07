@@ -77,20 +77,22 @@ const App: React.FC = () => {
         return gameState.players.find(p => p.id === playerId) ?? null;
     }, [playerId, gameState]);
 
-    const contextValue = {
+    const actions = useMemo(() => ({
+        joinRoom: handleJoin,
+        startGame: () => socket.emit('room:start'),
+        submitAnswer: (text: string) => socket.emit('answer:submit', { text }),
+        submitVote: (targetMemberId: string) => socket.emit('vote:submit', { targetMemberId }),
+        restartGame: () => socket.emit('room:restart'),
+        completeReveal: () => socket.emit('reveal:done'),
+    }), [handleJoin, socket]);
+
+    const contextValue = useMemo(() => ({
         gameState,
         me,
         privatePrompt,
         error,
-        actions: {
-            joinRoom: handleJoin,
-            startGame: () => socket.emit('room:start'),
-            submitAnswer: (text: string) => socket.emit('answer:submit', { text }),
-            submitVote: (targetMemberId: string) => socket.emit('vote:submit', { targetMemberId }),
-            restartGame: () => socket.emit('room:restart'),
-            completeReveal: () => socket.emit('reveal:done'),
-        }
-    };
+        actions,
+    }), [gameState, me, privatePrompt, error, actions]);
 
     if (view.type === 'loading') {
         return <div className="flex items-center justify-center h-screen bg-gray-900 text-white">Loading...</div>;
