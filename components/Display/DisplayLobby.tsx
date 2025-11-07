@@ -11,10 +11,7 @@ const DisplayLobby: React.FC = () => {
 
 	useEffect(() => {
 		// Show the player join URL without the display code parameter
-		const base = `${window.location.origin}`;
-		// Append ngrok skip param so players don't see the interstitial
-		const urlWithSkip = `${base}/?ngrok-skip-browser-warning=true`;
-		setJoinUrl(urlWithSkip);
+		setJoinUrl(`${window.location.origin}`);
 	}, [gameState?.code]);
 
 	const handleCopy = () => {
