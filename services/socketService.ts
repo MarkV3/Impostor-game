@@ -10,7 +10,10 @@ export interface ISocketLike {
 
 function getServerUrl(): string {
 	const envUrl = import.meta.env.VITE_SERVER_URL as string | undefined;
-	if (envUrl) return envUrl;
+	if (envUrl) {
+		if (envUrl === 'same-origin' || envUrl === 'self') return window.location.origin;
+		return envUrl;
+	}
 	const { protocol, hostname } = window.location;
 	return `${protocol}//${hostname}:3001`;
 }
