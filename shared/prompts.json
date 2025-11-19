@@ -1,0 +1,362 @@
+[
+    {
+        "id": "p1",
+        "text": "Pick a number between 10–50.",
+        "kind": "main",
+        "pairKey": "num1"
+    },
+    {
+        "id": "q1",
+        "text": "Pick a number between 100–500.",
+        "kind": "impostor",
+        "pairKey": "num1"
+    },
+    {
+        "id": "p2",
+        "text": "What hill would you die on?",
+        "kind": "main",
+        "pairKey": "opinion1"
+    },
+    {
+        "id": "q2",
+        "text": "What’s your most controversial take?",
+        "kind": "impostor",
+        "pairKey": "opinion1"
+    },
+    {
+        "id": "p3",
+        "text": "How many broken bones have you had?",
+        "kind": "main",
+        "pairKey": "exp1"
+    },
+    {
+        "id": "q3",
+        "text": "How many surgeries have you had?",
+        "kind": "impostor",
+        "pairKey": "exp1"
+    },
+    {
+        "id": "p4",
+        "text": "What is the best topping for a pizza?",
+        "kind": "main",
+        "pairKey": "food1"
+    },
+    {
+        "id": "q4",
+        "text": "What food should be banned forever?",
+        "kind": "impostor",
+        "pairKey": "food1"
+    },
+    {
+        "id": "p5",
+        "text": "If you could have any superpower, what would it be?",
+        "kind": "main",
+        "pairKey": "superpower1"
+    },
+    {
+        "id": "q5",
+        "text": "If you were a supervillain, what would be your evil plan?",
+        "kind": "impostor",
+        "pairKey": "superpower1"
+    },
+    {
+        "id": "p6",
+        "text": "What is your favorite movie of all time?",
+        "kind": "main",
+        "pairKey": "media1"
+    },
+    {
+        "id": "q6",
+        "text": "What movie do you think is overrated?",
+        "kind": "impostor",
+        "pairKey": "media1"
+    },
+    {
+        "id": "p7",
+        "text": "What is the most beautiful place you have ever visited?",
+        "kind": "main",
+        "pairKey": "travel1"
+    },
+    {
+        "id": "q7",
+        "text": "What is a country you have no interest in visiting?",
+        "kind": "impostor",
+        "pairKey": "travel1"
+    },
+    {
+        "id": "p8",
+        "text": "What is a small thing that makes you happy?",
+        "kind": "main",
+        "pairKey": "happy1"
+    },
+    {
+        "id": "q8",
+        "text": "What is a common thing that annoys you?",
+        "kind": "impostor",
+        "pairKey": "happy1"
+    },
+    {
+        "id": "p9",
+        "text": "How many cups of coffee do you drink per day?",
+        "kind": "main",
+        "pairKey": "habit1"
+    },
+    {
+        "id": "q9",
+        "text": "How many hours of sleep do you get per night?",
+        "kind": "impostor",
+        "pairKey": "habit1"
+    },
+    {
+        "id": "p10",
+        "text": "What is the best gift you have ever received?",
+        "kind": "main",
+        "pairKey": "gift1"
+    },
+    {
+        "id": "q10",
+        "text": "What is the worst gift you have ever received?",
+        "kind": "impostor",
+        "pairKey": "gift1"
+    },
+    {
+        "id": "p11",
+        "text": "What animal would you like to be?",
+        "kind": "main",
+        "pairKey": "animal1"
+    },
+    {
+        "id": "q11",
+        "text": "What animal are you most afraid of?",
+        "kind": "impostor",
+        "pairKey": "animal1"
+    },
+    {
+        "id": "p12",
+        "text": "Name a celebrity you admire.",
+        "kind": "main",
+        "pairKey": "celeb1"
+    },
+    {
+        "id": "q12",
+        "text": "Name a celebrity you find annoying.",
+        "kind": "impostor",
+        "pairKey": "celeb1"
+    },
+    {
+        "id": "p13",
+        "text": "What year would you travel to in a time machine?",
+        "kind": "main",
+        "pairKey": "time1"
+    },
+    {
+        "id": "q13",
+        "text": "What historical event would you want to witness?",
+        "kind": "impostor",
+        "pairKey": "time1"
+    },
+    {
+        "id": "p14",
+        "text": "What’s your go-to karaoke song?",
+        "kind": "main",
+        "pairKey": "music1"
+    },
+    {
+        "id": "q14",
+        "text": "What song can you not stand hearing?",
+        "kind": "impostor",
+        "pairKey": "music1"
+    },
+    {
+        "id": "p15",
+        "text": "How old were you when you had your first kiss?",
+        "kind": "main",
+        "pairKey": "first1"
+    },
+    {
+        "id": "q15",
+        "text": "How old were you when you got your first job?",
+        "kind": "impostor",
+        "pairKey": "first1"
+    },
+    {
+        "id": "p16",
+        "text": "What's the best advice you've ever been given?",
+        "kind": "main",
+        "pairKey": "advice1"
+    },
+    {
+        "id": "q16",
+        "text": "What's the worst advice you've ever been given?",
+        "kind": "impostor",
+        "pairKey": "advice1"
+    },
+    {
+        "id": "p17",
+        "text": "What is your biggest fear?",
+        "kind": "main",
+        "pairKey": "fear1"
+    },
+    {
+        "id": "q17",
+        "text": "What is your biggest regret?",
+        "kind": "impostor",
+        "pairKey": "fear1"
+    },
+    {
+        "id": "p18",
+        "text": "Which of the seven dwarfs are you?",
+        "kind": "main",
+        "pairKey": "character1"
+    },
+    {
+        "id": "q18",
+        "text": "Which Harry Potter house would you be in?",
+        "kind": "impostor",
+        "pairKey": "character1"
+    },
+    {
+        "id": "p19",
+        "text": "How many U.S. states have you visited?",
+        "kind": "main",
+        "pairKey": "geography1"
+    },
+    {
+        "id": "q19",
+        "text": "How many countries have you visited?",
+        "kind": "impostor",
+        "pairKey": "geography1"
+    },
+    {
+        "id": "p20",
+        "text": "What is something you are proud of?",
+        "kind": "main",
+        "pairKey": "proud1"
+    },
+    {
+        "id": "q20",
+        "text": "What is something you are embarrassed about?",
+        "kind": "impostor",
+        "pairKey": "proud1"
+    },
+    {
+        "id": "p21",
+        "text": "What is your favorite season?",
+        "kind": "main",
+        "pairKey": "season1"
+    },
+    {
+        "id": "q21",
+        "text": "What is your favorite holiday?",
+        "kind": "impostor",
+        "pairKey": "season1"
+    },
+    {
+        "id": "p22",
+        "text": "Cats or dogs?",
+        "kind": "main",
+        "pairKey": "pet1"
+    },
+    {
+        "id": "q22",
+        "text": "Coffee or tea?",
+        "kind": "impostor",
+        "pairKey": "pet1"
+    },
+    {
+        "id": "p23",
+        "text": "What is a skill you would like to learn?",
+        "kind": "main",
+        "pairKey": "skill1"
+    },
+    {
+        "id": "q23",
+        "text": "What is a hobby you have given up on?",
+        "kind": "impostor",
+        "pairKey": "skill1"
+    },
+    {
+        "id": "p24",
+        "text": "What’s your dream job?",
+        "kind": "main",
+        "pairKey": "job1"
+    },
+    {
+        "id": "q24",
+        "text": "What was your worst job?",
+        "kind": "impostor",
+        "pairKey": "job1"
+    },
+    {
+        "id": "p25",
+        "text": "How spicy do you like your food on a scale of 1-10?",
+        "kind": "main",
+        "pairKey": "scale1"
+    },
+    {
+        "id": "q25",
+        "text": "How messy is your room on a scale of 1-10?",
+        "kind": "impostor",
+        "pairKey": "scale1"
+    },
+    {
+        "id": "p26",
+        "text": "What is the longest you have gone without showering?",
+        "kind": "main",
+        "pairKey": "hygiene1"
+    },
+    {
+        "id": "q26",
+        "text": "What is the longest you have gone without brushing your teeth?",
+        "kind": "impostor",
+        "pairKey": "hygiene1"
+    },
+    {
+        "id": "p27",
+        "text": "What is a weird food combination you enjoy?",
+        "kind": "main",
+        "pairKey": "foodcombo1"
+    },
+    {
+        "id": "q27",
+        "text": "What is a food you will never try?",
+        "kind": "impostor",
+        "pairKey": "foodcombo1"
+    },
+    {
+        "id": "p28",
+        "text": "What is your favorite board game?",
+        "kind": "main",
+        "pairKey": "game1"
+    },
+    {
+        "id": "q28",
+        "text": "What is your favorite video game?",
+        "kind": "impostor",
+        "pairKey": "game1"
+    },
+    {
+        "id": "p29",
+        "text": "If you had to eat one meal for the rest of your life, what would it be?",
+        "kind": "main",
+        "pairKey": "meal1"
+    },
+    {
+        "id": "q29",
+        "text": "If you could only listen to one artist for the rest of your life, who would it be?",
+        "kind": "impostor",
+        "pairKey": "meal1"
+    },
+    {
+        "id": "p30",
+        "text": "What is the most childish thing you still do?",
+        "kind": "main",
+        "pairKey": "childish1"
+    },
+    {
+        "id": "q30",
+        "text": "What is the most mature thing you do?",
+        "kind": "impostor",
+        "pairKey": "childish1"
+    }
+]

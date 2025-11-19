@@ -14,8 +14,16 @@ function getServerUrl(): string {
 		if (envUrl === 'same-origin' || envUrl === 'self') return window.location.origin;
 		return envUrl;
 	}
-	const { protocol, hostname } = window.location;
-	return `${protocol}//${hostname}:3001`;
+
+	const { protocol, hostname, port } = window.location;
+	// If running on standard Vite dev port, assume server is on 3001
+	// If running on standard Vite dev port, assume server is on 3001
+	if (port === '5173' || port === '3000') {
+		return `${protocol}//${hostname}:3001`;
+	}
+
+	// Otherwise (proxy, tunnel, production), use same origin
+	return window.location.origin;
 }
 
 export function createServerSocket(): ISocketLike {
@@ -26,5 +34,3 @@ export function createServerSocket(): ISocketLike {
 		emit: (event: string, data?: any, cb?: (arg?: any) => void) => { (socket as any).emit(event, data, cb); },
 	};
 }
-
-
