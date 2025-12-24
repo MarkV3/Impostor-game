@@ -26,8 +26,8 @@ function startGame(roomCode, playerId, io) {
     if (!me || !(me.isHost || me.isDisplay)) return;
 
     const gamePlayers = room.players.filter(p => !p.isDisplay);
-    if (gamePlayers.length < (room.config?.minPlayersToStart || 4)) {
-        throw new Error(`Need at least ${room.config?.minPlayersToStart || 4} players to start.`);
+    if (gamePlayers.length < (room.config?.minPlayersToStart || 3)) {
+        throw new Error(`Need at least ${room.config?.minPlayersToStart || 3} players to start.`);
     }
 
     updateRoom(roomCode, { status: 'DISTRIBUTE_PROMPTS' }, io);
@@ -56,7 +56,6 @@ function distributePrompts(roomCode, io) {
         else io.to(sid).emit('prompt:deliver', { text: pair.main.text, role: 'citizen' });
     });
 
-    const answeringEndsAt = Date.now() + (room.config?.answeringSeconds || 60) * 1000;
     updateRoom(roomCode, {
         status: 'ANSWERING',
         currentRound: room.currentRound + 1,
@@ -65,11 +64,7 @@ function distributePrompts(roomCode, io) {
         answers: [],
         votes: [],
         pointsThisRound: {},
-        answeringEndsAt
     }, io);
-
-    const tid = setTimeout(() => endAnsweringPhase(roomCode, io), (room.config?.answeringSeconds || 60) * 1000);
-    timers.set(`${roomCode}-answering`, tid);
 }
 
 function submitAnswer(roomCode, playerId, text, io) {
@@ -85,9 +80,7 @@ function submitAnswer(roomCode, playerId, text, io) {
 
     const totalGamePlayers = room.players.filter(p => !p.isDisplay).length;
     if (room.answers.length === totalGamePlayers) {
-        const t = timers.get(`${roomCode}-answering`);
-        if (t) clearTimeout(t);
-        endAnsweringPhase(roomCode, io);
+        setTimeout(() => endAnsweringPhase(roomCode, io), 2000);
     }
 }
 
@@ -101,10 +94,6 @@ function endAnsweringPhase(roomCode, io) {
     });
 
     updateRoom(roomCode, { status: 'REVEAL', answers: room.answers }, io);
-
-    const fallbackMs = 120000; // 2 minutes
-    const tid = setTimeout(() => startVotingPhase(roomCode, io), fallbackMs);
-    timers.set(`${roomCode}-reveal`, tid);
 }
 
 function revealDone(roomCode, io) {
@@ -118,11 +107,7 @@ function startVotingPhase(roomCode, io) {
     const room = getRoom(roomCode);
     if (!room) return;
 
-    const votingEndsAt = Date.now() + (room.config?.votingSeconds || 90) * 1000;
-    updateRoom(roomCode, { status: 'DISCUSS_AND_VOTE', votingEndsAt }, io);
-
-    const tid = setTimeout(() => endVotingPhase(roomCode, io), (room.config?.votingSeconds || 90) * 1000);
-    timers.set(`${roomCode}-voting`, tid);
+    updateRoom(roomCode, { status: 'DISCUSS_AND_VOTE' }, io);
 }
 
 function submitVote(roomCode, playerId, targetMemberId, io) {
@@ -139,9 +124,7 @@ function submitVote(roomCode, playerId, targetMemberId, io) {
     const uniqueVoters = new Set(room.votes.map(v => v.voterId));
 
     if (uniqueVoters.size >= totalGamePlayers) {
-        const t = timers.get(`${roomCode}-voting`);
-        if (t) clearTimeout(t);
-        setTimeout(() => endVotingPhase(roomCode, io), 1500);
+        setTimeout(() => endVotingPhase(roomCode, io), 2500);
     }
 }
 
@@ -172,10 +155,9 @@ function calculateScores(roomCode, io) {
     const leaderboard = { ...room.leaderboard };
     Object.entries(pointsThisRound).forEach(([pid, pts]) => { leaderboard[pid] = (leaderboard[pid] || 0) + pts; });
 
-    const summaryEndsAt = Date.now() + 10 * 1000;
-    updateRoom(roomCode, { status: 'SUMMARY', leaderboard, pointsThisRound, summaryEndsAt }, io);
+    updateRoom(roomCode, { status: 'SUMMARY', leaderboard, pointsThisRound }, io);
 
-    const tid = setTimeout(() => endSummary(roomCode, io), 10 * 1000);
+    const tid = setTimeout(() => endSummary(roomCode, io), 15 * 1000);
     timers.set(`${roomCode}-summary`, tid);
 }
 
@@ -219,9 +201,6 @@ function restartGame(roomCode, playerId, io) {
         impostorId: undefined,
         mainQuestion: undefined,
         leaderboard: freshLeaderboard,
-        answeringEndsAt: undefined,
-        votingEndsAt: undefined,
-        summaryEndsAt: undefined,
     }, io);
 }
 

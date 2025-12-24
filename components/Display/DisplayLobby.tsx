@@ -9,33 +9,33 @@ const DisplayLobby: React.FC = () => {
     const [joinUrl, setJoinUrl] = useState('');
     const [copied, setCopied] = useState(false);
 
-	useEffect(() => {
-		// Show the player join URL without the display code parameter
-		setJoinUrl(`${window.location.origin}`);
-	}, [gameState?.code]);
+    useEffect(() => {
+        // Show the player join URL without the display code parameter
+        setJoinUrl(`${window.location.origin}`);
+    }, [gameState?.code]);
 
-	const handleCopy = () => {
-		if (navigator.clipboard && window.isSecureContext) {
-			navigator.clipboard.writeText(joinUrl).then(() => {
-				setCopied(true);
-				setTimeout(() => setCopied(false), 2000);
-			});
-		} else {
-			// Fallback for insecure contexts: temporary textarea
-			const textarea = document.createElement('textarea');
-			textarea.value = joinUrl;
-			document.body.appendChild(textarea);
-			textarea.select();
-			try { document.execCommand('copy'); setCopied(true); setTimeout(() => setCopied(false), 2000); } finally {
-				document.body.removeChild(textarea);
-			}
-		}
-	};
+    const handleCopy = () => {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(joinUrl).then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            });
+        } else {
+            // Fallback for insecure contexts: temporary textarea
+            const textarea = document.createElement('textarea');
+            textarea.value = joinUrl;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try { document.execCommand('copy'); setCopied(true); setTimeout(() => setCopied(false), 2000); } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+    };
 
     if (!gameState) return null;
 
     const players = gameState.players.filter(p => !p.isDisplay);
-    const minPlayers = gameState.config?.minPlayersToStart ?? 4;
+    const minPlayers = gameState.config?.minPlayersToStart ?? 3;
     const canStart = players.length >= minPlayers;
 
     return (
@@ -43,15 +43,15 @@ const DisplayLobby: React.FC = () => {
             <div className="flex-1 flex flex-col bg-gray-800 p-8 rounded-2xl">
                 <h1 className="text-5xl lg:text-7xl font-extrabold text-indigo-400">Impostor Prompt</h1>
                 <p className="text-2xl text-gray-300 mt-2">Join on your phone!</p>
-                
+
                 <div className="my-auto flex flex-col items-center gap-6">
                     <div className="flex items-center gap-4 bg-gray-900 px-6 py-4 rounded-lg">
                         <span className="text-xl text-gray-400">Room Code:</span>
                         <span className="text-5xl font-mono tracking-widest text-white">{gameState.code}</span>
                     </div>
-                    
-					<div className="p-4 bg-white rounded-lg">
-						<QRCodeSVG value={joinUrl} size={192} />
+
+                    <div className="p-4 bg-white rounded-lg">
+                        <QRCodeSVG value={joinUrl} size={192} />
                     </div>
 
                     <div className="text-center">

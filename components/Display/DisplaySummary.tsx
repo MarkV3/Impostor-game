@@ -5,27 +5,11 @@ import { UserIcon } from '@heroicons/react/24/solid';
 
 const DisplaySummary: React.FC = () => {
     const { gameState } = useContext(GameContext);
-    const [showResults, setShowResults] = useState(false);
-    const [countdown, setCountdown] = useState(3);
 
     if (!gameState) return null;
 
-    const { players, impostorId, votes, pointsThisRound, leaderboard, currentRound, totalRounds, summaryEndsAt } = gameState;
+    const { players, impostorId, votes, pointsThisRound, leaderboard, currentRound, totalRounds } = gameState;
 
-    useEffect(() => {
-        // Show a short countdown, then reveal results
-        const t = setInterval(() => {
-            setCountdown(prev => {
-                if (prev <= 1) {
-                    clearInterval(t);
-                    setShowResults(true);
-                    return 0;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-        return () => clearInterval(t);
-    }, []);
     const impostor = players.find(p => p.id === impostorId);
 
     const votesByTarget: Record<string, string[]> = players.reduce((acc, player) => {
@@ -34,7 +18,7 @@ const DisplaySummary: React.FC = () => {
     }, {} as Record<string, string[]>);
 
     votes.forEach(vote => {
-        if(votesByTarget[vote.targetId]) {
+        if (votesByTarget[vote.targetId]) {
             votesByTarget[vote.targetId].push(vote.voterId);
         }
     });
@@ -46,8 +30,8 @@ const DisplaySummary: React.FC = () => {
             players={players}
             showScores={true}
             scores={leaderboard}
-            shakeNames={!showResults}
-            highlightImpostor={showResults ? impostorId : undefined}
+            shakeNames={false}
+            highlightImpostor={impostorId}
             hud={(
                 <div className="absolute top-6 left-6 z-20 text-sm px-3 py-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20">
                     <span className="font-semibold">Round {currentRound}/{totalRounds}</span>
@@ -55,27 +39,14 @@ const DisplaySummary: React.FC = () => {
             )}
         >
             <div className="text-center bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl max-w-5xl">
-                
+                <h1 className="text-4xl font-bold mb-6 text-white">Round {currentRound} Results</h1>
+                <div className="text-center bg-red-800/80 p-6 rounded-lg mb-8 w-full max-w-md mx-auto">
+                    <p className="text-xl text-red-200">The Impostor was</p>
+                    <p className="text-4xl font-extrabold text-white">{impostor?.name}</p>
+                </div>
 
-                {!showResults ? (
-                    <div className="text-center">
-                        <h1 className="text-5xl font-bold mb-4 text-white">All votes are in!</h1>
-                        <p className="text-2xl text-gray-300 mb-2">Revealing in...</p>
-                        <div className="text-7xl font-extrabold text-indigo-400 animate-pulse-fast">{countdown}</div>
-                    </div>
-                ) : (
-                    <>
-                        <h1 className="text-4xl font-bold mb-6 text-white">Round {currentRound} Results</h1>
-                        <div className="text-center bg-red-800/80 p-6 rounded-lg mb-8 w-full max-w-md mx-auto">
-                            <p className="text-xl text-red-200">The Impostor was</p>
-                            <p className="text-4xl font-extrabold text-white">{impostor?.name}</p>
-                        </div>
-                    </>
-                )}
 
-                {showResults && (
-                    <>
-                        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     {players.filter(p => !p.isDisplay).map(player => (
                         <div key={player.id} className={`p-4 rounded-lg ${player.id === impostorId ? 'bg-red-900 border-2 border-red-500' : 'bg-gray-700'}`}>
                             <div className="flex justify-between items-center">
@@ -104,7 +75,7 @@ const DisplaySummary: React.FC = () => {
                     <h2 className="text-2xl font-bold mb-4 text-white">Leaderboard</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {Object.entries(leaderboard)
-                            .sort((a, b) => b[1] - a[1])
+                            .sort((a, b) => (b[1] as number) - (a[1] as number))
                             .map(([playerId, score], index) => {
                                 const player = players.find(p => p.id === playerId);
                                 if (!player || player.isDisplay) return null;
@@ -118,13 +89,9 @@ const DisplaySummary: React.FC = () => {
                     </div>
                 </div>
 
-                        {summaryEndsAt && (
-                            <div className="mt-6">
-                                <p className="text-center text-gray-400">Next round starts soon...</p>
-                            </div>
-                        )}
-                    </>
-                )}
+                <div className="mt-6">
+                    <p className="text-center text-gray-400">Next round starts soon...</p>
+                </div>
             </div>
         </TableLayout>
     );

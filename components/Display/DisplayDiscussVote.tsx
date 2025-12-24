@@ -1,13 +1,12 @@
 
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { GameContext } from '../../contexts/GameContext';
-import CountdownTimer from '../shared/CountdownTimer';
 import TableLayout from './TableLayout';
 import { GameStatus } from '../../types';
 
 const DisplayDiscussVote: React.FC = () => {
     const { gameState } = useContext(GameContext);
-    if (!gameState || !gameState.votingEndsAt || gameState.status !== GameStatus.DISCUSS_AND_VOTE) return null;
+    if (!gameState || gameState.status !== GameStatus.DISCUSS_AND_VOTE) return null;
 
     const { players, currentRound, totalRounds, votes, leaderboard, mainQuestion, answers } = gameState;
     const gamePlayers = players.filter(p => !p.isDisplay);
@@ -43,18 +42,14 @@ const DisplayDiscussVote: React.FC = () => {
                     <div className="absolute top-6 left-6 z-20 text-sm px-3 py-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20">
                         <span className="font-semibold">Round {currentRound}/{totalRounds}</span>
                     </div>
-                    <div className="absolute top-6 right-6 z-20">
-                        <CountdownTimer endsAt={gameState.votingEndsAt} totalDuration={(gameState.config?.votingSeconds ?? 90) * 1000} size={76} strokeWidth={8} />
-                    </div>
                 </>
             )}
         >
             <div className="relative flex flex-col items-center gap-8 w-[min(90vw,32rem)] pointer-events-none">
                 {mainQuestion && (
                     <div
-                        className={`w-full rounded-2xl bg-white/10 backdrop-blur-lg shadow-2xl border border-white/15 px-6 py-5 text-center text-white transition-all duration-[1600ms] ease-out ${
-                            entered ? '-translate-y-12 scale-95 opacity-95' : 'translate-y-2 scale-100 opacity-100'
-                        }`}
+                        className={`w-full rounded-2xl bg-white/10 backdrop-blur-lg shadow-2xl border border-white/15 px-6 py-5 text-center text-white transition-all duration-[1600ms] ease-out ${entered ? '-translate-y-12 scale-95 opacity-95' : 'translate-y-2 scale-100 opacity-100'
+                            }`}
                     >
                         <div className="text-sm uppercase tracking-[0.35em] text-indigo-200/90 mb-2">The real question</div>
                         <div className="text-3xl font-extrabold leading-snug">“{mainQuestion}”</div>
@@ -63,9 +58,8 @@ const DisplayDiscussVote: React.FC = () => {
                 )}
 
                 <div
-                    className={`w-full rounded-2xl bg-indigo-900/40 border border-indigo-500/30 backdrop-blur-lg shadow-xl px-6 py-7 text-center text-white transition-all duration-[1400ms] ease-out ${
-                        entered ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
-                    }`}
+                    className={`w-full rounded-2xl bg-indigo-900/40 border border-indigo-500/30 backdrop-blur-lg shadow-xl px-6 py-7 text-center text-white transition-all duration-[1400ms] ease-out ${entered ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
+                        }`}
                     style={{ pointerEvents: 'auto' }}
                 >
                     <h1 className="text-3xl font-extrabold mb-2">Discuss & Vote</h1>

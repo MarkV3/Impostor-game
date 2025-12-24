@@ -1,12 +1,11 @@
 
 import React, { useContext } from 'react';
 import { GameContext } from '../../contexts/GameContext';
-import CountdownTimer from '../shared/CountdownTimer';
 import TableLayout from './TableLayout';
 
 const DisplayAnswering: React.FC = () => {
     const { gameState } = useContext(GameContext);
-    if (!gameState || !gameState.answeringEndsAt) return null;
+    if (!gameState) return null;
 
     const { players, answers, currentRound, totalRounds } = gameState;
     const gamePlayers = players.filter(p => !p.isDisplay);
@@ -25,9 +24,6 @@ const DisplayAnswering: React.FC = () => {
                 <>
                     <div className="absolute top-6 left-6 z-20 text-sm px-3 py-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20">
                         <span className="font-semibold">Round {currentRound}/{totalRounds}</span>
-                    </div>
-                    <div className="absolute top-6 right-6 z-20">
-                        <CountdownTimer endsAt={gameState.answeringEndsAt} totalDuration={(gameState.config?.answeringSeconds ?? 60) * 1000} size={76} strokeWidth={8} />
                     </div>
                 </>
             )}

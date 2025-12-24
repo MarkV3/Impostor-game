@@ -3,7 +3,6 @@ import React, { useState, useContext } from 'react';
 import { GameContext } from '../../contexts/GameContext';
 import Button from '../shared/Button';
 import Card from '../shared/Card';
-import CountdownTimer from '../shared/CountdownTimer';
 
 const PlayerAnswering: React.FC = () => {
     const [answer, setAnswer] = useState('');
@@ -16,15 +15,12 @@ const PlayerAnswering: React.FC = () => {
         }
     };
 
-    if (!privatePrompt || !gameState?.answeringEndsAt) return null;
+    if (!privatePrompt || !gameState) return null;
 
     const charLimit = 200;
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-4">
-            <div className="absolute top-4 right-4">
-                <CountdownTimer endsAt={gameState.answeringEndsAt} totalDuration={60 * 1000} />
-            </div>
             <div className="w-full max-w-md">
                 <Card className="bg-indigo-900 border-indigo-700">
                     <p className="text-2xl font-bold text-white">{privatePrompt.text}</p>

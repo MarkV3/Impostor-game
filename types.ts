@@ -35,9 +35,6 @@ export interface GameState {
     leaderboard: Record<string, number>;
     currentRound: number;
     totalRounds: number;
-    answeringEndsAt?: number;
-    votingEndsAt?: number;
-    summaryEndsAt?: number;
     answers: Answer[];
     impostorId?: string;
     mainQuestion?: string;
@@ -50,7 +47,7 @@ export interface GameState {
     };
 }
 
-export type ClientView = 
+export type ClientView =
     | { type: 'loading' }
     | { type: 'display', code: string }
     | { type: 'player' }

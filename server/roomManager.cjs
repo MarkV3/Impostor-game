@@ -37,7 +37,7 @@ function createRoom(payload) {
         answers: [],
         votes: [],
         config: {
-            minPlayersToStart: Math.max(3, Math.min(10, Number(payload?.minPlayersToStart || 4))),
+            minPlayersToStart: Math.max(3, Math.min(10, Number(payload?.minPlayersToStart || 3))),
             answeringSeconds: Math.max(10, Math.min(300, Number(payload?.answeringSeconds || 60))),
             votingSeconds: Math.max(10, Math.min(300, Number(payload?.votingSeconds || 90)))
         }
