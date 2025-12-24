@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "dev:lan": "vite --host",
+    "dev:self": "VITE_SERVER_URL=same-origin vite --host --port 5173",
     "server": "node server/index.cjs",
     "start:lan": "bash ./start.sh",
+    "tunnel:loclx": "loclx tunnel http --to 8080",
+    "proxy": "node server/proxy.cjs",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -16,6 +19,7 @@
     "react": "^19.2.0",
     "@heroicons/react": "^2.2.0",
     "qrcode.react": "^4.2.0",
+    "http-proxy": "^1.18.1",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
   },

@@ -1,0 +1,3422 @@
+[
+    {
+        "id": "p1",
+        "text": "How many hours a day do you spend on your phone?",
+        "kind": "main",
+        "pairKey": "num1"
+    },
+    {
+        "id": "q1",
+        "text": "How many hours a day do you sleep?",
+        "kind": "impostor",
+        "pairKey": "num1"
+    },
+    {
+        "id": "p2",
+        "text": "What hill would you die on?",
+        "kind": "main",
+        "pairKey": "opinion1"
+    },
+    {
+        "id": "q2",
+        "text": "What’s your most controversial take?",
+        "kind": "impostor",
+        "pairKey": "opinion1"
+    },
+    {
+        "id": "p3",
+        "text": "How many broken bones have you had?",
+        "kind": "main",
+        "pairKey": "exp1"
+    },
+    {
+        "id": "q3",
+        "text": "How many surgeries have you had?",
+        "kind": "impostor",
+        "pairKey": "exp1"
+    },
+    {
+        "id": "p4",
+        "text": "What is the best topping for a pizza?",
+        "kind": "main",
+        "pairKey": "food1"
+    },
+    {
+        "id": "q4",
+        "text": "What food should be banned forever?",
+        "kind": "impostor",
+        "pairKey": "food1"
+    },
+    {
+        "id": "p5",
+        "text": "If you could have any superpower, what would it be?",
+        "kind": "main",
+        "pairKey": "superpower1"
+    },
+    {
+        "id": "q5",
+        "text": "If you were a supervillain, what would be your evil plan?",
+        "kind": "impostor",
+        "pairKey": "superpower1"
+    },
+    {
+        "id": "p6",
+        "text": "What is your favorite movie of all time?",
+        "kind": "main",
+        "pairKey": "media1"
+    },
+    {
+        "id": "q6",
+        "text": "What movie do you think is overrated?",
+        "kind": "impostor",
+        "pairKey": "media1"
+    },
+    {
+        "id": "p7",
+        "text": "What is the most beautiful place you have ever visited?",
+        "kind": "main",
+        "pairKey": "travel1"
+    },
+    {
+        "id": "q7",
+        "text": "What is a country you have no interest in visiting?",
+        "kind": "impostor",
+        "pairKey": "travel1"
+    },
+    {
+        "id": "p8",
+        "text": "What is a small thing that makes you happy?",
+        "kind": "main",
+        "pairKey": "happy1"
+    },
+    {
+        "id": "q8",
+        "text": "What is a common thing that annoys you?",
+        "kind": "impostor",
+        "pairKey": "happy1"
+    },
+    {
+        "id": "p9",
+        "text": "How many cups of coffee do you drink per day?",
+        "kind": "main",
+        "pairKey": "habit1"
+    },
+    {
+        "id": "q9",
+        "text": "How many hours of sleep do you get per night?",
+        "kind": "impostor",
+        "pairKey": "habit1"
+    },
+    {
+        "id": "p10",
+        "text": "What is the best gift you have ever received?",
+        "kind": "main",
+        "pairKey": "gift1"
+    },
+    {
+        "id": "q10",
+        "text": "What is the worst gift you have ever received?",
+        "kind": "impostor",
+        "pairKey": "gift1"
+    },
+    {
+        "id": "p11",
+        "text": "What animal would you like to be?",
+        "kind": "main",
+        "pairKey": "animal1"
+    },
+    {
+        "id": "q11",
+        "text": "What animal are you most afraid of?",
+        "kind": "impostor",
+        "pairKey": "animal1"
+    },
+    {
+        "id": "p12",
+        "text": "Name a celebrity you admire.",
+        "kind": "main",
+        "pairKey": "celeb1"
+    },
+    {
+        "id": "q12",
+        "text": "Name a celebrity you find annoying.",
+        "kind": "impostor",
+        "pairKey": "celeb1"
+    },
+    {
+        "id": "p13",
+        "text": "What year would you travel to in a time machine?",
+        "kind": "main",
+        "pairKey": "time1"
+    },
+    {
+        "id": "q13",
+        "text": "What historical event would you want to witness?",
+        "kind": "impostor",
+        "pairKey": "time1"
+    },
+    {
+        "id": "p14",
+        "text": "What’s your go-to karaoke song?",
+        "kind": "main",
+        "pairKey": "music1"
+    },
+    {
+        "id": "q14",
+        "text": "What song can you not stand hearing?",
+        "kind": "impostor",
+        "pairKey": "music1"
+    },
+    {
+        "id": "p15",
+        "text": "How old were you when you had your first kiss?",
+        "kind": "main",
+        "pairKey": "first1"
+    },
+    {
+        "id": "q15",
+        "text": "How old were you when you got your first job?",
+        "kind": "impostor",
+        "pairKey": "first1"
+    },
+    {
+        "id": "p16",
+        "text": "What's the best advice you've ever been given?",
+        "kind": "main",
+        "pairKey": "advice1"
+    },
+    {
+        "id": "q16",
+        "text": "What's the worst advice you've ever been given?",
+        "kind": "impostor",
+        "pairKey": "advice1"
+    },
+    {
+        "id": "p17",
+        "text": "What is something you are afraid of?",
+        "kind": "main",
+        "pairKey": "fear1"
+    },
+    {
+        "id": "q17",
+        "text": "What is something you avoid at all costs?",
+        "kind": "impostor",
+        "pairKey": "fear1"
+    },
+    {
+        "id": "p18",
+        "text": "Which Disney character are you?",
+        "kind": "main",
+        "pairKey": "character1"
+    },
+    {
+        "id": "q18",
+        "text": "Which Pixar character are you?",
+        "kind": "impostor",
+        "pairKey": "character1"
+    },
+    {
+        "id": "p19",
+        "text": "How many U.S. states have you visited?",
+        "kind": "main",
+        "pairKey": "geography1"
+    },
+    {
+        "id": "q19",
+        "text": "How many countries have you visited?",
+        "kind": "impostor",
+        "pairKey": "geography1"
+    },
+    {
+        "id": "p20",
+        "text": "What is something you are proud of?",
+        "kind": "main",
+        "pairKey": "proud1"
+    },
+    {
+        "id": "q20",
+        "text": "What is something you are embarrassed about?",
+        "kind": "impostor",
+        "pairKey": "proud1"
+    },
+    {
+        "id": "p21",
+        "text": "What is your favorite season?",
+        "kind": "main",
+        "pairKey": "season1"
+    },
+    {
+        "id": "q21",
+        "text": "In which season were you born?",
+        "kind": "impostor",
+        "pairKey": "season1"
+    },
+    {
+        "id": "p22",
+        "text": "Morning or Night?",
+        "kind": "main",
+        "pairKey": "pet1"
+    },
+    {
+        "id": "q22",
+        "text": "Sunrise or Sunset?",
+        "kind": "impostor",
+        "pairKey": "pet1"
+    },
+    {
+        "id": "p23",
+        "text": "What is a skill you would like to learn?",
+        "kind": "main",
+        "pairKey": "skill1"
+    },
+    {
+        "id": "q23",
+        "text": "What is a hobby you have given up on?",
+        "kind": "impostor",
+        "pairKey": "skill1"
+    },
+    {
+        "id": "p24",
+        "text": "What’s your dream job?",
+        "kind": "main",
+        "pairKey": "job1"
+    },
+    {
+        "id": "q24",
+        "text": "What was your worst job?",
+        "kind": "impostor",
+        "pairKey": "job1"
+    },
+    {
+        "id": "p25",
+        "text": "How spicy do you like your food on a scale of 1-10?",
+        "kind": "main",
+        "pairKey": "scale1"
+    },
+    {
+        "id": "q25",
+        "text": "How messy is your room on a scale of 1-10?",
+        "kind": "impostor",
+        "pairKey": "scale1"
+    },
+    {
+        "id": "p26",
+        "text": "What is the longest you have gone without showering?",
+        "kind": "main",
+        "pairKey": "hygiene1"
+    },
+    {
+        "id": "q26",
+        "text": "What is the longest you have gone without brushing your teeth?",
+        "kind": "impostor",
+        "pairKey": "hygiene1"
+    },
+    {
+        "id": "p27",
+        "text": "What is a weird food combination you enjoy?",
+        "kind": "main",
+        "pairKey": "foodcombo1"
+    },
+    {
+        "id": "q27",
+        "text": "What is a food you will never try?",
+        "kind": "impostor",
+        "pairKey": "foodcombo1"
+    },
+    {
+        "id": "p28",
+        "text": "What is your favorite board game?",
+        "kind": "main",
+        "pairKey": "game1"
+    },
+    {
+        "id": "q28",
+        "text": "What is your favorite video game?",
+        "kind": "impostor",
+        "pairKey": "game1"
+    },
+    {
+        "id": "p29",
+        "text": "If you could eat one food forever, what would it be?",
+        "kind": "main",
+        "pairKey": "meal1"
+    },
+    {
+        "id": "q29",
+        "text": "What is your absolute favorite comfort food?",
+        "kind": "impostor",
+        "pairKey": "meal1"
+    },
+    {
+        "id": "p30",
+        "text": "What is the most childish thing you still do?",
+        "kind": "main",
+        "pairKey": "childish1"
+    },
+    {
+        "id": "q30",
+        "text": "What is the most mature thing you do?",
+        "kind": "impostor",
+        "pairKey": "childish1"
+    },
+    {
+        "id": "p31",
+        "text": "What is your favorite time of day?",
+        "kind": "main",
+        "pairKey": "timeofday1"
+    },
+    {
+        "id": "q31",
+        "text": "What time of day do you feel most productive?",
+        "kind": "impostor",
+        "pairKey": "timeofday1"
+    },
+    {
+        "id": "p32",
+        "text": "What is your favorite healthy snack?",
+        "kind": "main",
+        "pairKey": "fruitveg1"
+    },
+    {
+        "id": "q32",
+        "text": "What is your favorite fruit?",
+        "kind": "impostor",
+        "pairKey": "fruitveg1"
+    },
+    {
+        "id": "p33",
+        "text": "How do you relax after a long day?",
+        "kind": "main",
+        "pairKey": "relax1"
+    },
+    {
+        "id": "q33",
+        "text": "How do you prepare for a busy day?",
+        "kind": "impostor",
+        "pairKey": "relax1"
+    },
+    {
+        "id": "p34",
+        "text": "What is the most expensive thing you own?",
+        "kind": "main",
+        "pairKey": "possession1"
+    },
+    {
+        "id": "q34",
+        "text": "What is the most sentimental thing you own?",
+        "kind": "impostor",
+        "pairKey": "possession1"
+    },
+    {
+        "id": "p35",
+        "text": "What color describes your mood right now?",
+        "kind": "main",
+        "pairKey": "color1"
+    },
+    {
+        "id": "q35",
+        "text": "What is your favorite color?",
+        "kind": "impostor",
+        "pairKey": "color1"
+    },
+    {
+        "id": "p36",
+        "text": "What is your dream vacation destination?",
+        "kind": "main",
+        "pairKey": "vacation1"
+    },
+    {
+        "id": "q36",
+        "text": "Where was your last vacation?",
+        "kind": "impostor",
+        "pairKey": "vacation1"
+    },
+    {
+        "id": "p37",
+        "text": "What is your favorite dessert?",
+        "kind": "main",
+        "pairKey": "dessert1"
+    },
+    {
+        "id": "q37",
+        "text": "What is your favorite snack?",
+        "kind": "impostor",
+        "pairKey": "dessert1"
+    },
+    {
+        "id": "p38",
+        "text": "Who is your favorite superhero?",
+        "kind": "main",
+        "pairKey": "hero1"
+    },
+    {
+        "id": "q38",
+        "text": "Who is your favorite fictional character?",
+        "kind": "impostor",
+        "pairKey": "hero1"
+    },
+    {
+        "id": "p39",
+        "text": "What is your favorite book genre?",
+        "kind": "main",
+        "pairKey": "genre1"
+    },
+    {
+        "id": "q39",
+        "text": "What is your favorite movie genre?",
+        "kind": "impostor",
+        "pairKey": "genre1"
+    },
+    {
+        "id": "p40",
+        "text": "What is the best event you've attended?",
+        "kind": "main",
+        "pairKey": "event1"
+    },
+    {
+        "id": "q40",
+        "text": "What is the most memorable celebration you've been to?",
+        "kind": "impostor",
+        "pairKey": "event1"
+    },
+    {
+        "id": "p41",
+        "text": "What is your favorite drink?",
+        "kind": "main",
+        "pairKey": "drink1"
+    },
+    {
+        "id": "q41",
+        "text": "What is your favorite cocktail or mocktail?",
+        "kind": "impostor",
+        "pairKey": "drink1"
+    },
+    {
+        "id": "p42",
+        "text": "What is your favorite sport to watch?",
+        "kind": "main",
+        "pairKey": "sport1"
+    },
+    {
+        "id": "q42",
+        "text": "What is your favorite sport to play?",
+        "kind": "impostor",
+        "pairKey": "sport1"
+    },
+    {
+        "id": "p43",
+        "text": "What is your favorite game to play with friends?",
+        "kind": "main",
+        "pairKey": "cardgame1"
+    },
+    {
+        "id": "q43",
+        "text": "What is your favorite board game?",
+        "kind": "impostor",
+        "pairKey": "cardgame1"
+    },
+    {
+        "id": "p44",
+        "text": "What is your favorite app on your phone?",
+        "kind": "main",
+        "pairKey": "app1"
+    },
+    {
+        "id": "q44",
+        "text": "What is your most used app on your phone?",
+        "kind": "impostor",
+        "pairKey": "app1"
+    },
+    {
+        "id": "p45",
+        "text": "What is your favorite sandwich filling?",
+        "kind": "main",
+        "pairKey": "sandwich1"
+    },
+    {
+        "id": "q45",
+        "text": "What is your favorite burger topping?",
+        "kind": "impostor",
+        "pairKey": "sandwich1"
+    },
+    {
+        "id": "p46",
+        "text": "What is your favorite ice cream flavor?",
+        "kind": "main",
+        "pairKey": "icecream1"
+    },
+    {
+        "id": "q46",
+        "text": "What is your favorite milkshake flavor?",
+        "kind": "impostor",
+        "pairKey": "icecream1"
+    },
+    {
+        "id": "p47",
+        "text": "What is your favorite day of the week?",
+        "kind": "main",
+        "pairKey": "month1"
+    },
+    {
+        "id": "q47",
+        "text": "On which day are you most productive?",
+        "kind": "impostor",
+        "pairKey": "month1"
+    },
+    {
+        "id": "p48",
+        "text": "What is your favorite family tradition?",
+        "kind": "main",
+        "pairKey": "tradition1"
+    },
+    {
+        "id": "q48",
+        "text": "What is your favorite holiday tradition?",
+        "kind": "impostor",
+        "pairKey": "tradition1"
+    },
+    {
+        "id": "p49",
+        "text": "What is your favorite zoo animal?",
+        "kind": "main",
+        "pairKey": "zoo1"
+    },
+    {
+        "id": "q49",
+        "text": "What is your favorite farm animal?",
+        "kind": "impostor",
+        "pairKey": "zoo1"
+    },
+    {
+        "id": "p50",
+        "text": "What is your favorite subject in school?",
+        "kind": "main",
+        "pairKey": "school1"
+    },
+    {
+        "id": "q50",
+        "text": "What subject were you best at in school?",
+        "kind": "impostor",
+        "pairKey": "school1"
+    },
+    {
+        "id": "p51",
+        "text": "What is your favorite fast food chain?",
+        "kind": "main",
+        "pairKey": "fastfood1"
+    },
+    {
+        "id": "q51",
+        "text": "What is your favorite restaurant?",
+        "kind": "impostor",
+        "pairKey": "fastfood1"
+    },
+    {
+        "id": "p52",
+        "text": "What is your favorite car brand?",
+        "kind": "main",
+        "pairKey": "car1"
+    },
+    {
+        "id": "q52",
+        "text": "What is your dream car?",
+        "kind": "impostor",
+        "pairKey": "car1"
+    },
+    {
+        "id": "p53",
+        "text": "What is your favorite clothing brand?",
+        "kind": "main",
+        "pairKey": "brand1"
+    },
+    {
+        "id": "q53",
+        "text": "What is your favorite shoe brand?",
+        "kind": "impostor",
+        "pairKey": "brand1"
+    },
+    {
+        "id": "p54",
+        "text": "What is your favorite smell?",
+        "kind": "main",
+        "pairKey": "smell1"
+    },
+    {
+        "id": "q54",
+        "text": "What is your favorite perfume or cologne scent?",
+        "kind": "impostor",
+        "pairKey": "smell1"
+    },
+    {
+        "id": "p55",
+        "text": "What is your favorite sound?",
+        "kind": "main",
+        "pairKey": "sound1"
+    },
+    {
+        "id": "q55",
+        "text": "What music genre do you listen to most?",
+        "kind": "impostor",
+        "pairKey": "sound1"
+    },
+    {
+        "id": "p56",
+        "text": "What is your favorite flower?",
+        "kind": "main",
+        "pairKey": "flower1"
+    },
+    {
+        "id": "q56",
+        "text": "What is your favorite plant?",
+        "kind": "impostor",
+        "pairKey": "flower1"
+    },
+    {
+        "id": "p57",
+        "text": "What is your favorite weather?",
+        "kind": "main",
+        "pairKey": "weather1"
+    },
+    {
+        "id": "q57",
+        "text": "What is your favorite temperature?",
+        "kind": "impostor",
+        "pairKey": "weather1"
+    },
+    {
+        "id": "p58",
+        "text": "What is your favorite room in your house?",
+        "kind": "main",
+        "pairKey": "room1"
+    },
+    {
+        "id": "q58",
+        "text": "Where do you spend most of your time at home?",
+        "kind": "impostor",
+        "pairKey": "room1"
+    },
+    {
+        "id": "p59",
+        "text": "What is your favorite household chore?",
+        "kind": "main",
+        "pairKey": "chore1"
+    },
+    {
+        "id": "q59",
+        "text": "What is the chore you hate the least?",
+        "kind": "impostor",
+        "pairKey": "chore1"
+    },
+    {
+        "id": "p60",
+        "text": "What is your favorite way to exercise?",
+        "kind": "main",
+        "pairKey": "exercise1"
+    },
+    {
+        "id": "q60",
+        "text": "What is your favorite outdoor activity?",
+        "kind": "impostor",
+        "pairKey": "exercise1"
+    },
+    {
+        "id": "p61",
+        "text": "What is your favorite childhood memory?",
+        "kind": "main",
+        "pairKey": "memory1"
+    },
+    {
+        "id": "q61",
+        "text": "What is your earliest memory?",
+        "kind": "impostor",
+        "pairKey": "memory1"
+    },
+    {
+        "id": "p62",
+        "text": "What is your favorite thing to cook?",
+        "kind": "main",
+        "pairKey": "cook1"
+    },
+    {
+        "id": "q62",
+        "text": "What is your favorite thing to bake?",
+        "kind": "impostor",
+        "pairKey": "cook1"
+    },
+    {
+        "id": "p63",
+        "text": "What is your favorite breakfast food?",
+        "kind": "main",
+        "pairKey": "breakfast1"
+    },
+    {
+        "id": "q63",
+        "text": "What is your favorite dinner food?",
+        "kind": "impostor",
+        "pairKey": "breakfast1"
+    },
+    {
+        "id": "p64",
+        "text": "What is your favorite sleeping position?",
+        "kind": "main",
+        "pairKey": "sleep1"
+    },
+    {
+        "id": "q64",
+        "text": "In what position do you usually wake up?",
+        "kind": "impostor",
+        "pairKey": "sleep1"
+    },
+    {
+        "id": "p65",
+        "text": "What is your favorite emoji?",
+        "kind": "main",
+        "pairKey": "emoji1"
+    },
+    {
+        "id": "q65",
+        "text": "What is your most used emoji?",
+        "kind": "impostor",
+        "pairKey": "emoji1"
+    },
+    {
+        "id": "p66",
+        "text": "What is your favorite TV show?",
+        "kind": "main",
+        "pairKey": "tv1"
+    },
+    {
+        "id": "q66",
+        "text": "What is a TV show you can watch over and over?",
+        "kind": "impostor",
+        "pairKey": "tv1"
+    },
+    {
+        "id": "p67",
+        "text": "Who is your favorite actor?",
+        "kind": "main",
+        "pairKey": "actor1"
+    },
+    {
+        "id": "q67",
+        "text": "Who is your favorite actress?",
+        "kind": "impostor",
+        "pairKey": "actor1"
+    },
+    {
+        "id": "p68",
+        "text": "Who is your favorite comedian?",
+        "kind": "main",
+        "pairKey": "comedian1"
+    },
+    {
+        "id": "q68",
+        "text": "Who makes you laugh the most?",
+        "kind": "impostor",
+        "pairKey": "comedian1"
+    },
+    {
+        "id": "p69",
+        "text": "What is your favorite YouTube channel?",
+        "kind": "main",
+        "pairKey": "youtube1"
+    },
+    {
+        "id": "q69",
+        "text": "What is your favorite podcast?",
+        "kind": "impostor",
+        "pairKey": "youtube1"
+    },
+    {
+        "id": "p70",
+        "text": "What is your favorite social media platform?",
+        "kind": "main",
+        "pairKey": "social1"
+    },
+    {
+        "id": "q70",
+        "text": "Where do you get your news?",
+        "kind": "impostor",
+        "pairKey": "social1"
+    },
+    {
+        "id": "p71",
+        "text": "What is your favorite video game genre?",
+        "kind": "main",
+        "pairKey": "videogame1"
+    },
+    {
+        "id": "q71",
+        "text": "What is your favorite type of game?",
+        "kind": "impostor",
+        "pairKey": "videogame1"
+    },
+    {
+        "id": "p72",
+        "text": "What is your favorite sweet treat?",
+        "kind": "main",
+        "pairKey": "candy1"
+    },
+    {
+        "id": "q72",
+        "text": "What is your favorite candy?",
+        "kind": "impostor",
+        "pairKey": "candy1"
+    },
+    {
+        "id": "p73",
+        "text": "What is your favorite cheese?",
+        "kind": "main",
+        "pairKey": "cheese1"
+    },
+    {
+        "id": "q73",
+        "text": "What would you put on a cracker?",
+        "kind": "impostor",
+        "pairKey": "cheese1"
+    },
+    {
+        "id": "p74",
+        "text": "What is your favorite baked good?",
+        "kind": "main",
+        "pairKey": "bread1"
+    },
+    {
+        "id": "q74",
+        "text": "What is your favorite bread?",
+        "kind": "impostor",
+        "pairKey": "bread1"
+    },
+    {
+        "id": "p75",
+        "text": "What is your favorite appetizer?",
+        "kind": "main",
+        "pairKey": "soup1"
+    },
+    {
+        "id": "q75",
+        "text": "What is your favorite soup?",
+        "kind": "impostor",
+        "pairKey": "soup1"
+    },
+    {
+        "id": "p76",
+        "text": "Steak or Chicken?",
+        "kind": "main",
+        "pairKey": "meat1"
+    },
+    {
+        "id": "q76",
+        "text": "Beef or Poultry?",
+        "kind": "impostor",
+        "pairKey": "meat1"
+    },
+    {
+        "id": "p77",
+        "text": "What is your favorite sweet drink?",
+        "kind": "main",
+        "pairKey": "juice1"
+    },
+    {
+        "id": "q77",
+        "text": "What is your favorite fruit juice?",
+        "kind": "impostor",
+        "pairKey": "juice1"
+    },
+    {
+        "id": "p78",
+        "text": "What is your go-to drink at a bar?",
+        "kind": "main",
+        "pairKey": "alcohol1"
+    },
+    {
+        "id": "q78",
+        "text": "What is your favorite cocktail?",
+        "kind": "impostor",
+        "pairKey": "alcohol1"
+    },
+    {
+        "id": "p79",
+        "text": "Coffee or Tea?",
+        "kind": "main",
+        "pairKey": "hotdrink1"
+    },
+    {
+        "id": "q79",
+        "text": "What do you drink in the morning?",
+        "kind": "impostor",
+        "pairKey": "hotdrink1"
+    },
+    {
+        "id": "p80",
+        "text": "What is your favorite thing about yourself?",
+        "kind": "main",
+        "pairKey": "self1"
+    },
+    {
+        "id": "q80",
+        "text": "What is your best physical feature?",
+        "kind": "impostor",
+        "pairKey": "self1"
+    },
+    {
+        "id": "p81",
+        "text": "What is a hobby you wish you had more time for?",
+        "kind": "main",
+        "pairKey": "hobby2"
+    },
+    {
+        "id": "q81",
+        "text": "What hobby did you pick up recently?",
+        "kind": "impostor",
+        "pairKey": "hobby2"
+    },
+    {
+        "id": "p82",
+        "text": "What is your favorite thing to do outdoors?",
+        "kind": "main",
+        "pairKey": "outdoor2"
+    },
+    {
+        "id": "q82",
+        "text": "What outdoor activity do you rarely do?",
+        "kind": "impostor",
+        "pairKey": "outdoor2"
+    },
+    {
+        "id": "p83",
+        "text": "What is your favorite kind of breakfast?",
+        "kind": "main",
+        "pairKey": "food2"
+    },
+    {
+        "id": "q83",
+        "text": "What is something you rarely eat for breakfast?",
+        "kind": "impostor",
+        "pairKey": "food2"
+    },
+    {
+        "id": "p84",
+        "text": "What’s something that instantly relaxes you?",
+        "kind": "main",
+        "pairKey": "relax2"
+    },
+    {
+        "id": "q84",
+        "text": "What’s something that instantly stresses you?",
+        "kind": "impostor",
+        "pairKey": "relax2"
+    },
+    {
+        "id": "p85",
+        "text": "What is your favorite type of movie ending?",
+        "kind": "main",
+        "pairKey": "movie2"
+    },
+    {
+        "id": "q85",
+        "text": "What type of movie ending do you dislike?",
+        "kind": "impostor",
+        "pairKey": "movie2"
+    },
+    {
+        "id": "p86",
+        "text": "What is something you always pack when traveling?",
+        "kind": "main",
+        "pairKey": "travel2"
+    },
+    {
+        "id": "q86",
+        "text": "What is something you often forget to pack?",
+        "kind": "impostor",
+        "pairKey": "travel2"
+    },
+    {
+        "id": "p87",
+        "text": "What is your favorite drink to have with breakfast?",
+        "kind": "main",
+        "pairKey": "drink2"
+    },
+    {
+        "id": "q87",
+        "text": "What drink do you avoid in the morning?",
+        "kind": "impostor",
+        "pairKey": "drink2"
+    },
+    {
+        "id": "p88",
+        "text": "What was your favorite subject as a kid?",
+        "kind": "main",
+        "pairKey": "school2"
+    },
+    {
+        "id": "q88",
+        "text": "What was your worst subject in school?",
+        "kind": "impostor",
+        "pairKey": "school2"
+    },
+    {
+        "id": "p89",
+        "text": "What is your favorite type of dessert flavor?",
+        "kind": "main",
+        "pairKey": "dessert2"
+    },
+    {
+        "id": "q89",
+        "text": "What dessert flavor do you dislike?",
+        "kind": "impostor",
+        "pairKey": "dessert2"
+    },
+    {
+        "id": "p90",
+        "text": "What is your favorite household item you can't live without?",
+        "kind": "main",
+        "pairKey": "house2"
+    },
+    {
+        "id": "q90",
+        "text": "What household item do you barely use?",
+        "kind": "impostor",
+        "pairKey": "house2"
+    },
+    {
+        "id": "p91",
+        "text": "What is your strategy in board games?",
+        "kind": "main",
+        "pairKey": "boardgame2"
+    },
+    {
+        "id": "q91",
+        "text": "What is your strategy in card games?",
+        "kind": "impostor",
+        "pairKey": "boardgame2"
+    },
+    {
+        "id": "p92",
+        "text": "What is your favorite type of sandwich?",
+        "kind": "main",
+        "pairKey": "sandwich2"
+    },
+    {
+        "id": "q92",
+        "text": "What type of wrap do you like the most?",
+        "kind": "impostor",
+        "pairKey": "sandwich2"
+    },
+    {
+        "id": "p93",
+        "text": "What is your favorite snack to have during a movie?",
+        "kind": "main",
+        "pairKey": "snack2"
+    },
+    {
+        "id": "q93",
+        "text": "What is your favorite snack to have during a road trip?",
+        "kind": "impostor",
+        "pairKey": "snack2"
+    },
+    {
+        "id": "p94",
+        "text": "What is your favorite type of pet?",
+        "kind": "main",
+        "pairKey": "pet2"
+    },
+    {
+        "id": "q94",
+        "text": "What type of animal would you never want as a pet?",
+        "kind": "impostor",
+        "pairKey": "pet2"
+    },
+    {
+        "id": "p95",
+        "text": "What is your favorite morning routine activity?",
+        "kind": "main",
+        "pairKey": "routine2"
+    },
+    {
+        "id": "q95",
+        "text": "What is your least favorite morning routine activity?",
+        "kind": "impostor",
+        "pairKey": "routine2"
+    },
+    {
+        "id": "p96",
+        "text": "What is your go-to comfort TV show?",
+        "kind": "main",
+        "pairKey": "comforttv2"
+    },
+    {
+        "id": "q96",
+        "text": "What TV show are you tired of seeing?",
+        "kind": "impostor",
+        "pairKey": "comforttv2"
+    },
+    {
+        "id": "p97",
+        "text": "What is your favorite kind of weather to relax in?",
+        "kind": "main",
+        "pairKey": "weather2"
+    },
+    {
+        "id": "q97",
+        "text": "What kind of weather makes you the most productive?",
+        "kind": "impostor",
+        "pairKey": "weather2"
+    },
+    {
+        "id": "p98",
+        "text": "What is your favorite thing to order at a cafe?",
+        "kind": "main",
+        "pairKey": "cafe2"
+    },
+    {
+        "id": "q98",
+        "text": "What is something you rarely order at a cafe?",
+        "kind": "impostor",
+        "pairKey": "cafe2"
+    },
+    {
+        "id": "p99",
+        "text": "What genre of books do you enjoy reading most?",
+        "kind": "main",
+        "pairKey": "books2"
+    },
+    {
+        "id": "q99",
+        "text": "What book genre do you avoid?",
+        "kind": "impostor",
+        "pairKey": "books2"
+    },
+    {
+        "id": "p100",
+        "text": "What is your favorite thing to do on weekends?",
+        "kind": "main",
+        "pairKey": "weekend2"
+    },
+    {
+        "id": "q100",
+        "text": "What is something you try to avoid on weekends?",
+        "kind": "impostor",
+        "pairKey": "weekend2"
+    },
+    {
+        "id": "p101",
+        "text": "What type of fries do you like the most?",
+        "kind": "main",
+        "pairKey": "fries2"
+    },
+    {
+        "id": "q101",
+        "text": "What potato dish do you like the most?",
+        "kind": "impostor",
+        "pairKey": "fries2"
+    },
+    {
+        "id": "p102",
+        "text": "What is your favorite celebration food?",
+        "kind": "main",
+        "pairKey": "celebration2"
+    },
+    {
+        "id": "q102",
+        "text": "What is a food you associate with holidays?",
+        "kind": "impostor",
+        "pairKey": "celebration2"
+    },
+    {
+        "id": "p103",
+        "text": "What is your favorite kind of soup?",
+        "kind": "main",
+        "pairKey": "soup2"
+    },
+    {
+        "id": "q103",
+        "text": "What soup ingredient do you like most?",
+        "kind": "impostor",
+        "pairKey": "soup2"
+    },
+    {
+        "id": "p104",
+        "text": "What is your favorite kind of cheese dish?",
+        "kind": "main",
+        "pairKey": "cheese2"
+    },
+    {
+        "id": "q104",
+        "text": "What cheese do you cook with most often?",
+        "kind": "impostor",
+        "pairKey": "cheese2"
+    },
+    {
+        "id": "p105",
+        "text": "What is your favorite holiday?",
+        "kind": "main",
+        "pairKey": "holiday2"
+    },
+    {
+        "id": "q105",
+        "text": "What holiday do you prepare for the most?",
+        "kind": "impostor",
+        "pairKey": "holiday2"
+    },
+    {
+        "id": "p106",
+        "text": "What is your favorite season to dress for?",
+        "kind": "main",
+        "pairKey": "season2"
+    },
+    {
+        "id": "q106",
+        "text": "What season do you dislike dressing for?",
+        "kind": "impostor",
+        "pairKey": "season2"
+    },
+    {
+        "id": "p107",
+        "text": "What is your favorite part of a vacation?",
+        "kind": "main",
+        "pairKey": "vacation2"
+    },
+    {
+        "id": "q107",
+        "text": "What part of vacation planning do you dislike?",
+        "kind": "impostor",
+        "pairKey": "vacation2"
+    },
+    {
+        "id": "p108",
+        "text": "What is your favorite type of salad?",
+        "kind": "main",
+        "pairKey": "salad2"
+    },
+    {
+        "id": "q108",
+        "text": "What ingredient do you always add to salads?",
+        "kind": "impostor",
+        "pairKey": "salad2"
+    },
+    {
+        "id": "p109",
+        "text": "What is your favorite thing to do at night?",
+        "kind": "main",
+        "pairKey": "night2"
+    },
+    {
+        "id": "q109",
+        "text": "What is something you avoid doing at night?",
+        "kind": "impostor",
+        "pairKey": "night2"
+    },
+    {
+        "id": "p110",
+        "text": "What is your favorite way to spend a rainy day?",
+        "kind": "main",
+        "pairKey": "rain2"
+    },
+    {
+        "id": "q110",
+        "text": "What is something you refuse to do on rainy days?",
+        "kind": "impostor",
+        "pairKey": "rain2"
+    },
+    {
+        "id": "p111",
+        "text": "What is your favorite comfort meal?",
+        "kind": "main",
+        "pairKey": "comfortmeal2"
+    },
+    {
+        "id": "q111",
+        "text": "What meal do you eat when you’re stressed?",
+        "kind": "impostor",
+        "pairKey": "comfortmeal2"
+    },
+    {
+        "id": "p112",
+        "text": "What is your favorite thing to do while traveling by car?",
+        "kind": "main",
+        "pairKey": "cartravel2"
+    },
+    {
+        "id": "q112",
+        "text": "What is something you dislike during long car rides?",
+        "kind": "impostor",
+        "pairKey": "cartravel2"
+    },
+    {
+        "id": "p113",
+        "text": "What is your favorite household smell?",
+        "kind": "main",
+        "pairKey": "smell2"
+    },
+    {
+        "id": "q113",
+        "text": "What household smell do you dislike?",
+        "kind": "impostor",
+        "pairKey": "smell2"
+    },
+    {
+        "id": "p114",
+        "text": "What is your favorite type of pasta?",
+        "kind": "main",
+        "pairKey": "pasta2"
+    },
+    {
+        "id": "q114",
+        "text": "What pasta dish do you cook most often?",
+        "kind": "impostor",
+        "pairKey": "pasta2"
+    },
+    {
+        "id": "p115",
+        "text": "What is your favorite thing to do with friends?",
+        "kind": "main",
+        "pairKey": "friends2"
+    },
+    {
+        "id": "q115",
+        "text": "What activity do you avoid when with friends?",
+        "kind": "impostor",
+        "pairKey": "friends2"
+    },
+    {
+        "id": "p116",
+        "text": "What is your favorite type of popcorn flavor?",
+        "kind": "main",
+        "pairKey": "popcorn2"
+    },
+    {
+        "id": "q116",
+        "text": "What movie snack do you buy most often?",
+        "kind": "impostor",
+        "pairKey": "popcorn2"
+    },
+    {
+        "id": "p117",
+        "text": "What is your favorite fruit to snack on?",
+        "kind": "main",
+        "pairKey": "fruit2"
+    },
+    {
+        "id": "q117",
+        "text": "What fruit do you rarely eat?",
+        "kind": "impostor",
+        "pairKey": "fruit2"
+    },
+    {
+        "id": "p118",
+        "text": "What is your favorite thing about weekends?",
+        "kind": "main",
+        "pairKey": "weekend3"
+    },
+    {
+        "id": "q118",
+        "text": "What weekend activity do you avoid?",
+        "kind": "impostor",
+        "pairKey": "weekend3"
+    },
+    {
+        "id": "p119",
+        "text": "What is your favorite flavor of chips?",
+        "kind": "main",
+        "pairKey": "chips2"
+    },
+    {
+        "id": "q119",
+        "text": "What chip flavor do you dislike most?",
+        "kind": "impostor",
+        "pairKey": "chips2"
+    },
+    {
+        "id": "p120",
+        "text": "What is your favorite pizza crust style?",
+        "kind": "main",
+        "pairKey": "pizza2"
+    },
+    {
+        "id": "q120",
+        "text": "What pizza topping do you rarely choose?",
+        "kind": "impostor",
+        "pairKey": "pizza2"
+    },
+    {
+        "id": "p121",
+        "text": "What is your favorite kind of tea?",
+        "kind": "main",
+        "pairKey": "tea2"
+    },
+    {
+        "id": "q121",
+        "text": "What tea do you drink the least?",
+        "kind": "impostor",
+        "pairKey": "tea2"
+    },
+    {
+        "id": "p122",
+        "text": "What is your favorite weekend breakfast?",
+        "kind": "main",
+        "pairKey": "breakfast2"
+    },
+    {
+        "id": "q122",
+        "text": "What breakfast do you eat only rarely?",
+        "kind": "impostor",
+        "pairKey": "breakfast2"
+    },
+    {
+        "id": "p123",
+        "text": "What is your favorite TV genre?",
+        "kind": "main",
+        "pairKey": "tv2"
+    },
+    {
+        "id": "q123",
+        "text": "What TV genre do you avoid?",
+        "kind": "impostor",
+        "pairKey": "tv2"
+    },
+    {
+        "id": "p124",
+        "text": "What is your favorite late-night snack?",
+        "kind": "main",
+        "pairKey": "latenight2"
+    },
+    {
+        "id": "q124",
+        "text": "What snack do you only eat in the morning?",
+        "kind": "impostor",
+        "pairKey": "latenight2"
+    },
+    {
+        "id": "p125",
+        "text": "What is your favorite condiment?",
+        "kind": "main",
+        "pairKey": "condiment2"
+    },
+    {
+        "id": "q125",
+        "text": "What condiment do you rarely use?",
+        "kind": "impostor",
+        "pairKey": "condiment2"
+    },
+    {
+        "id": "p126",
+        "text": "What is your favorite thing to do on your day off?",
+        "kind": "main",
+        "pairKey": "dayoff2"
+    },
+    {
+        "id": "q126",
+        "text": "What do you avoid doing on your days off?",
+        "kind": "impostor",
+        "pairKey": "dayoff2"
+    },
+    {
+        "id": "p127",
+        "text": "What is your favorite beverage to drink cold?",
+        "kind": "main",
+        "pairKey": "cold2"
+    },
+    {
+        "id": "q127",
+        "text": "What beverage do you prefer hot?",
+        "kind": "impostor",
+        "pairKey": "cold2"
+    },
+    {
+        "id": "p128",
+        "text": "What is your favorite thing to order at a fast food place?",
+        "kind": "main",
+        "pairKey": "fastfood2"
+    },
+    {
+        "id": "q128",
+        "text": "What fast food item do you rarely order?",
+        "kind": "impostor",
+        "pairKey": "fastfood2"
+    },
+    {
+        "id": "p129",
+        "text": "What is your favorite thing to cook quickly?",
+        "kind": "main",
+        "pairKey": "quickcook2"
+    },
+    {
+        "id": "q129",
+        "text": "What meal takes you the longest to cook?",
+        "kind": "impostor",
+        "pairKey": "quickcook2"
+    },
+    {
+        "id": "p130",
+        "text": "What is your favorite cheese on a burger?",
+        "kind": "main",
+        "pairKey": "burger2"
+    },
+    {
+        "id": "q130",
+        "text": "What cheese do you avoid on sandwiches?",
+        "kind": "impostor",
+        "pairKey": "burger2"
+    },
+    {
+        "id": "p131",
+        "text": "What is your favorite casual clothing item?",
+        "kind": "main",
+        "pairKey": "clothes2"
+    },
+    {
+        "id": "q131",
+        "text": "What clothing item do you rarely wear?",
+        "kind": "impostor",
+        "pairKey": "clothes2"
+    },
+    {
+        "id": "p132",
+        "text": "What is your favorite room to relax in?",
+        "kind": "main",
+        "pairKey": "room2"
+    },
+    {
+        "id": "q132",
+        "text": "What room do you rarely spend time in?",
+        "kind": "impostor",
+        "pairKey": "room2"
+    },
+    {
+        "id": "p133",
+        "text": "What is your favorite genre of music when you need energy?",
+        "kind": "main",
+        "pairKey": "music2"
+    },
+    {
+        "id": "q133",
+        "text": "What genre of music calms you down?",
+        "kind": "impostor",
+        "pairKey": "music2"
+    },
+    {
+        "id": "p134",
+        "text": "What is your favorite thing to do at a party?",
+        "kind": "main",
+        "pairKey": "party2"
+    },
+    {
+        "id": "q134",
+        "text": "What do you avoid doing at parties?",
+        "kind": "impostor",
+        "pairKey": "party2"
+    },
+    {
+        "id": "p135",
+        "text": "What is your favorite flavor of ice cream topping?",
+        "kind": "main",
+        "pairKey": "topping2"
+    },
+    {
+        "id": "q135",
+        "text": "What ice cream topping do you dislike?",
+        "kind": "impostor",
+        "pairKey": "topping2"
+    },
+    {
+        "id": "p136",
+        "text": "What is your favorite movie snack?",
+        "kind": "main",
+        "pairKey": "moviesnack2"
+    },
+    {
+        "id": "q136",
+        "text": "What movie snack do you avoid?",
+        "kind": "impostor",
+        "pairKey": "moviesnack2"
+    },
+    {
+        "id": "p137",
+        "text": "What is your favorite relaxing activity?",
+        "kind": "main",
+        "pairKey": "relax3"
+    },
+    {
+        "id": "q137",
+        "text": "What activity do you find stressful?",
+        "kind": "impostor",
+        "pairKey": "relax3"
+    },
+    {
+        "id": "p138",
+        "text": "What is your favorite type of burger?",
+        "kind": "main",
+        "pairKey": "burger3"
+    },
+    {
+        "id": "q138",
+        "text": "What burger topping do you avoid?",
+        "kind": "impostor",
+        "pairKey": "burger3"
+    },
+    {
+        "id": "p139",
+        "text": "What is your favorite time of day to eat a snack?",
+        "kind": "main",
+        "pairKey": "snacktime2"
+    },
+    {
+        "id": "q139",
+        "text": "What time of day do you avoid snacking?",
+        "kind": "impostor",
+        "pairKey": "snacktime2"
+    },
+    {
+        "id": "p140",
+        "text": "What is your favorite way to cool down on a hot day?",
+        "kind": "main",
+        "pairKey": "cool2"
+    },
+    {
+        "id": "q140",
+        "text": "What do you avoid doing on hot days?",
+        "kind": "impostor",
+        "pairKey": "cool2"
+    },
+    {
+        "id": "p141",
+        "text": "What is your favorite childhood cartoon?",
+        "kind": "main",
+        "pairKey": "cartoon2"
+    },
+    {
+        "id": "q141",
+        "text": "What cartoon did you dislike growing up?",
+        "kind": "impostor",
+        "pairKey": "cartoon2"
+    },
+    {
+        "id": "p142",
+        "text": "What is your favorite movie franchise?",
+        "kind": "main",
+        "pairKey": "franchise2"
+    },
+    {
+        "id": "q142",
+        "text": "What movie franchise do you think is overrated?",
+        "kind": "impostor",
+        "pairKey": "franchise2"
+    },
+    {
+        "id": "p143",
+        "text": "What is your favorite kind of hat?",
+        "kind": "main",
+        "pairKey": "hat2"
+    },
+    {
+        "id": "q143",
+        "text": "What type of hat do you rarely wear?",
+        "kind": "impostor",
+        "pairKey": "hat2"
+    },
+    {
+        "id": "p144",
+        "text": "What is your favorite thing to do on holidays?",
+        "kind": "main",
+        "pairKey": "holiday3"
+    },
+    {
+        "id": "q144",
+        "text": "What holiday activity do you avoid?",
+        "kind": "impostor",
+        "pairKey": "holiday3"
+    },
+    {
+        "id": "p145",
+        "text": "What is your favorite soft drink?",
+        "kind": "main",
+        "pairKey": "soda2"
+    },
+    {
+        "id": "q145",
+        "text": "What soft drink do you rarely drink?",
+        "kind": "impostor",
+        "pairKey": "soda2"
+    },
+    {
+        "id": "p146",
+        "text": "What is your favorite type of cookie?",
+        "kind": "main",
+        "pairKey": "cookie2"
+    },
+    {
+        "id": "q146",
+        "text": "What cookie flavor do you avoid?",
+        "kind": "impostor",
+        "pairKey": "cookie2"
+    },
+    {
+        "id": "p147",
+        "text": "What is your favorite appetizer to order?",
+        "kind": "main",
+        "pairKey": "appetizer2"
+    },
+    {
+        "id": "q147",
+        "text": "What appetizer do you rarely order?",
+        "kind": "impostor",
+        "pairKey": "appetizer2"
+    },
+    {
+        "id": "p148",
+        "text": "What is your favorite dipping sauce?",
+        "kind": "main",
+        "pairKey": "dip2"
+    },
+    {
+        "id": "q148",
+        "text": "What dipping sauce do you avoid?",
+        "kind": "impostor",
+        "pairKey": "dip2"
+    },
+    {
+        "id": "p149",
+        "text": "What is your favorite type of cereal?",
+        "kind": "main",
+        "pairKey": "cereal2"
+    },
+    {
+        "id": "q149",
+        "text": "What cereal do you rarely eat?",
+        "kind": "impostor",
+        "pairKey": "cereal2"
+    },
+    {
+        "id": "p150",
+        "text": "What is your favorite thing to do on a long weekend?",
+        "kind": "main",
+        "pairKey": "longweekend2"
+    },
+    {
+        "id": "q150",
+        "text": "What do you avoid doing on long weekends?",
+        "kind": "impostor",
+        "pairKey": "longweekend2"
+    },
+    {
+        "id": "p151",
+        "text": "What is your favorite breakfast drink?",
+        "kind": "main",
+        "pairKey": "breakfast3"
+    },
+    {
+        "id": "q151",
+        "text": "What breakfast drink do you avoid?",
+        "kind": "impostor",
+        "pairKey": "breakfast3"
+    },
+    {
+        "id": "p152",
+        "text": "What is your favorite pastry?",
+        "kind": "main",
+        "pairKey": "pastry2"
+    },
+    {
+        "id": "q152",
+        "text": "What pastry do you rarely eat?",
+        "kind": "impostor",
+        "pairKey": "pastry2"
+    },
+    {
+        "id": "p153",
+        "text": "What is your favorite sport to follow?",
+        "kind": "main",
+        "pairKey": "sport2"
+    },
+    {
+        "id": "q153",
+        "text": "What sport do you rarely watch?",
+        "kind": "impostor",
+        "pairKey": "sport2"
+    },
+    {
+        "id": "p154",
+        "text": "What is your favorite way to cool off?",
+        "kind": "main",
+        "pairKey": "cool3"
+    },
+    {
+        "id": "q154",
+        "text": "What cooling method do you avoid?",
+        "kind": "impostor",
+        "pairKey": "cool3"
+    },
+    {
+        "id": "p155",
+        "text": "What is your favorite pancake topping?",
+        "kind": "main",
+        "pairKey": "pancake2"
+    },
+    {
+        "id": "q155",
+        "text": "What pancake topping do you use the least?",
+        "kind": "impostor",
+        "pairKey": "pancake2"
+    },
+    {
+        "id": "p156",
+        "text": "What is your favorite breakfast side?",
+        "kind": "main",
+        "pairKey": "breakfastside2"
+    },
+    {
+        "id": "q156",
+        "text": "What breakfast side do you avoid?",
+        "kind": "impostor",
+        "pairKey": "breakfastside2"
+    },
+    {
+        "id": "p157",
+        "text": "What is your favorite hot drink?",
+        "kind": "main",
+        "pairKey": "hot2"
+    },
+    {
+        "id": "q157",
+        "text": "What hot drink do you rarely drink?",
+        "kind": "impostor",
+        "pairKey": "hot2"
+    },
+    {
+        "id": "p158",
+        "text": "What is your favorite thing to put on toast?",
+        "kind": "main",
+        "pairKey": "toast2"
+    },
+    {
+        "id": "q158",
+        "text": "What topping do you avoid putting on toast?",
+        "kind": "impostor",
+        "pairKey": "toast2"
+    },
+    {
+        "id": "p159",
+        "text": "What is your favorite pasta sauce?",
+        "kind": "main",
+        "pairKey": "pasta3"
+    },
+    {
+        "id": "q159",
+        "text": "What pasta sauce do you rarely choose?",
+        "kind": "impostor",
+        "pairKey": "pasta3"
+    },
+    {
+        "id": "p160",
+        "text": "What is your favorite type of vegetable?",
+        "kind": "main",
+        "pairKey": "veg2"
+    },
+    {
+        "id": "q160",
+        "text": "What vegetable do you rarely eat?",
+        "kind": "impostor",
+        "pairKey": "veg2"
+    },
+    {
+        "id": "p161",
+        "text": "What is your favorite thing to do on a sunny day?",
+        "kind": "main",
+        "pairKey": "sunny2"
+    },
+    {
+        "id": "q161",
+        "text": "What do you avoid doing on sunny days?",
+        "kind": "impostor",
+        "pairKey": "sunny2"
+    },
+    {
+        "id": "p162",
+        "text": "What is your favorite type of burger bun?",
+        "kind": "main",
+        "pairKey": "bun2"
+    },
+    {
+        "id": "q162",
+        "text": "What burger bun do you rarely choose?",
+        "kind": "impostor",
+        "pairKey": "bun2"
+    },
+    {
+        "id": "p163",
+        "text": "What is your favorite smoothie flavor?",
+        "kind": "main",
+        "pairKey": "smoothie2"
+    },
+    {
+        "id": "q163",
+        "text": "What smoothie flavor do you avoid?",
+        "kind": "impostor",
+        "pairKey": "smoothie2"
+    },
+    {
+        "id": "p164",
+        "text": "What is your favorite sauce for fries?",
+        "kind": "main",
+        "pairKey": "fries3"
+    },
+    {
+        "id": "q164",
+        "text": "What fry dipping sauce do you dislike?",
+        "kind": "impostor",
+        "pairKey": "fries3"
+    },
+    {
+        "id": "p165",
+        "text": "What is your go-to movie genre?",
+        "kind": "main",
+        "pairKey": "movie3"
+    },
+    {
+        "id": "q165",
+        "text": "What movie genre do you rarely watch?",
+        "kind": "impostor",
+        "pairKey": "movie3"
+    },
+    {
+        "id": "p166",
+        "text": "What is your favorite salad dressing?",
+        "kind": "main",
+        "pairKey": "dressing2"
+    },
+    {
+        "id": "q166",
+        "text": "What salad dressing do you rarely use?",
+        "kind": "impostor",
+        "pairKey": "dressing2"
+    },
+    {
+        "id": "p167",
+        "text": "What is your favorite place to sit at home?",
+        "kind": "main",
+        "pairKey": "homeplace2"
+    },
+    {
+        "id": "q167",
+        "text": "Where do you avoid sitting at home?",
+        "kind": "impostor",
+        "pairKey": "homeplace2"
+    },
+    {
+        "id": "p168",
+        "text": "What is your favorite type of bread?",
+        "kind": "main",
+        "pairKey": "bread2"
+    },
+    {
+        "id": "q168",
+        "text": "What bread do you rarely eat?",
+        "kind": "impostor",
+        "pairKey": "bread2"
+    },
+    {
+        "id": "p169",
+        "text": "What is your favorite topping for burgers?",
+        "kind": "main",
+        "pairKey": "burger4"
+    },
+    {
+        "id": "q169",
+        "text": "What burger topping do you rarely use?",
+        "kind": "impostor",
+        "pairKey": "burger4"
+    },
+    {
+        "id": "p170",
+        "text": "What is your favorite indoor activity?",
+        "kind": "main",
+        "pairKey": "indoor2"
+    },
+    {
+        "id": "q170",
+        "text": "What indoor activity do you avoid?",
+        "kind": "impostor",
+        "pairKey": "indoor2"
+    },
+    {
+        "id": "p171",
+        "text": "What is your favorite ice cream topping?",
+        "kind": "main",
+        "pairKey": "icecream2"
+    },
+    {
+        "id": "q171",
+        "text": "What ice cream topping do you rarely use?",
+        "kind": "impostor",
+        "pairKey": "icecream2"
+    },
+    {
+        "id": "p172",
+        "text": "What is your favorite type of meat dish?",
+        "kind": "main",
+        "pairKey": "meat2"
+    },
+    {
+        "id": "q172",
+        "text": "What meat dish do you rarely eat?",
+        "kind": "impostor",
+        "pairKey": "meat2"
+    },
+    {
+        "id": "p173",
+        "text": "What is your favorite type of soup flavor?",
+        "kind": "main",
+        "pairKey": "soup3"
+    },
+    {
+        "id": "q173",
+        "text": "What soup flavor do you rarely choose?",
+        "kind": "impostor",
+        "pairKey": "soup3"
+    },
+    {
+        "id": "p174",
+        "text": "What is your favorite type of sushi?",
+        "kind": "main",
+        "pairKey": "sushi2"
+    },
+    {
+        "id": "q174",
+        "text": "What sushi ingredient do you dislike?",
+        "kind": "impostor",
+        "pairKey": "sushi2"
+    },
+    {
+        "id": "p175",
+        "text": "What is your favorite breakfast topping?",
+        "kind": "main",
+        "pairKey": "breakfasttop2"
+    },
+    {
+        "id": "q175",
+        "text": "What breakfast topping do you avoid?",
+        "kind": "impostor",
+        "pairKey": "breakfasttop2"
+    },
+    {
+        "id": "p176",
+        "text": "What is your favorite thing to drink at night?",
+        "kind": "main",
+        "pairKey": "nightdrink2"
+    },
+    {
+        "id": "q176",
+        "text": "What drink do you avoid at night?",
+        "kind": "impostor",
+        "pairKey": "nightdrink2"
+    },
+    {
+        "id": "p177",
+        "text": "What is your favorite condiment for fries?",
+        "kind": "main",
+        "pairKey": "fries4"
+    },
+    {
+        "id": "q177",
+        "text": "What condiment do you rarely use on fries?",
+        "kind": "impostor",
+        "pairKey": "fries4"
+    },
+    {
+        "id": "p178",
+        "text": "What is your favorite frozen dessert?",
+        "kind": "main",
+        "pairKey": "frozen2"
+    },
+    {
+        "id": "q178",
+        "text": "What frozen dessert do you rarely eat?",
+        "kind": "impostor",
+        "pairKey": "frozen2"
+    },
+    {
+        "id": "p179",
+        "text": "What is your favorite way to spend a holiday morning?",
+        "kind": "main",
+        "pairKey": "holidaymorning2"
+    },
+    {
+        "id": "q179",
+        "text": "What do you avoid doing on holiday mornings?",
+        "kind": "impostor",
+        "pairKey": "holidaymorning2"
+    },
+    {
+        "id": "p180",
+        "text": "What is your favorite dessert topping?",
+        "kind": "main",
+        "pairKey": "desserttop2"
+    },
+    {
+        "id": "q180",
+        "text": "What dessert topping do you rarely choose?",
+        "kind": "impostor",
+        "pairKey": "desserttop2"
+    },
+    {
+        "id": "p181",
+        "text": "What city would you choose to live in for the rest of your life?",
+        "kind": "main",
+        "pairKey": "city1"
+    },
+    {
+        "id": "q181",
+        "text": "What was the last city you travelled to?",
+        "kind": "impostor",
+        "pairKey": "city1"
+    },
+    {
+        "id": "p182",
+        "text": "Which sport do you think is the most physically demanding?",
+        "kind": "main",
+        "pairKey": "sport3"
+    },
+    {
+        "id": "q182",
+        "text": "Which sport did you watch most recently?",
+        "kind": "impostor",
+        "pairKey": "sport3"
+    },
+    {
+        "id": "p183",
+        "text": "Which job do you think would fit your personality best?",
+        "kind": "main",
+        "pairKey": "job2"
+    },
+    {
+        "id": "q183",
+        "text": "What was your very first job?",
+        "kind": "impostor",
+        "pairKey": "job2"
+    },
+    {
+        "id": "p184",
+        "text": "Which musician or band do you think is the most talented?",
+        "kind": "main",
+        "pairKey": "music3"
+    },
+    {
+        "id": "q184",
+        "text": "Which musician or band did you listen to most recently?",
+        "kind": "impostor",
+        "pairKey": "music3"
+    },
+    {
+        "id": "p185",
+        "text": "If you had to become fluent in one new language, which would you choose?",
+        "kind": "main",
+        "pairKey": "language2"
+    },
+    {
+        "id": "q185",
+        "text": "What foreign language do you hear most often around you?",
+        "kind": "impostor",
+        "pairKey": "language2"
+    },
+    {
+        "id": "p186",
+        "text": "What career do you think you would thrive in if you had to switch today?",
+        "kind": "main",
+        "pairKey": "career3"
+    },
+    {
+        "id": "q186",
+        "text": "In what field was your most recent job or main occupation?",
+        "kind": "impostor",
+        "pairKey": "career3"
+    },
+    {
+        "id": "p187",
+        "text": "Which book has influenced you the most?",
+        "kind": "main",
+        "pairKey": "book2"
+    },
+    {
+        "id": "q187",
+        "text": "What was the last book you finished?",
+        "kind": "impostor",
+        "pairKey": "book2"
+    },
+    {
+        "id": "p188",
+        "text": "Which animal best represents your personality?",
+        "kind": "main",
+        "pairKey": "animal2"
+    },
+    {
+        "id": "q188",
+        "text": "What was the last animal you saw in real life (excluding humans)?",
+        "kind": "impostor",
+        "pairKey": "animal2"
+    },
+    {
+        "id": "p189",
+        "text": "What is your ideal way to spend a Sunday?",
+        "kind": "main",
+        "pairKey": "sunday1"
+    },
+    {
+        "id": "q189",
+        "text": "What did you actually do last Sunday?",
+        "kind": "impostor",
+        "pairKey": "sunday1"
+    },
+    {
+        "id": "p190",
+        "text": "Which skill do you think would be most valuable for your future?",
+        "kind": "main",
+        "pairKey": "skill2"
+    },
+    {
+        "id": "q190",
+        "text": "What is the last skill you seriously tried to improve?",
+        "kind": "impostor",
+        "pairKey": "skill2"
+    },
+    {
+        "id": "p191",
+        "text": "Which historical figure would you most like to have a conversation with?",
+        "kind": "main",
+        "pairKey": "history2"
+    },
+    {
+        "id": "q191",
+        "text": "Which historical figure did you most recently hear or read about?",
+        "kind": "impostor",
+        "pairKey": "history2"
+    },
+    {
+        "id": "p192",
+        "text": "Which app on your phone do you think is genuinely the most useful?",
+        "kind": "main",
+        "pairKey": "app2"
+    },
+    {
+        "id": "q192",
+        "text": "What is the most recent app you downloaded on your phone?",
+        "kind": "impostor",
+        "pairKey": "app2"
+    },
+    {
+        "id": "p193",
+        "text": "What would your perfect everyday breakfast look like?",
+        "kind": "main",
+        "pairKey": "breakfast4"
+    },
+    {
+        "id": "q193",
+        "text": "What do you actually eat for breakfast most days?",
+        "kind": "impostor",
+        "pairKey": "breakfast4"
+    },
+    {
+        "id": "p194",
+        "text": "Which music genre feels the most like 'you'?",
+        "kind": "main",
+        "pairKey": "music4"
+    },
+    {
+        "id": "q194",
+        "text": "Which music genre did you listen to last?",
+        "kind": "impostor",
+        "pairKey": "music4"
+    },
+    {
+        "id": "p195",
+        "text": "Which social media platform do you think shapes opinions the most?",
+        "kind": "main",
+        "pairKey": "social2"
+    },
+    {
+        "id": "q195",
+        "text": "Which social media platform do you personally open most often?",
+        "kind": "impostor",
+        "pairKey": "social2"
+    },
+    {
+        "id": "p196",
+        "text": "What kind of home would you choose if money was no issue?",
+        "kind": "main",
+        "pairKey": "home2"
+    },
+    {
+        "id": "q196",
+        "text": "What type of home did you grow up in?",
+        "kind": "impostor",
+        "pairKey": "home2"
+    },
+    {
+        "id": "p197",
+        "text": "Which landmark or place you’ve visited impressed you the most?",
+        "kind": "main",
+        "pairKey": "travel3"
+    },
+    {
+        "id": "q197",
+        "text": "What was the last notable place or landmark you visited?",
+        "kind": "impostor",
+        "pairKey": "travel3"
+    },
+    {
+        "id": "p198",
+        "text": "Which game brings out your most competitive side?",
+        "kind": "main",
+        "pairKey": "game2"
+    },
+    {
+        "id": "q198",
+        "text": "Which game do you usually lose at?",
+        "kind": "impostor",
+        "pairKey": "game2"
+    },
+    {
+        "id": "p199",
+        "text": "Which personal trait of yours helps you the most in life?",
+        "kind": "main",
+        "pairKey": "trait1"
+    },
+    {
+        "id": "q199",
+        "text": "Which personal trait do people comment on the most (good or bad)?",
+        "kind": "impostor",
+        "pairKey": "trait1"
+    },
+    {
+        "id": "p200",
+        "text": "What type of vacation do you enjoy the most?",
+        "kind": "main",
+        "pairKey": "vacation3"
+    },
+    {
+        "id": "q200",
+        "text": "What type of vacation did you go on most recently?",
+        "kind": "impostor",
+        "pairKey": "vacation3"
+    },
+    {
+        "id": "p201",
+        "text": "If you had to pick one cuisine to eat for a year, which would it be?",
+        "kind": "main",
+        "pairKey": "cuisine1"
+    },
+    {
+        "id": "q201",
+        "text": "What type of cuisine did you eat last at a restaurant?",
+        "kind": "impostor",
+        "pairKey": "cuisine1"
+    },
+    {
+        "id": "p202",
+        "text": "Which movie do you think everyone should watch at least once?",
+        "kind": "main",
+        "pairKey": "movie4"
+    },
+    {
+        "id": "q202",
+        "text": "What was the last movie you watched all the way through?",
+        "kind": "impostor",
+        "pairKey": "movie4"
+    },
+    {
+        "id": "p203",
+        "text": "Which friend group role fits you best (e.g., planner, clown, listener)?",
+        "kind": "main",
+        "pairKey": "role1"
+    },
+    {
+        "id": "q203",
+        "text": "What role did you usually have in your school friend group?",
+        "kind": "impostor",
+        "pairKey": "role1"
+    },
+    {
+        "id": "p204",
+        "text": "What kind of exercise suits your personality the most?",
+        "kind": "main",
+        "pairKey": "exercise2"
+    },
+    {
+        "id": "q204",
+        "text": "What was the last kind of exercise you actually did?",
+        "kind": "impostor",
+        "pairKey": "exercise2"
+    },
+    {
+        "id": "p205",
+        "text": "Which school subject would you choose to teach if you had to?",
+        "kind": "main",
+        "pairKey": "school3"
+    },
+    {
+        "id": "q205",
+        "text": "Which school subject did you get the best grades in?",
+        "kind": "impostor",
+        "pairKey": "school3"
+    },
+    {
+        "id": "p206",
+        "text": "If you had one free day every week to do anything, what would you do?",
+        "kind": "main",
+        "pairKey": "free1"
+    },
+    {
+        "id": "q206",
+        "text": "What did you do the last time you had a completely free day?",
+        "kind": "impostor",
+        "pairKey": "free1"
+    },
+    {
+        "id": "p207",
+        "text": "Which country do you think you would adapt to living in the easiest?",
+        "kind": "main",
+        "pairKey": "country1"
+    },
+    {
+        "id": "q207",
+        "text": "Which country outside your own have you spent the most time in?",
+        "kind": "impostor",
+        "pairKey": "country1"
+    },
+    {
+        "id": "p208",
+        "text": "Which type of weather makes you feel most like yourself?",
+        "kind": "main",
+        "pairKey": "weather3"
+    },
+    {
+        "id": "q208",
+        "text": "What was the weather like where you were this morning?",
+        "kind": "impostor",
+        "pairKey": "weather3"
+    },
+    {
+        "id": "p209",
+        "text": "Which TV show do you think has the best characters?",
+        "kind": "main",
+        "pairKey": "tv3"
+    },
+    {
+        "id": "q209",
+        "text": "What TV show did you last binge or watch multiple episodes of?",
+        "kind": "impostor",
+        "pairKey": "tv3"
+    },
+    {
+        "id": "p210",
+        "text": "Which time period in history seems most fascinating to you?",
+        "kind": "main",
+        "pairKey": "time2"
+    },
+    {
+        "id": "q210",
+        "text": "Which historical time period did you learn about most recently?",
+        "kind": "impostor",
+        "pairKey": "time2"
+    },
+    {
+        "id": "p211",
+        "text": "What kind of party or gathering do you enjoy the most?",
+        "kind": "main",
+        "pairKey": "party3"
+    },
+    {
+        "id": "q211",
+        "text": "What was the last kind of social gathering you attended?",
+        "kind": "impostor",
+        "pairKey": "party3"
+    },
+    {
+        "id": "p212",
+        "text": "Which talent would you most like to be known for?",
+        "kind": "main",
+        "pairKey": "talent1"
+    },
+    {
+        "id": "q212",
+        "text": "What talent or skill do people already compliment you on?",
+        "kind": "impostor",
+        "pairKey": "talent1"
+    },
+    {
+        "id": "p213",
+        "text": "Which mode of transport fits you best (car, bike, train, etc.)?",
+        "kind": "main",
+        "pairKey": "transport1"
+    },
+    {
+        "id": "q213",
+        "text": "Which mode of transport did you last use?",
+        "kind": "impostor",
+        "pairKey": "transport1"
+    },
+    {
+        "id": "p214",
+        "text": "Which kind of dessert suits your personality?",
+        "kind": "main",
+        "pairKey": "dessert3"
+    },
+    {
+        "id": "q214",
+        "text": "What was the last dessert you ate?",
+        "kind": "impostor",
+        "pairKey": "dessert3"
+    },
+    {
+        "id": "p215",
+        "text": "Which type of movie character do you relate to the most?",
+        "kind": "main",
+        "pairKey": "charactertype1"
+    },
+    {
+        "id": "q215",
+        "text": "Which movie character did you most recently see on screen?",
+        "kind": "impostor",
+        "pairKey": "charactertype1"
+    },
+    {
+        "id": "p216",
+        "text": "If you had to compete in a talent show, what would you do?",
+        "kind": "main",
+        "pairKey": "show1"
+    },
+    {
+        "id": "q216",
+        "text": "What was the last thing you performed or presented in front of others?",
+        "kind": "impostor",
+        "pairKey": "show1"
+    },
+    {
+        "id": "p217",
+        "text": "Which daily habit defines you the most?",
+        "kind": "main",
+        "pairKey": "habit2"
+    },
+    {
+        "id": "q217",
+        "text": "Which habit have you recently tried to change?",
+        "kind": "impostor",
+        "pairKey": "habit2"
+    },
+    {
+        "id": "p218",
+        "text": "What kind of workspace would you be most productive in?",
+        "kind": "main",
+        "pairKey": "workspace1"
+    },
+    {
+        "id": "q218",
+        "text": "What kind of workspace do you currently have?",
+        "kind": "impostor",
+        "pairKey": "workspace1"
+    },
+    {
+        "id": "p219",
+        "text": "Which festival or big event would you most like to attend?",
+        "kind": "main",
+        "pairKey": "event2"
+    },
+    {
+        "id": "q219",
+        "text": "What was the last big event (concert, festival, etc.) you attended?",
+        "kind": "impostor",
+        "pairKey": "event2"
+    },
+    {
+        "id": "p220",
+        "text": "Which hobby best matches your personality?",
+        "kind": "main",
+        "pairKey": "hobby3"
+    },
+    {
+        "id": "q220",
+        "text": "What hobby did you spend time on most recently?",
+        "kind": "impostor",
+        "pairKey": "hobby3"
+    },
+    {
+        "id": "p221",
+        "text": "Which color do you think fits your character the best?",
+        "kind": "main",
+        "pairKey": "color2"
+    },
+    {
+        "id": "q221",
+        "text": "What was the dominant color of the clothes you wore today?",
+        "kind": "impostor",
+        "pairKey": "color2"
+    },
+    {
+        "id": "p222",
+        "text": "Which kind of puzzle or brain challenge do you like the most?",
+        "kind": "main",
+        "pairKey": "puzzle1"
+    },
+    {
+        "id": "q222",
+        "text": "What was the last puzzle or brain challenge you did?",
+        "kind": "impostor",
+        "pairKey": "puzzle1"
+    },
+    {
+        "id": "p223",
+        "text": "If your life had a theme song, what genre would it be?",
+        "kind": "main",
+        "pairKey": "theme1"
+    },
+    {
+        "id": "q223",
+        "text": "What genre was the last song you listened to?",
+        "kind": "impostor",
+        "pairKey": "theme1"
+    },
+    {
+        "id": "p224",
+        "text": "Which season fits your personality the best?",
+        "kind": "main",
+        "pairKey": "season3"
+    },
+    {
+        "id": "q224",
+        "text": "Which season is it where you are right now?",
+        "kind": "impostor",
+        "pairKey": "season3"
+    },
+    {
+        "id": "p225",
+        "text": "Which type of restaurant do you feel most comfortable in?",
+        "kind": "main",
+        "pairKey": "restaurant1"
+    },
+    {
+        "id": "q225",
+        "text": "What type of restaurant did you last eat at?",
+        "kind": "impostor",
+        "pairKey": "restaurant1"
+    },
+    {
+        "id": "p226",
+        "text": "Which kind of decision is hardest for you to make?",
+        "kind": "main",
+        "pairKey": "decision1"
+    },
+    {
+        "id": "q226",
+        "text": "What is the last big decision you had to make?",
+        "kind": "impostor",
+        "pairKey": "decision1"
+    },
+    {
+        "id": "p227",
+        "text": "Which kind of person do you usually get along with best?",
+        "kind": "main",
+        "pairKey": "people1"
+    },
+    {
+        "id": "q227",
+        "text": "Who is the last new person you had a proper conversation with?",
+        "kind": "impostor",
+        "pairKey": "people1"
+    },
+    {
+        "id": "p228",
+        "text": "What is your ideal way to end the day?",
+        "kind": "main",
+        "pairKey": "evening1"
+    },
+    {
+        "id": "q228",
+        "text": "How did you actually end your day yesterday?",
+        "kind": "impostor",
+        "pairKey": "evening1"
+    },
+    {
+        "id": "p229",
+        "text": "Which fictional world would you most like to live in?",
+        "kind": "main",
+        "pairKey": "fiction1"
+    },
+    {
+        "id": "q229",
+        "text": "Which fictional world did you last see in a movie, show, or game?",
+        "kind": "impostor",
+        "pairKey": "fiction1"
+    },
+    {
+        "id": "p230",
+        "text": "Which sport do you think requires the most intelligence or strategy?",
+        "kind": "main",
+        "pairKey": "sport4"
+    },
+    {
+        "id": "q230",
+        "text": "Which sport have you most recently talked about with someone?",
+        "kind": "impostor",
+        "pairKey": "sport4"
+    },
+    {
+        "id": "p231",
+        "text": "Which type of snack is the most 'you'?",
+        "kind": "main",
+        "pairKey": "snack3"
+    },
+    {
+        "id": "q231",
+        "text": "What was the last snack you ate?",
+        "kind": "impostor",
+        "pairKey": "snack3"
+    },
+    {
+        "id": "p232",
+        "text": "Which kind of movie night do you prefer (alone, couple, group)?",
+        "kind": "main",
+        "pairKey": "movienight1"
+    },
+    {
+        "id": "q232",
+        "text": "How was your last movie night set up (alone, couple, group)?",
+        "kind": "impostor",
+        "pairKey": "movienight1"
+    },
+    {
+        "id": "p233",
+        "text": "Which personality trait do you most appreciate in other people?",
+        "kind": "main",
+        "pairKey": "others1"
+    },
+    {
+        "id": "q233",
+        "text": "What trait did you most recently compliment someone on?",
+        "kind": "impostor",
+        "pairKey": "others1"
+    },
+    {
+        "id": "p234",
+        "text": "Which type of weather would you choose for your birthday every year?",
+        "kind": "main",
+        "pairKey": "birthday1"
+    },
+    {
+        "id": "q234",
+        "text": "What was the weather like on your last birthday?",
+        "kind": "impostor",
+        "pairKey": "birthday1"
+    },
+    {
+        "id": "p235",
+        "text": "Which meal of the day suits you best: breakfast, lunch, or dinner?",
+        "kind": "main",
+        "pairKey": "meal2"
+    },
+    {
+        "id": "q235",
+        "text": "Which meal of the day did you spend the most time on today?",
+        "kind": "impostor",
+        "pairKey": "meal2"
+    },
+    {
+        "id": "p236",
+        "text": "Which language do you think sounds the most beautiful?",
+        "kind": "main",
+        "pairKey": "language3"
+    },
+    {
+        "id": "q236",
+        "text": "What foreign language have you heard most recently?",
+        "kind": "impostor",
+        "pairKey": "language3"
+    },
+    {
+        "id": "p237",
+        "text": "Which indoor activity would you choose on a stormy day?",
+        "kind": "main",
+        "pairKey": "storm1"
+    },
+    {
+        "id": "q237",
+        "text": "What was the last indoor activity you did for fun?",
+        "kind": "impostor",
+        "pairKey": "storm1"
+    },
+    {
+        "id": "p238",
+        "text": "Which type of friend are you usually (listener, planner, joker, etc.)?",
+        "kind": "main",
+        "pairKey": "friendrole1"
+    },
+    {
+        "id": "q238",
+        "text": "How would your closest friend most recently have described you?",
+        "kind": "impostor",
+        "pairKey": "friendrole1"
+    },
+    {
+        "id": "p239",
+        "text": "Which drink matches your personality the best?",
+        "kind": "main",
+        "pairKey": "drink3"
+    },
+    {
+        "id": "q239",
+        "text": "What was the last drink you ordered somewhere?",
+        "kind": "impostor",
+        "pairKey": "drink3"
+    },
+    {
+        "id": "p240",
+        "text": "Which kind of movie scene affects you the most (romantic, sad, inspiring, etc.)?",
+        "kind": "main",
+        "pairKey": "scene1"
+    },
+    {
+        "id": "q240",
+        "text": "What was the last movie scene you remember clearly?",
+        "kind": "impostor",
+        "pairKey": "scene1"
+    },
+    {
+        "id": "p241",
+        "text": "Which type of challenge motivates you the most?",
+        "kind": "main",
+        "pairKey": "challenge1"
+    },
+    {
+        "id": "q241",
+        "text": "What was the last challenge you took on (small or big)?",
+        "kind": "impostor",
+        "pairKey": "challenge1"
+    },
+    {
+        "id": "p242",
+        "text": "Which animal would you choose as a lifelong companion (not necessarily a pet)?",
+        "kind": "main",
+        "pairKey": "animal3"
+    },
+    {
+        "id": "q242",
+        "text": "What was the last animal you saw on a screen (movie, show, video)?",
+        "kind": "impostor",
+        "pairKey": "animal3"
+    },
+    {
+        "id": "p243",
+        "text": "Which time of day feels the most 'magical' to you?",
+        "kind": "main",
+        "pairKey": "timeofday2"
+    },
+    {
+        "id": "q243",
+        "text": "At what time of day were you last outside?",
+        "kind": "impostor",
+        "pairKey": "timeofday2"
+    },
+    {
+        "id": "p244",
+        "text": "Which type of clothing style do you feel most like yourself in?",
+        "kind": "main",
+        "pairKey": "style1"
+    },
+    {
+        "id": "q244",
+        "text": "What kind of outfit did you wear the last time you went out?",
+        "kind": "impostor",
+        "pairKey": "style1"
+    },
+    {
+        "id": "p245",
+        "text": "Which kind of game night (board, video, party games) is most your style?",
+        "kind": "main",
+        "pairKey": "gamenight1"
+    },
+    {
+        "id": "q245",
+        "text": "What type of game did you last play with others?",
+        "kind": "impostor",
+        "pairKey": "gamenight1"
+    },
+    {
+        "id": "p246",
+        "text": "Which city would you choose to spend a month in, working remotely?",
+        "kind": "main",
+        "pairKey": "city2"
+    },
+    {
+        "id": "q246",
+        "text": "What is the last city you visited that was not your hometown?",
+        "kind": "impostor",
+        "pairKey": "city2"
+    },
+    {
+        "id": "p247",
+        "text": "Which cuisine fits your personality the best?",
+        "kind": "main",
+        "pairKey": "cuisine2"
+    },
+    {
+        "id": "q247",
+        "text": "Which cuisine did you last order as takeout or delivery?",
+        "kind": "impostor",
+        "pairKey": "cuisine2"
+    },
+    {
+        "id": "p248",
+        "text": "Which kind of teacher or mentor style works best for you?",
+        "kind": "main",
+        "pairKey": "teacher1"
+    },
+    {
+        "id": "q248",
+        "text": "What was the last thing you were taught by someone (formal or informal)?",
+        "kind": "impostor",
+        "pairKey": "teacher1"
+    },
+    {
+        "id": "p249",
+        "text": "Which fictional character would you most like as a roommate?",
+        "kind": "main",
+        "pairKey": "roommate1"
+    },
+    {
+        "id": "q249",
+        "text": "Which fictional character did you last see in a show, film, or book?",
+        "kind": "impostor",
+        "pairKey": "roommate1"
+    },
+    {
+        "id": "p250",
+        "text": "Which kind of project do you enjoy working on the most?",
+        "kind": "main",
+        "pairKey": "project1"
+    },
+    {
+        "id": "q250",
+        "text": "What kind of project have you worked on most recently?",
+        "kind": "impostor",
+        "pairKey": "project1"
+    },
+    {
+        "id": "p251",
+        "text": "Which public place do you find the most calming?",
+        "kind": "main",
+        "pairKey": "place1"
+    },
+    {
+        "id": "q251",
+        "text": "What was the last public place you spent more than 30 minutes in?",
+        "kind": "impostor",
+        "pairKey": "place1"
+    },
+    {
+        "id": "p252",
+        "text": "Which type of comedy makes you laugh the most?",
+        "kind": "main",
+        "pairKey": "comedy1"
+    },
+    {
+        "id": "q252",
+        "text": "What was the last thing that made you laugh out loud?",
+        "kind": "impostor",
+        "pairKey": "comedy1"
+    },
+    {
+        "id": "p253",
+        "text": "Which holiday fits your personality the best?",
+        "kind": "main",
+        "pairKey": "holiday4"
+    },
+    {
+        "id": "q253",
+        "text": "What was the last holiday you celebrated?",
+        "kind": "impostor",
+        "pairKey": "holiday4"
+    },
+    {
+        "id": "p254",
+        "text": "Which type of phone user are you (camera, social, productivity, games, etc.)?",
+        "kind": "main",
+        "pairKey": "phone1"
+    },
+    {
+        "id": "q254",
+        "text": "Which category of app did you use last on your phone?",
+        "kind": "impostor",
+        "pairKey": "phone1"
+    },
+    {
+        "id": "p255",
+        "text": "Which type of compliment means the most to you?",
+        "kind": "main",
+        "pairKey": "compliment1"
+    },
+    {
+        "id": "q255",
+        "text": "What was the last compliment you received?",
+        "kind": "impostor",
+        "pairKey": "compliment1"
+    },
+    {
+        "id": "p256",
+        "text": "Which type of trip would you pick: city, nature, or beach?",
+        "kind": "main",
+        "pairKey": "trip1"
+    },
+    {
+        "id": "q256",
+        "text": "What type of destination did you last travel to: city, nature, or beach?",
+        "kind": "impostor",
+        "pairKey": "trip1"
+    },
+    {
+        "id": "p257",
+        "text": "Which emoji represents you the best?",
+        "kind": "main",
+        "pairKey": "emoji2"
+    },
+    {
+        "id": "q257",
+        "text": "What is the last emoji you remember sending?",
+        "kind": "impostor",
+        "pairKey": "emoji2"
+    },
+    {
+        "id": "p258",
+        "text": "Which type of series do you usually get hooked on?",
+        "kind": "main",
+        "pairKey": "series1"
+    },
+    {
+        "id": "q258",
+        "text": "What was the last series you watched at least two episodes of?",
+        "kind": "impostor",
+        "pairKey": "series1"
+    },
+    {
+        "id": "p259",
+        "text": "Which kind of decision do you usually overthink?",
+        "kind": "main",
+        "pairKey": "overthink1"
+    },
+    {
+        "id": "q259",
+        "text": "What was the last decision you remember overthinking?",
+        "kind": "impostor",
+        "pairKey": "overthink1"
+    },
+    {
+        "id": "p260",
+        "text": "Which type of morning person are you at heart (slow, energetic, grumpy, etc.)?",
+        "kind": "main",
+        "pairKey": "morning1"
+    },
+    {
+        "id": "q260",
+        "text": "How did your morning go today in one word?",
+        "kind": "impostor",
+        "pairKey": "morning1"
+    },
+    {
+        "id": "p261",
+        "text": "Which type of pet would fit your lifestyle best?",
+        "kind": "main",
+        "pairKey": "pet3"
+    },
+    {
+        "id": "q261",
+        "text": "What was the last interaction you had with a pet (yours or someone else’s)?",
+        "kind": "impostor",
+        "pairKey": "pet3"
+    },
+    {
+        "id": "p262",
+        "text": "Which kind of task do you always procrastinate on?",
+        "kind": "main",
+        "pairKey": "procrastinate1"
+    },
+    {
+        "id": "q262",
+        "text": "What is the last thing you remember procrastinating on?",
+        "kind": "impostor",
+        "pairKey": "procrastinate1"
+    },
+    {
+        "id": "p263",
+        "text": "Which type of person do you find most inspiring?",
+        "kind": "main",
+        "pairKey": "inspire1"
+    },
+    {
+        "id": "q263",
+        "text": "Who is the last person you remember feeling inspired by?",
+        "kind": "impostor",
+        "pairKey": "inspire1"
+    },
+    {
+        "id": "p264",
+        "text": "Which kind of weather would you choose for a perfect walk?",
+        "kind": "main",
+        "pairKey": "walk1"
+    },
+    {
+        "id": "q264",
+        "text": "When was the last time you went for a proper walk?",
+        "kind": "impostor",
+        "pairKey": "walk1"
+    },
+    {
+        "id": "p265",
+        "text": "Which type of movie hero do you like the most?",
+        "kind": "main",
+        "pairKey": "hero2"
+    },
+    {
+        "id": "q265",
+        "text": "Who was the last hero or main character you saw in a movie or show?",
+        "kind": "impostor",
+        "pairKey": "hero2"
+    },
+    {
+        "id": "p266",
+        "text": "Which kind of game are you surprisingly good at?",
+        "kind": "main",
+        "pairKey": "game3"
+    },
+    {
+        "id": "q266",
+        "text": "What was the last game you remember winning?",
+        "kind": "impostor",
+        "pairKey": "game3"
+    },
+    {
+        "id": "p267",
+        "text": "Which type of smell is the most comforting to you?",
+        "kind": "main",
+        "pairKey": "smell3"
+    },
+    {
+        "id": "q267",
+        "text": "What was the last strong smell you noticed?",
+        "kind": "impostor",
+        "pairKey": "smell3"
+    },
+    {
+        "id": "p268",
+        "text": "Which kind of snack would you bring to share at a gathering?",
+        "kind": "main",
+        "pairKey": "snack4"
+    },
+    {
+        "id": "q268",
+        "text": "What was the last snack you shared with someone?",
+        "kind": "impostor",
+        "pairKey": "snack4"
+    },
+    {
+        "id": "p269",
+        "text": "Which kind of project do you tend to start but not finish?",
+        "kind": "main",
+        "pairKey": "unfinished1"
+    },
+    {
+        "id": "q269",
+        "text": "What is the last thing you started and still haven’t finished?",
+        "kind": "impostor",
+        "pairKey": "unfinished1"
+    },
+    {
+        "id": "p270",
+        "text": "Which place in your home fits your personality best?",
+        "kind": "main",
+        "pairKey": "homeplace3"
+    },
+    {
+        "id": "q270",
+        "text": "Where in your home did you spend most of your time today?",
+        "kind": "impostor",
+        "pairKey": "homeplace3"
+    },
+    {
+        "id": "p271",
+        "text": "Which kind of joke do you enjoy the most?",
+        "kind": "main",
+        "pairKey": "joke1"
+    },
+    {
+        "id": "q271",
+        "text": "What is the last joke or funny thing you remember hearing?",
+        "kind": "impostor",
+        "pairKey": "joke1"
+    },
+    {
+        "id": "p272",
+        "text": "Which type of person do you find most difficult to deal with?",
+        "kind": "main",
+        "pairKey": "difficult1"
+    },
+    {
+        "id": "q272",
+        "text": "Who is the last person that annoyed you (even a little)?",
+        "kind": "impostor",
+        "pairKey": "difficult1"
+    },
+    {
+        "id": "p273",
+        "text": "Which kind of challenge would you happily do in front of a crowd?",
+        "kind": "main",
+        "pairKey": "public1"
+    },
+    {
+        "id": "q273",
+        "text": "When was the last time you had to do something in front of a group?",
+        "kind": "impostor",
+        "pairKey": "public1"
+    },
+    {
+        "id": "p274",
+        "text": "Which type of outfit feels the most 'special occasion' to you?",
+        "kind": "main",
+        "pairKey": "occasion1"
+    },
+    {
+        "id": "q274",
+        "text": "What kind of outfit did you wear to the last special occasion you attended?",
+        "kind": "impostor",
+        "pairKey": "occasion1"
+    },
+    {
+        "id": "p275",
+        "text": "Which type of drink do you associate most with celebrations?",
+        "kind": "main",
+        "pairKey": "celebration3"
+    },
+    {
+        "id": "q275",
+        "text": "What was the last drink you had at a celebration or party?",
+        "kind": "impostor",
+        "pairKey": "celebration3"
+    },
+    {
+        "id": "p276",
+        "text": "Which activity makes you lose track of time the most?",
+        "kind": "main",
+        "pairKey": "flow1"
+    },
+    {
+        "id": "q276",
+        "text": "What is the last thing you did that made time pass quickly?",
+        "kind": "impostor",
+        "pairKey": "flow1"
+    },
+    {
+        "id": "p277",
+        "text": "Which type of room decor style feels most like 'home' to you?",
+        "kind": "main",
+        "pairKey": "decor1"
+    },
+    {
+        "id": "q277",
+        "text": "What is one thing currently visible in the room you’re in?",
+        "kind": "impostor",
+        "pairKey": "decor1"
+    },
+    {
+        "id": "p278",
+        "text": "Which kind of notification do you secretly enjoy seeing?",
+        "kind": "main",
+        "pairKey": "notification1"
+    },
+    {
+        "id": "q278",
+        "text": "What was the last notification you remember checking?",
+        "kind": "impostor",
+        "pairKey": "notification1"
+    },
+    {
+        "id": "p279",
+        "text": "Which type of decision do you make very quickly?",
+        "kind": "main",
+        "pairKey": "quickdecision1"
+    },
+    {
+        "id": "q279",
+        "text": "What is the last decision you made on the spot?",
+        "kind": "impostor",
+        "pairKey": "quickdecision1"
+    },
+    {
+        "id": "p280",
+        "text": "Which kind of memory do you replay in your head the most?",
+        "kind": "main",
+        "pairKey": "memory2"
+    },
+    {
+        "id": "q280",
+        "text": "What is the last memory that randomly popped into your mind?",
+        "kind": "impostor",
+        "pairKey": "memory2"
+    },
+    {
+        "id": "p281",
+        "text": "Which type of photo do you enjoy taking the most?",
+        "kind": "main",
+        "pairKey": "photo1"
+    },
+    {
+        "id": "q281",
+        "text": "What was the last photo you took?",
+        "kind": "impostor",
+        "pairKey": "photo1"
+    },
+    {
+        "id": "p282",
+        "text": "Which kind of message do you enjoy receiving the most?",
+        "kind": "main",
+        "pairKey": "message1"
+    },
+    {
+        "id": "q282",
+        "text": "What was the last message you replied to about?",
+        "kind": "impostor",
+        "pairKey": "message1"
+    },
+    {
+        "id": "p283",
+        "text": "Which type of person do you usually ask for advice?",
+        "kind": "main",
+        "pairKey": "advice2"
+    },
+    {
+        "id": "q283",
+        "text": "Who gave you the last piece of advice you can remember?",
+        "kind": "impostor",
+        "pairKey": "advice2"
+    },
+    {
+        "id": "p284",
+        "text": "Which kind of future plan excites you the most (career, travel, family, etc.)?",
+        "kind": "main",
+        "pairKey": "future1"
+    },
+    {
+        "id": "q284",
+        "text": "What is the last future plan you talked about with someone?",
+        "kind": "impostor",
+        "pairKey": "future1"
+    },
+    {
+        "id": "p285",
+        "text": "Which type of place do you go to when you need to think?",
+        "kind": "main",
+        "pairKey": "think1"
+    },
+    {
+        "id": "q285",
+        "text": "Where were you the last time you did some serious thinking?",
+        "kind": "impostor",
+        "pairKey": "think1"
+    }
+]
