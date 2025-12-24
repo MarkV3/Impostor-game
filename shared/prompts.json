@@ -109,13 +109,13 @@
     },
     {
         "id": "p10",
-        "text": "What is the best gift you have ever received?",
+        "text": "A gift that proves the giver really knows your personality?",
         "kind": "main",
         "pairKey": "gift1"
     },
     {
         "id": "q10",
-        "text": "What is the worst gift you have ever received?",
+        "text": "A practical gift that everyone should own but few people buy for themselves",
         "kind": "impostor",
         "pairKey": "gift1"
     },
@@ -169,25 +169,25 @@
     },
     {
         "id": "p15",
-        "text": "How old were you when you had your first kiss?",
+        "text": "How old were you when you first felt like an 'adult'?",
         "kind": "main",
         "pairKey": "first1"
     },
     {
         "id": "q15",
-        "text": "How old were you when you got your first job?",
+        "text": "The ideal age for someone to start having major life responsibilities",
         "kind": "impostor",
         "pairKey": "first1"
     },
     {
         "id": "p16",
-        "text": "What's the best advice you've ever been given?",
+        "text": "The best piece of life advice you have ever received?",
         "kind": "main",
         "pairKey": "advice1"
     },
     {
         "id": "q16",
-        "text": "What's the worst advice you've ever been given?",
+        "text": "A cliché saying or proverb that you actually find to be true?",
         "kind": "impostor",
         "pairKey": "advice1"
     },
@@ -229,13 +229,13 @@
     },
     {
         "id": "p20",
-        "text": "What is something you are proud of?",
+        "text": "A personal achievement that you rarely get to brag about?",
         "kind": "main",
         "pairKey": "proud1"
     },
     {
         "id": "q20",
-        "text": "What is something you are embarrassed about?",
+        "text": "A funny story from your past that you tell to make people laugh?",
         "kind": "impostor",
         "pairKey": "proud1"
     },
@@ -253,13 +253,13 @@
     },
     {
         "id": "p22",
-        "text": "Morning or Night?",
+        "text": "The best time of day for deep thinking or creative work.",
         "kind": "main",
         "pairKey": "pet1"
     },
     {
         "id": "q22",
-        "text": "Sunrise or Sunset?",
+        "text": "The ideal time of day to go on a first date.",
         "kind": "impostor",
         "pairKey": "pet1"
     },
@@ -277,27 +277,27 @@
     },
     {
         "id": "p24",
-        "text": "What’s your dream job?",
+        "text": "On a scale of 1-10, how much do you enjoy chaotic situations?",
         "kind": "main",
-        "pairKey": "job1"
+        "pairKey": "scale1"
     },
     {
         "id": "q24",
-        "text": "What was your worst job?",
+        "text": "On a scale of 1-10, how would you rate your level of perfectionism?",
         "kind": "impostor",
-        "pairKey": "job1"
+        "pairKey": "scale1"
     },
     {
         "id": "p25",
-        "text": "How spicy do you like your food on a scale of 1-10?",
+        "text": "On a scale of 1-10, how spicy do you like your food?",
         "kind": "main",
-        "pairKey": "scale1"
+        "pairKey": "scale2"
     },
     {
         "id": "q25",
-        "text": "How messy is your room on a scale of 1-10?",
+        "text": "On a scale of 1-10, how messy is your room?",
         "kind": "impostor",
-        "pairKey": "scale1"
+        "pairKey": "scale2"
     },
     {
         "id": "p26",
@@ -325,13 +325,13 @@
     },
     {
         "id": "p28",
-        "text": "What is your favorite board game?",
+        "text": "A game that requires a lot of strategy and planning?",
         "kind": "main",
         "pairKey": "game1"
     },
     {
         "id": "q28",
-        "text": "What is your favorite video game?",
+        "text": "A game you remember playing frequently as a child?",
         "kind": "impostor",
         "pairKey": "game1"
     },
@@ -409,13 +409,13 @@
     },
     {
         "id": "p35",
-        "text": "What color describes your mood right now?",
+        "text": "A color that makes a room feel more sophisticated?",
         "kind": "main",
         "pairKey": "color1"
     },
     {
         "id": "q35",
-        "text": "What is your favorite color?",
+        "text": "A color that you think looks best on you?",
         "kind": "impostor",
         "pairKey": "color1"
     },
@@ -433,13 +433,13 @@
     },
     {
         "id": "p37",
-        "text": "What is your favorite dessert?",
+        "text": "A sweet treat you would order at a high-end restaurant?",
         "kind": "main",
         "pairKey": "dessert1"
     },
     {
         "id": "q37",
-        "text": "What is your favorite snack?",
+        "text": "A food you associate with a celebration or birthday?",
         "kind": "impostor",
         "pairKey": "dessert1"
     },
@@ -613,13 +613,13 @@
     },
     {
         "id": "p52",
-        "text": "What is your favorite car brand?",
+        "text": "What is your dream car?",
         "kind": "main",
         "pairKey": "car1"
     },
     {
         "id": "q52",
-        "text": "What is your dream car?",
+        "text": "A brand of car that is very common in your local area?",
         "kind": "impostor",
         "pairKey": "car1"
     },
@@ -901,13 +901,13 @@
     },
     {
         "id": "p76",
-        "text": "Steak or Chicken?",
+        "text": "A high-protein main course you'd order at a nice restaurant",
         "kind": "main",
         "pairKey": "meat1"
     },
     {
         "id": "q76",
-        "text": "Beef or Poultry?",
+        "text": "A staple dinner ingredient that most people keep in their fridge",
         "kind": "impostor",
         "pairKey": "meat1"
     },
@@ -937,13 +937,13 @@
     },
     {
         "id": "p79",
-        "text": "Coffee or Tea?",
+        "text": "A beverage you associate with being highly productive",
         "kind": "main",
         "pairKey": "hotdrink1"
     },
     {
         "id": "q79",
-        "text": "What do you drink in the morning?",
+        "text": "A drink you would typically order when sitting in a cafe",
         "kind": "impostor",
         "pairKey": "hotdrink1"
     },
@@ -997,13 +997,13 @@
     },
     {
         "id": "p84",
-        "text": "What’s something that instantly relaxes you?",
+        "text": "Something that instantly makes you feel at home?",
         "kind": "main",
         "pairKey": "relax2"
     },
     {
         "id": "q84",
-        "text": "What’s something that instantly stresses you?",
+        "text": "Something that requires your full focus and attention?",
         "kind": "impostor",
         "pairKey": "relax2"
     },
@@ -2887,7 +2887,7 @@
     },
     {
         "id": "q241",
-        "text": "What was the last challenge you took on (small or big)?",
+        "text": "What was the last challenge you took on?",
         "kind": "impostor",
         "pairKey": "challenge1"
     },
@@ -2971,7 +2971,7 @@
     },
     {
         "id": "q248",
-        "text": "What was the last thing you were taught by someone (formal or informal)?",
+        "text": "What was the last thing you were taught by someone?",
         "kind": "impostor",
         "pairKey": "teacher1"
     },
@@ -3061,13 +3061,13 @@
     },
     {
         "id": "p256",
-        "text": "Which type of trip would you pick: city, nature, or beach?",
+        "text": "Which type of trip would you pick?",
         "kind": "main",
         "pairKey": "trip1"
     },
     {
         "id": "q256",
-        "text": "What type of destination did you last travel to: city, nature, or beach?",
+        "text": "What type of destination did you last travel to?",
         "kind": "impostor",
         "pairKey": "trip1"
     },
@@ -3109,7 +3109,7 @@
     },
     {
         "id": "p260",
-        "text": "Which type of morning person are you at heart (slow, energetic, grumpy, etc.)?",
+        "text": "Which type of morning person are you at heart?",
         "kind": "main",
         "pairKey": "morning1"
     },
@@ -3127,7 +3127,7 @@
     },
     {
         "id": "q261",
-        "text": "What was the last interaction you had with a pet (yours or someone else’s)?",
+        "text": "What was the last interaction you had with a pet?",
         "kind": "impostor",
         "pairKey": "pet3"
     },
@@ -3397,7 +3397,7 @@
     },
     {
         "id": "p284",
-        "text": "Which kind of future plan excites you the most (career, travel, family, etc.)?",
+        "text": "Which kind of future plan excites you the most ?",
         "kind": "main",
         "pairKey": "future1"
     },
@@ -3418,5 +3418,605 @@
         "text": "Where were you the last place you did some serious thinking?",
         "kind": "impostor",
         "pairKey": "think1"
+    },
+    {
+        "id": "p286",
+        "text": "What is something you do to wake up in the morning?",
+        "kind": "main",
+        "pairKey": "routine_m1"
+    },
+    {
+        "id": "q286",
+        "text": "What is something you do to be more productive?",
+        "kind": "impostor",
+        "pairKey": "routine_m1"
+    },
+    {
+        "id": "p287",
+        "text": "Which city is most famous for its historic architecture?",
+        "kind": "main",
+        "pairKey": "travel_m1"
+    },
+    {
+        "id": "q287",
+        "text": "Which city would you most like to visit for its food?",
+        "kind": "impostor",
+        "pairKey": "travel_m1"
+    },
+    {
+        "id": "p288",
+        "text": "Name a movie that is considered an absolute classic.",
+        "kind": "main",
+        "pairKey": "media_m1"
+    },
+    {
+        "id": "q288",
+        "text": "Name a movie you have watched more than three times.",
+        "kind": "impostor",
+        "pairKey": "media_m1"
+    },
+    {
+        "id": "p289",
+        "text": "What is something that often makes people feel nervous?",
+        "kind": "main",
+        "pairKey": "stress_m1"
+    },
+    {
+        "id": "q289",
+        "text": "What is something that requires a lot of preparation?",
+        "kind": "impostor",
+        "pairKey": "stress_m1"
+    },
+    {
+        "id": "p290",
+        "text": "What is a food often served at a summer picnic?",
+        "kind": "main",
+        "pairKey": "food_m1"
+    },
+    {
+        "id": "q290",
+        "text": "What is a food that is easy to eat with your hands?",
+        "kind": "impostor",
+        "pairKey": "food_m1"
+    },
+    {
+        "id": "p291",
+        "text": "What is a skill that would be useful in an emergency?",
+        "kind": "main",
+        "pairKey": "skill_m1"
+    },
+    {
+        "id": "q291",
+        "text": "What is a skill that takes years to truly master?",
+        "kind": "impostor",
+        "pairKey": "skill_m1"
+    },
+    {
+        "id": "p292",
+        "text": "What is an object you'd find in a high school locker?",
+        "kind": "main",
+        "pairKey": "object_m1"
+    },
+    {
+        "id": "q292",
+        "text": "What is something you almost always carry in a backpack?",
+        "kind": "impostor",
+        "pairKey": "object_m1"
+    },
+    {
+        "id": "p293",
+        "text": "What is a hobby that is generally considered relaxing?",
+        "kind": "main",
+        "pairKey": "hobby_m1"
+    },
+    {
+        "id": "q293",
+        "text": "What is a hobby you can do while listening to music?",
+        "kind": "impostor",
+        "pairKey": "hobby_m1"
+    },
+    {
+        "id": "p294",
+        "text": "What is a heavy item you'd find in a living room?",
+        "kind": "main",
+        "pairKey": "home_m1"
+    },
+    {
+        "id": "q294",
+        "text": "What is something that is difficult to move by yourself?",
+        "kind": "impostor",
+        "pairKey": "home_m1"
+    },
+    {
+        "id": "p295",
+        "text": "What is a job that involves helping people?",
+        "kind": "main",
+        "pairKey": "job_m1"
+    },
+    {
+        "id": "q295",
+        "text": "What is a job that requires a lot of social interaction?",
+        "kind": "impostor",
+        "pairKey": "job_m1"
+    },
+    {
+        "id": "p296",
+        "text": "What is a fruit that is notoriously messy to eat?",
+        "kind": "main",
+        "pairKey": "food_m2"
+    },
+    {
+        "id": "q296",
+        "text": "What is a fruit that has a lot of seeds?",
+        "kind": "impostor",
+        "pairKey": "food_m2"
+    },
+    {
+        "id": "p297",
+        "text": "What is something you see at a professional sports game?",
+        "kind": "main",
+        "pairKey": "event_m1"
+    },
+    {
+        "id": "q297",
+        "text": "What is something you see at a crowded outdoor festival?",
+        "kind": "impostor",
+        "pairKey": "event_m1"
+    },
+    {
+        "id": "p298",
+        "text": "What is a clothing item you wear to look professional?",
+        "kind": "main",
+        "pairKey": "clothing_m1"
+    },
+    {
+        "id": "q298",
+        "text": "What is a clothing item you wear to a special occasion?",
+        "kind": "impostor",
+        "pairKey": "clothing_m1"
+    },
+    {
+        "id": "p299",
+        "text": "What is a sound you hear in a busy public park?",
+        "kind": "main",
+        "pairKey": "sound_m1"
+    },
+    {
+        "id": "q299",
+        "text": "What is a sound you hear in a quiet neighborhood?",
+        "kind": "impostor",
+        "pairKey": "sound_m1"
+    },
+    {
+        "id": "p300",
+        "text": "Name a brand that is known for being reliable.",
+        "kind": "main",
+        "pairKey": "brand_m1"
+    },
+    {
+        "id": "q300",
+        "text": "Name a brand that is common in most households.",
+        "kind": "impostor",
+        "pairKey": "brand_m1"
+    },
+    {
+        "id": "p301",
+        "text": "What is a snack you'd consider a guilty pleasure?",
+        "kind": "main",
+        "pairKey": "food_m3"
+    },
+    {
+        "id": "q301",
+        "text": "What is a snack you often eat while watching a movie?",
+        "kind": "impostor",
+        "pairKey": "food_m3"
+    },
+    {
+        "id": "p302",
+        "text": "What is something people do to save money?",
+        "kind": "main",
+        "pairKey": "habit_m1"
+    },
+    {
+        "id": "q302",
+        "text": "What is a habit that requires a lot of discipline?",
+        "kind": "impostor",
+        "pairKey": "habit_m1"
+    },
+    {
+        "id": "p303",
+        "text": "Name an animal that is often used as a sports mascot.",
+        "kind": "main",
+        "pairKey": "animal_m1"
+    },
+    {
+        "id": "q303",
+        "text": "Name an animal that people find intimidating.",
+        "kind": "impostor",
+        "pairKey": "animal_m1"
+    },
+    {
+        "id": "p304",
+        "text": "What is a common reason someone might be late for work?",
+        "kind": "main",
+        "pairKey": "life_m1"
+    },
+    {
+        "id": "q304",
+        "text": "What is something that is completely out of your control?",
+        "kind": "impostor",
+        "pairKey": "life_m1"
+    },
+    {
+        "id": "p305",
+        "text": "What is a common New Year's Resolution?",
+        "kind": "main",
+        "pairKey": "goal_m1"
+    },
+    {
+        "id": "q305",
+        "text": "What is a goal that is easy to start but hard to finish?",
+        "kind": "impostor",
+        "pairKey": "goal_m1"
+    },
+    {
+        "id": "p306",
+        "text": "What is an appliance you use every single day?",
+        "kind": "main",
+        "pairKey": "appliance_m1"
+    },
+    {
+        "id": "q306",
+        "text": "What is a common appliance found in a kitchen?",
+        "kind": "impostor",
+        "pairKey": "appliance_m1"
+    },
+    {
+        "id": "p307",
+        "text": "What is a school subject that many people find difficult?",
+        "kind": "main",
+        "pairKey": "school_m1"
+    },
+    {
+        "id": "q307",
+        "text": "What is a subject that involves a lot of memorization?",
+        "kind": "impostor",
+        "pairKey": "school_m1"
+    },
+    {
+        "id": "p308",
+        "text": "What is a place where you usually have to wait in line?",
+        "kind": "main",
+        "pairKey": "place_m1"
+    },
+    {
+        "id": "q308",
+        "text": "What is a place you go to when you need a specific service?",
+        "kind": "impostor",
+        "pairKey": "place_m1"
+    },
+    {
+        "id": "p309",
+        "text": "What is a gift you would give someone you don't know well?",
+        "kind": "main",
+        "pairKey": "gift_m1"
+    },
+    {
+        "id": "q309",
+        "text": "What is a gift that is usually under 25 dollars?",
+        "kind": "impostor",
+        "pairKey": "gift_m1"
+    },
+    {
+        "id": "p310",
+        "text": "What is a texture that you would describe as cozy?",
+        "kind": "main",
+        "pairKey": "texture_m1"
+    },
+    {
+        "id": "q310",
+        "text": "What is a material often used to make winter clothing?",
+        "kind": "impostor",
+        "pairKey": "texture_m1"
+    },
+    {
+        "id": "p311",
+        "text": "What would you find in a doctor's waiting room?",
+        "kind": "main",
+        "pairKey": "room_m1"
+    },
+    {
+        "id": "q311",
+        "text": "What is something you would commonly see in a library?",
+        "kind": "impostor",
+        "pairKey": "room_m1"
+    },
+    {
+        "id": "p312",
+        "text": "What is a smell that reminds you of home?",
+        "kind": "main",
+        "pairKey": "smell_m1"
+    },
+    {
+        "id": "q312",
+        "text": "What is a smell associated with cooking or baking?",
+        "kind": "impostor",
+        "pairKey": "smell_m1"
+    },
+    {
+        "id": "p313",
+        "text": "What is a game that requires a lot of strategy?",
+        "kind": "main",
+        "pairKey": "game_m1"
+    },
+    {
+        "id": "q313",
+        "text": "What is a game you often played as a child?",
+        "kind": "impostor",
+        "pairKey": "game_m1"
+    },
+    {
+        "id": "p314",
+        "text": "What is an item often sold in a tourist gift shop?",
+        "kind": "main",
+        "pairKey": "shop_m1"
+    },
+    {
+        "id": "q314",
+        "text": "What is an object that often has a city's name on it?",
+        "kind": "impostor",
+        "pairKey": "shop_m1"
+    },
+    {
+        "id": "p315",
+        "text": "What is a typical activity for a Sunday afternoon?",
+        "kind": "main",
+        "pairKey": "time_m1"
+    },
+    {
+        "id": "q315",
+        "text": "What is a common way to spend time with family?",
+        "kind": "impostor",
+        "pairKey": "time_m1"
+    },
+    {
+        "id": "p316",
+        "text": "Name a sea creature known for being highly intelligent.",
+        "kind": "main",
+        "pairKey": "sea_m1"
+    },
+    {
+        "id": "q316",
+        "text": "Name a sea creature people like to see at an aquarium.",
+        "kind": "impostor",
+        "pairKey": "sea_m1"
+    },
+    {
+        "id": "p317",
+        "text": "What is a tool you would use for a DIY home project?",
+        "kind": "main",
+        "pairKey": "tool_m1"
+    },
+    {
+        "id": "q317",
+        "text": "What is an object you would find in a typical garage?",
+        "kind": "impostor",
+        "pairKey": "tool_m1"
+    },
+    {
+        "id": "p318",
+        "text": "What is a drink you order when you want to be healthy?",
+        "kind": "main",
+        "pairKey": "drink_m1"
+    },
+    {
+        "id": "q318",
+        "text": "What is a drink you might have with a light lunch?",
+        "kind": "impostor",
+        "pairKey": "drink_m1"
+    },
+    {
+        "id": "p319",
+        "text": "What is a personality trait of a good boss?",
+        "kind": "main",
+        "pairKey": "trait_m1"
+    },
+    {
+        "id": "q319",
+        "text": "What is a personality trait of a good mentor?",
+        "kind": "impostor",
+        "pairKey": "trait_m1"
+    },
+    {
+        "id": "p320",
+        "text": "What is something you would see in every classroom?",
+        "kind": "main",
+        "pairKey": "school_m2"
+    },
+    {
+        "id": "q320",
+        "text": "What is something you use to take notes?",
+        "kind": "impostor",
+        "pairKey": "school_m2"
+    },
+    {
+        "id": "p321",
+        "text": "What is a vegetable that is often grilled?",
+        "kind": "main",
+        "pairKey": "veg_m1"
+    },
+    {
+        "id": "q321",
+        "text": "What is a vegetable that is commonly used in a salad?",
+        "kind": "impostor",
+        "pairKey": "veg_m1"
+    },
+    {
+        "id": "p322",
+        "text": "What is a common reason to stay up past midnight?",
+        "kind": "main",
+        "pairKey": "night_m1"
+    },
+    {
+        "id": "q322",
+        "text": "What is an activity you find very entertaining?",
+        "kind": "impostor",
+        "pairKey": "night_m1"
+    },
+    {
+        "id": "p323",
+        "text": "What is a personality trait you consider a red flag?",
+        "kind": "main",
+        "pairKey": "social_m1"
+    },
+    {
+        "id": "q323",
+        "text": "What is a personality trait that you find annoying?",
+        "kind": "impostor",
+        "pairKey": "social_m1"
+    },
+    {
+        "id": "p324",
+        "text": "What is a way to stay cool on a very hot day?",
+        "kind": "main",
+        "pairKey": "weather_m1"
+    },
+    {
+        "id": "q324",
+        "text": "What is an outdoor activity that involves water?",
+        "kind": "impostor",
+        "pairKey": "weather_m1"
+    },
+    {
+        "id": "p325",
+        "text": "What is a car color that many people find boring?",
+        "kind": "main",
+        "pairKey": "car_m1"
+    },
+    {
+        "id": "q325",
+        "text": "What is the most common car color you see on the road?",
+        "kind": "impostor",
+        "pairKey": "car_m1"
+    },
+    {
+        "id": "p326",
+        "text": "What is a habit of someone who is very organized?",
+        "kind": "main",
+        "pairKey": "habit_m2"
+    },
+    {
+        "id": "q326",
+        "text": "What is something you do before you leave the house?",
+        "kind": "impostor",
+        "pairKey": "habit_m2"
+    },
+    {
+        "id": "p327",
+        "text": "What is a sound that you find very satisfying?",
+        "kind": "main",
+        "pairKey": "sound_m2"
+    },
+    {
+        "id": "q327",
+        "text": "What is a sound you often hear in nature?",
+        "kind": "impostor",
+        "pairKey": "sound_m2"
+    },
+    {
+        "id": "p328",
+        "text": "What is a place that is almost always crowded?",
+        "kind": "main",
+        "pairKey": "place_m2"
+    },
+    {
+        "id": "q328",
+        "text": "What is a place that is usually very noisy?",
+        "kind": "impostor",
+        "pairKey": "place_m2"
+    },
+    {
+        "id": "p329",
+        "text": "What is an item you would find in a junk drawer?",
+        "kind": "main",
+        "pairKey": "junk_m1"
+    },
+    {
+        "id": "q329",
+        "text": "What is a small object that is made of metal?",
+        "kind": "impostor",
+        "pairKey": "junk_m1"
+    },
+    {
+        "id": "p330",
+        "text": "What is a hobby that involves collecting things?",
+        "kind": "main",
+        "pairKey": "hobby_m2"
+    },
+    {
+        "id": "q330",
+        "text": "What is a hobby that can become very expensive?",
+        "kind": "impostor",
+        "pairKey": "hobby_m2"
+    },
+    {
+        "id": "p331",
+        "text": "What is a food that tastes even better the next day?",
+        "kind": "main",
+        "pairKey": "food_m4"
+    },
+    {
+        "id": "q331",
+        "text": "What is a food that is usually cooked in a large pot?",
+        "kind": "impostor",
+        "pairKey": "food_m4"
+    },
+    {
+        "id": "p332",
+        "text": "What is a phrase people say when they are surprised?",
+        "kind": "main",
+        "pairKey": "speech_m1"
+    },
+    {
+        "id": "q332",
+        "text": "What is a phrase people say when they are excited?",
+        "kind": "impostor",
+        "pairKey": "speech_m1"
+    },
+    {
+        "id": "p333",
+        "text": "What is an object that is notoriously fragile?",
+        "kind": "main",
+        "pairKey": "fragile_m1"
+    },
+    {
+        "id": "q333",
+        "text": "What is a common object that is made of glass?",
+        "kind": "impostor",
+        "pairKey": "fragile_m1"
+    },
+    {
+        "id": "p334",
+        "text": "What is a job that requires wearing a uniform?",
+        "kind": "main",
+        "pairKey": "job_m2"
+    },
+    {
+        "id": "q334",
+        "text": "What is a job that involves public safety?",
+        "kind": "impostor",
+        "pairKey": "job_m2"
+    },
+    {
+        "id": "p335",
+        "text": "What is a sport that is played during a specific season?",
+        "kind": "main",
+        "pairKey": "sport_m1"
+    },
+    {
+        "id": "q335",
+        "text": "What is a sport that is very popular to watch on TV?",
+        "kind": "impostor",
+        "pairKey": "sport_m1"
     }
 ]
