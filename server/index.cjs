@@ -2,6 +2,8 @@
 // Run with: node server/index.cjs
 
 const http = require('http');
+const express = require('express');
+const path = require('path');
 const { Server } = require('socket.io');
 const os = require('os');
 
@@ -23,7 +25,21 @@ const {
 	restartGame
 } = require('./gameLogic.cjs');
 
-const httpServer = http.createServer();
+const app = express();
+const httpServer = http.createServer(app);
+
+// Production frontend serving
+if (process.env.SERVE_FRONTEND === 'true') {
+	const distPath = path.join(__dirname, '../dist');
+	app.use(express.static(distPath));
+	app.use((req, res, next) => {
+		// If it looks like a file (has extension) or is a socket request, let it fail 404
+		if (req.path.includes('.') || req.path.startsWith('/socket.io')) return next();
+		res.sendFile(path.join(distPath, 'index.html'));
+	});
+	console.log('Serving frontend from:', distPath);
+}
+
 const io = new Server(httpServer, {
 	cors: {
 		origin: true, // Allow any origin

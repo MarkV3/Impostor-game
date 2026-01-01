@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Check for public mode early
+PUBLIC_MODE=false
+if [[ "${1:-}" == "--public" ]]; then
+  PUBLIC_MODE=true
+fi
+
+# Ensure port 3001 is free
+if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null ; then
+  echo "Port 3001 is already in use. Cleaning up..."
+  lsof -Pi :3001 -sTCP:LISTEN -t | xargs kill -9 2>/dev/null || true
+  sleep 1
+fi
+
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$DIR"
 
@@ -28,9 +41,15 @@ if [ -z "${IP:-}" ]; then
 fi
 if [ -z "${IP:-}" ]; then IP="localhost"; fi
 
-echo "Starting Socket.IO server on :3001..."
-npm run server &
-SERVER_PID=$!
+if [ "$PUBLIC_MODE" = false ]; then
+  echo "Starting Socket.IO server on :3001 (Dev)..."
+  npm run server &
+  SERVER_PID=$!
+else
+  # In public mode, we don't start the dev server here
+  # It will be started later via server:prod
+  SERVER_PID=0
+fi
 
 # Best-effort wait for port 3001
 wait_for_port() {
@@ -41,20 +60,42 @@ wait_for_port() {
   done
   return 0
 }
-wait_for_port 3001 || true
+if [ "$PUBLIC_MODE" = false ]; then
+  wait_for_port 3001 || true
+fi
 
-echo ""
-echo "LAN URLs:"
-echo "  Host setup:  http://$IP:3000/host"
-echo "  Player join: http://$IP:3000"
-echo ""
+if [ "$PUBLIC_MODE" = false ]; then
+  echo ""
+  echo "LAN URLs:"
+  echo "  Host setup:  http://$IP:3000/host"
+  echo "  Player join: http://$IP:3000"
+  echo ""
+fi
 
 cleanup() {
   echo ""
   echo "Shutting down..."
-  kill "$SERVER_PID" >/dev/null 2>&1 || true
+  if [ "$SERVER_PID" -ne 0 ]; then
+    kill "$SERVER_PID" >/dev/null 2>&1 || true
+  fi
+  # Fallback cleanup for the port
+  lsof -Pi :3001 -sTCP:LISTEN -t | xargs kill -9 2>/dev/null || true
 }
 trap cleanup EXIT INT TERM
+
+if [ "$PUBLIC_MODE" = true ]; then
+  echo "--- PUBLIC MODE ---"
+  echo "Building frontend..."
+  npm run build
+  
+  echo ""
+  echo "Starting unified production server on :3001..."
+  echo "To make this accessible on the internet, run in a separate terminal:"
+  echo "  cloudflared tunnel run --url http://localhost:3001 impostor-game"
+  echo ""
+  
+  exec npm run server:prod
+fi
 
 echo "Starting Vite dev server on :3000 (LAN)..."
 npm run dev:lan

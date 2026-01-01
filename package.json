@@ -11,15 +11,17 @@
     "start:lan": "bash ./start.sh",
     "tunnel:loclx": "loclx tunnel http --to 8080",
     "proxy": "node server/proxy.cjs",
+    "server:prod": "SERVE_FRONTEND=true node server/index.cjs",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-dom": "^19.2.0",
-    "react": "^19.2.0",
     "@heroicons/react": "^2.2.0",
-    "qrcode.react": "^4.2.0",
+    "express": "^5.2.1",
     "http-proxy": "^1.18.1",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
   },
