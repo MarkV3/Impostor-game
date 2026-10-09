@@ -4,29 +4,47 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:lan": "vite --host",
-    "dev:self": "VITE_SERVER_URL=same-origin vite --host --port 5173",
-    "server": "node server/index.cjs",
-    "start:lan": "bash ./start.sh",
-    "tunnel:loclx": "loclx tunnel http --to 8080",
-    "proxy": "node server/proxy.cjs",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "node scripts/dev.mjs",
+    "prestart": "npm run build",
+    "start": "node --env-file-if-exists=.env server/index.cjs",
+    "server": "node --env-file-if-exists=.env server/index.cjs",
+    "tunnel": "node --env-file-if-exists=.env scripts/tunnel.mjs",
+    "setup:tunnel": "node scripts/install-cloudflared.mjs",
+    "configure:tunnel": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure-tunnel.ps1",
+    "prehost": "npm run build",
+    "host": "node --env-file-if-exists=.env scripts/host.mjs",
+    "check:public": "node scripts/check-public.mjs",
+    "build": "npm run typecheck && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.cjs",
+    "test:e2e": "playwright test",
+    "test:e2e:public": "node scripts/test-public.mjs",
+    "check": "npm run format:check && npm run build && npm test && npm run test:e2e",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
-    "react-dom": "^19.2.0",
-    "react": "^19.2.0",
     "@heroicons/react": "^2.2.0",
     "qrcode.react": "^4.2.0",
-    "http-proxy": "^1.18.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.29",
+    "prettier": "^3.9.9",
+    "tailwindcss": "^3.4.17",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
+  },
+  "engines": {
+    "node": ">=22.9.0"
   }
 }

@@ -1,67 +1,86 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Impostor Prompt
 
-# Impostor Game
+A real-time party game: players answer prompts on their phones while a shared screen reveals answers, runs voting, and displays scores. One player receives a different prompt and tries to avoid detection.
 
-A real-time multiplayer social deduction game.
+The public address is **https://simpleapp.qzz.io**. The game runs on your computer and Cloudflare forwards this domain to it.
 
-## How to Run
+## Start the game
 
-You can run this game in two modes: **LAN** (local network) or **Public Internet** (via LocalXpose).
+Install Node.js **22.9 or newer** (Node 24 is used for verification). In a terminal in this repository:
 
-### Option 1: LAN Play (Recommended for Home)
+```powershell
+npm ci
+npm run setup:tunnel
+npm run host
+```
 
-Use this if all players are on the same Wi-Fi network.
+After the one-time token setup linked below, this builds the frontend, starts one local server at **http://127.0.0.1:8080**, and connects it to the public domain. Leave the terminal open while playing. Press **Ctrl+C** to stop it. Dependencies and the connector only need installing once.
 
-1.  **Run the start script:**
-    ```bash
-    npm run start:lan
-    ```
-    *(This runs `./start.sh` which starts both the server and frontend)*
-    
-    Do not connect via localhost as this will not work. Use the IP address printed by the script.
+Your existing Cloudflare tunnel runs on this computer and forwards **simpleapp.qzz.io → http://127.0.0.1:8080**. Follow [the step-by-step token setup](docs/hosting.md#one-time-cloudflare-account-setup) once. The scripts create the forwarding rule locally, so you do not need to find a route editor in the Cloudflare dashboard. Then use `npm run host` or double-click `scripts/start-game.cmd` whenever you want to host the game.
 
-2.  **Join the game:**
-    -   The script will print the **Host URL** and **Player URL**.
-    -   Open the **Host URL** on your computer to set up the game screen.
-    -   Share the **Player URL** with your friends so they can join from their phones.
+Once the tunnel is connected:
 
----
+1. Open **https://simpleapp.qzz.io/host** on the shared screen and create a game.
+2. Players open **https://simpleapp.qzz.io** or scan the QR code, then enter the room code and their name.
+3. Start when enough players have joined. Players answer, discuss, and vote at their own pace, with no time limits. The host starts the next round after everyone has read the results.
 
-### Option 2: Public Internet (via LocalXpose)
+You can check the host/player pages locally at `http://127.0.0.1:8080/host` and `http://127.0.0.1:8080`. Use the public host URL when playing with phones so the QR code points to the public domain.
 
-Use this if players are remote (not on the same Wi-Fi). You need to install the [LocalXpose CLI](https://localxpose.io/) first.
+## Configuration
 
-**Prerequisites:**
--   Install `loclx` and log in: `loclx account login --token <YOUR_TOKEN>`
+Defaults work without a configuration file. To set a different local port or run the tunnel with its existing token, copy `.env.example` to `.env`:
 
-**Steps:**
+```powershell
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+```
 
-Run each of these commands in a **separate terminal window**:
+If you change `PORT`, restart hosting; the scripts update the local forwarding rule automatically. The tunnel helper reads `CLOUDFLARE_TUNNEL_TOKEN` from `.env`; keep tokens private. Game settings are entered on the host screen.
 
-1.  **Start the Game Server (Port 3001):**
-    ```bash
-    npm run server
-    ```
+## Development and checks
 
-2.  **Start the Frontend (Port 5173):**
-    ```bash
-    npm run dev:self
-    ```
+To explore the design without gathering players, open **http://127.0.0.1:8080/?preview=1** while the local server is running (or `http://127.0.0.1:5173/?preview=1` in development). Watch friends around the table, large central answer cards collect into a spread, and the same cards carry voting, the impostor reveal, voter names, scores, and final placements. Sample players answer automatically; **Everyone votes** simulates voting. You can also switch moments, try different group sizes, and inspect long answers. See [the design notes](docs/design.md) for the visual direction and pacing.
 
-3.  **Start the Reverse Proxy (Port 8080):**
-    ```bash
-    npm run proxy
-    ```
+```powershell
+npm run dev
+```
 
-4.  **Start the Public Tunnel:**
-    ```bash
-    npm run tunnel:loclx
-    ```
+This starts Vite at **http://127.0.0.1:5173** and the game server at **http://127.0.0.1:8080** together. Open `http://127.0.0.1:5173/host` to develop the host view. Frontend edits update immediately; backend edits restart the development server and clear its in-memory rooms. Stop both with **Ctrl+C**. Stop production before starting development, since both use the same backend port.
 
-**How to Play:**
--   Copy the `https://...loclx.io` URL printed by the tunnel command.
--   Open that URL to host the game.
--   Send that same URL to your friends to join.
--   *Note: Free LocalXpose plans show a confirmation page; click "Visit" to proceed.*
+Run the complete verification with **Google Chrome installed**:
+
+```powershell
+npm run check
+```
+
+| Command                    | Purpose                                                                            |
+| -------------------------- | ---------------------------------------------------------------------------------- |
+| `npm start`                | Build and run the local game without the Cloudflare connector                      |
+| `npm run server`           | Run an already built game                                                          |
+| `npm run host`             | Build and run the game and Cloudflare connector together                           |
+| `npm run check:public`     | Verify the public domain, assets, WebSockets, and a multiplayer round              |
+| `npm run setup:tunnel`     | Download and verify the official Windows Cloudflare connector                      |
+| `npm run configure:tunnel` | Save the existing tunnel token using hidden input on Windows                       |
+| `npm run tunnel`           | Run the existing Cloudflare tunnel using its token                                 |
+| `npm run dev`              | Run the local development frontend and backend                                     |
+| `npm run build`            | Check TypeScript and build `dist/`                                                 |
+| `npm run typecheck`        | Check strict TypeScript types                                                      |
+| `npm test`                 | Check gameplay regression cases and HTTP/Socket.IO behavior                        |
+| `npm run test:e2e`         | Play two rounds with a host and three browser players; requires a build and Chrome |
+| `npm run test:e2e:public`  | Run the same browser checks through the public domain while hosting is running     |
+| `npm run format`           | Format source and documentation                                                    |
+| `npm run format:check`     | Check formatting                                                                   |
+| `npm run check`            | Run formatting, build, server/game tests, and browser tests                        |
+
+The local browser tests and `npm run check` own port 8080; stop any manually running game or development server before running them. Keep hosting running for `npm run test:e2e:public`. Screenshots and failure traces are written under `test-results/` and are ignored by Git.
+
+## Project structure
+
+- [`src/`](src/): React browser app, display/player components, connection hook, and styles.
+- [`server/`](server/): HTTP hosting, Socket.IO handlers, rooms, game phases, prompts, and scoring.
+- [`shared/`](shared/): Game types, event contracts, and the original prompt dataset.
+- [`scripts/`](scripts/): Development and Cloudflare startup helpers.
+- [`tests/`](tests/): Game, server, and multiplayer browser checks.
+
+See [the architecture guide](docs/architecture.md) for module responsibilities, unchanged game rules, and existing prototype limitations.
+
+Rooms and scores are stored in memory. Keep your computer awake and both the game and Cloudflare connector running; restarting the server clears active games.

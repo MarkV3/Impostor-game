@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
+.cloudflared/
+.tools/
+playwright-report/
+test-results/
 
 # Editor directories and files
 .vscode/*

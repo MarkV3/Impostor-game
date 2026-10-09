@@ -1,0 +1,6 @@
+{
+  "answerMaxLength": 80,
+  "verdictDelayMs": 3000,
+  "votersDelayMs": 2500,
+  "scoresDelayMs": 6500
+}
