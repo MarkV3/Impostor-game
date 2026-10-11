@@ -1,6 +1,12 @@
 const { getRandomPromptPair, resetPrompts } = require('./prompts.cjs');
 const { scoreRound } = require('./scoring.cjs');
-const { getRoom, updateRoom, getSocketId } = require('./rooms.cjs');
+const {
+  getRoom,
+  updateRoom,
+  getSocketId,
+  setPrivatePrompt,
+  clearPrivatePrompts,
+} = require('./rooms.cjs');
 const pacing = require('../../shared/presentation.json');
 
 /** @type {Map<string, NodeJS.Timeout>} */
@@ -40,14 +46,16 @@ function distributePrompts(roomCode, io) {
   const players = room.players.filter((player) => !player.isDisplay);
   if (!players.length) return updateRoom(roomCode, { status: 'LOBBY' }, io);
   const impostor = players[Math.floor(Math.random() * players.length)];
+  clearPrivatePrompts(roomCode);
   players.forEach((player) => {
-    const socketId = getSocketId(player.id);
-    if (!socketId) return;
     const isImpostor = player.id === impostor.id;
-    io.to(socketId).emit('prompt:deliver', {
+    const prompt = {
       text: isImpostor ? pair.impostor.text : pair.main.text,
       role: isImpostor ? 'impostor' : 'citizen',
-    });
+    };
+    setPrivatePrompt(player.id, prompt);
+    const socketId = getSocketId(player.id);
+    if (socketId) io.to(socketId).emit('prompt:deliver', prompt);
   });
   updateRoom(
     roomCode,
@@ -154,6 +162,7 @@ function restartGame(roomCode, playerId, io) {
     timers.delete(timerKey);
   });
   resetPrompts(roomCode);
+  clearPrivatePrompts(roomCode);
   updateRoom(
     roomCode,
     {

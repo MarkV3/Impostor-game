@@ -9,7 +9,11 @@ export const QUESTION_SETTLE_MS = 1100;
 type RevealBeat =
   'waiting' | 'reading' | 'settling' | 'question-reading' | 'question-settling' | 'question';
 
-export function useAnswerReveal(gameState: GameState, completeReveal: () => void) {
+export function useAnswerReveal(
+  gameState: GameState,
+  completeReveal: () => void,
+  connected = true,
+) {
   const [index, setIndex] = useState(-1);
   const [beat, setBeat] = useState<RevealBeat>('waiting');
   const [paused, setPaused] = useState(false);
@@ -21,6 +25,7 @@ export function useAnswerReveal(gameState: GameState, completeReveal: () => void
   const sequence = sequenceRef.current ?? gameState.answers;
 
   const advance = () => {
+    if (!connected) return;
     if (beat === 'waiting') {
       if (!sequence.length) setBeat('question-reading');
       else {
@@ -43,7 +48,7 @@ export function useAnswerReveal(gameState: GameState, completeReveal: () => void
   };
 
   useEffect(() => {
-    if (!enabled || completedRef.current) return;
+    if (!enabled || !connected || completedRef.current) return;
     sequenceRef.current ??= gameState.answers;
     // A paused reading stays in the centre. Once collected, always finish the movement.
     if (paused && beat !== 'settling' && beat !== 'question-settling') return;
@@ -61,7 +66,7 @@ export function useAnswerReveal(gameState: GameState, completeReveal: () => void
                 : 900;
     const timer = window.setTimeout(advance, hold);
     return () => window.clearTimeout(timer);
-  }, [enabled, gameState.answers, index, beat, paused]);
+  }, [enabled, connected, gameState.answers, index, beat, paused]);
 
   const settledCount = beat.startsWith('question')
     ? sequence.length

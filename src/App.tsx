@@ -7,7 +7,7 @@ import { useGameSocket } from './game/useGameSocket';
 import DesignPreview from './components/display/DesignPreview';
 
 const ConnectedGame: React.FC = () => {
-  const { socket, gameState, playerId, privatePrompt, error, view, setView, handleJoin } =
+  const { socket, connected, gameState, playerId, privatePrompt, error, view, handleJoin } =
     useGameSocket();
 
   useEffect(() => {
@@ -24,25 +24,38 @@ const ConnectedGame: React.FC = () => {
   const actions = useMemo(
     () => ({
       joinRoom: handleJoin,
-      startGame: () => socket.emit('room:start'),
-      submitAnswer: (text: string) => socket.emit('answer:submit', { text }),
-      submitVote: (targetMemberId: string) => socket.emit('vote:submit', { targetMemberId }),
-      restartGame: () => socket.emit('room:restart'),
-      completeReveal: () => socket.emit('reveal:done'),
-      continueRound: () => socket.emit('round:continue'),
+      startGame: () => {
+        if (socket.connected) socket.emit('room:start');
+      },
+      submitAnswer: (text: string) => {
+        if (socket.connected) socket.emit('answer:submit', { text });
+      },
+      submitVote: (targetMemberId: string) => {
+        if (socket.connected) socket.emit('vote:submit', { targetMemberId });
+      },
+      restartGame: () => {
+        if (socket.connected) socket.emit('room:restart');
+      },
+      completeReveal: () => {
+        if (socket.connected) socket.emit('reveal:done');
+      },
+      continueRound: () => {
+        if (socket.connected) socket.emit('round:continue');
+      },
     }),
     [handleJoin, socket],
   );
 
   const contextValue = useMemo(
     () => ({
+      connected,
       gameState,
       me,
       privatePrompt,
       error,
       actions,
     }),
-    [gameState, me, privatePrompt, error, actions],
+    [connected, gameState, me, privatePrompt, error, actions],
   );
 
   if (view.type === 'loading') {
@@ -52,6 +65,11 @@ const ConnectedGame: React.FC = () => {
   return (
     <GameContext.Provider value={contextValue}>
       <div className="game-app">
+        {gameState && !connected && (
+          <p className="connection-notice" role="status">
+            Reconnecting… Your place in the game is saved.
+          </p>
+        )}
         {view.type === 'display' ? (
           <DisplayView />
         ) : view.type === 'host' ? (

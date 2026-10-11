@@ -104,7 +104,7 @@ const DesignPreview: React.FC = () => {
   };
   return (
     <GameContext.Provider
-      value={{ gameState, me: null, privatePrompt: null, error: null, actions }}
+      value={{ connected: true, gameState, me: null, privatePrompt: null, error: null, actions }}
     >
       <div className="game-app preview-shell">
         <DisplayView key={`${replay}-${count}-${longAnswers}`} />

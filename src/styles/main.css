@@ -1428,6 +1428,22 @@ button:disabled {
     min-height: calc(100svh - 116px);
   }
 }
+.connection-notice {
+  position: fixed;
+  z-index: 100;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #332c27;
+  color: #fff8ef;
+  text-align: center;
+  box-shadow: 0 4px 16px #0003;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

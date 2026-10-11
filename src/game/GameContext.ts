@@ -3,6 +3,7 @@ import { GameState, Player } from '../../shared/types';
 import type { PrivatePrompt } from '../../shared/protocol';
 
 interface GameContextType {
+  connected: boolean;
   gameState: GameState | null;
   me: Player | null;
   privatePrompt: PrivatePrompt | null;
@@ -19,6 +20,7 @@ interface GameContextType {
 }
 
 export const GameContext = createContext<GameContextType>({
+  connected: true,
   gameState: null,
   me: null,
   privatePrompt: null,

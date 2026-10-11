@@ -27,8 +27,8 @@ const RevealCountdown: React.FC<{ at?: number }> = ({ at }) => {
 };
 
 const DisplayRound: React.FC = () => {
-  const { gameState, actions } = useContext(GameContext);
-  const reveal = useAnswerReveal(gameState!, actions.completeReveal);
+  const { gameState, actions, connected } = useContext(GameContext);
+  const reveal = useAnswerReveal(gameState!, actions.completeReveal, connected);
   const verdictReady = useVerdictReveal(gameState?.verdictRevealsAt);
   const votersReady = useVerdictReveal(
     gameState?.verdictRevealsAt === undefined

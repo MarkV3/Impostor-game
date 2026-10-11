@@ -4,6 +4,8 @@ const rooms = new Map();
 const playerToRoom = new Map();
 /** @type {Map<string, string>} */
 const playerIdToSocketId = new Map();
+// Private prompts survive transport changes, but never enter public snapshots.
+const privatePrompts = new Map();
 
 function generateCode() {
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
@@ -47,6 +49,13 @@ function createRoom(payload) {
 function joinRoom(code, player, socketId) {
   const room = getRoom(code);
   if (!room) throw new Error('Room not found.');
+  const existingRoom = getPlayerRoomCode(player.id);
+  if (existingRoom && existingRoom !== code) throw new Error('You are already in another room.');
+  // Joining twice (including a display refresh) must not duplicate a seat or reset scores.
+  if (room.players.some((member) => member.id === player.id)) {
+    attachPlayerSocket(player.id, socketId);
+    return room;
+  }
   if (room.status !== 'LOBBY') throw new Error('Game has already started.');
 
   room.players.push(player);
@@ -71,6 +80,7 @@ function removePlayer(playerId) {
 
   playerToRoom.delete(playerId);
   playerIdToSocketId.delete(playerId);
+  privatePrompts.delete(playerId);
 
   return { roomCode, remaining };
 }
@@ -83,6 +93,27 @@ function getSocketId(playerId) {
   return playerIdToSocketId.get(playerId);
 }
 
+function attachPlayerSocket(playerId, socketId) {
+  playerIdToSocketId.set(playerId, socketId);
+}
+
+function detachPlayerSocket(playerId, socketId) {
+  // A delayed disconnect from an older connection must not detach its replacement.
+  if (getSocketId(playerId) === socketId) playerIdToSocketId.delete(playerId);
+}
+
+function setPrivatePrompt(playerId, prompt) {
+  privatePrompts.set(playerId, prompt);
+}
+
+function getPrivatePrompt(playerId) {
+  return privatePrompts.get(playerId);
+}
+
+function clearPrivatePrompts(roomCode) {
+  getRoom(roomCode)?.players.forEach((player) => privatePrompts.delete(player.id));
+}
+
 module.exports = {
   getRoom,
   updateRoom,
@@ -91,4 +122,9 @@ module.exports = {
   removePlayer,
   getPlayerRoomCode,
   getSocketId,
+  attachPlayerSocket,
+  detachPlayerSocket,
+  setPrivatePrompt,
+  getPrivatePrompt,
+  clearPrivatePrompts,
 };

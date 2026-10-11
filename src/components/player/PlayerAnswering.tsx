@@ -6,7 +6,7 @@ import pacing from '../../../shared/presentation.json';
 
 const PlayerAnswering: React.FC = () => {
   const [answer, setAnswer] = useState('');
-  const { privatePrompt, actions, gameState } = useContext(GameContext);
+  const { privatePrompt, actions, gameState, connected } = useContext(GameContext);
   if (!privatePrompt || !gameState) return null;
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -40,7 +40,7 @@ const PlayerAnswering: React.FC = () => {
               {answer.length} / {pacing.answerMaxLength}
             </span>
           </div>
-          <Button type="submit" disabled={!answer.trim()}>
+          <Button type="submit" disabled={!answer.trim() || !connected}>
             Submit Answer
           </Button>
         </form>

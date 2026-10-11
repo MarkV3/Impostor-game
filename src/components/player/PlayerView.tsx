@@ -8,9 +8,13 @@ import PlayerWaiting from './PlayerWaiting';
 import PlayerSummary from './PlayerSummary';
 
 const PlayerView: React.FC = () => {
-  const { gameState, me } = useContext(GameContext);
+  const { gameState, me, connected } = useContext(GameContext);
 
   if (!me) {
+    if (!connected)
+      return (
+        <PlayerWaiting title="Connecting..." message="Waiting for a connection to the game." />
+      );
     return <PlayerJoin />;
   }
 

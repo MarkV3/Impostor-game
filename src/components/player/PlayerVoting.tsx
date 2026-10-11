@@ -5,7 +5,7 @@ import PlayerAvatar from '../ui/PlayerAvatar';
 import PhoneHeader from './PhoneHeader';
 
 const PlayerVoting: React.FC<{ hasVoted: boolean }> = ({ hasVoted }) => {
-  const { gameState, me, actions } = useContext(GameContext);
+  const { gameState, me, actions, connected } = useContext(GameContext);
   const serverSelection = gameState?.votes.find((vote) => vote.voterId === me?.id)?.targetId;
   const [selectedPlayerId, setSelectedPlayerId] = useState<string | undefined>(serverSelection);
   if (!gameState || !me) return null;
@@ -34,6 +34,7 @@ const PlayerVoting: React.FC<{ hasVoted: boolean }> = ({ hasVoted }) => {
             .map((player) => (
               <button
                 key={player.id}
+                disabled={!connected}
                 onClick={() => handleVote(player.id)}
                 aria-label={player.name}
                 aria-pressed={selected === player.id}
@@ -47,7 +48,7 @@ const PlayerVoting: React.FC<{ hasVoted: boolean }> = ({ hasVoted }) => {
               </button>
             ))}
         </div>
-        {(hasVoted || selected) && (
+        {hasVoted && (
           <p className="vote-receipt" role="status">
             Vote for <strong>{players.find((player) => player.id === selected)?.name}</strong>{' '}
             recorded! You can change it until everyone has voted. Take your time.

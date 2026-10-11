@@ -14,6 +14,7 @@ export type CreateRoomResult = { ok: true; code: string } | { ok: false; message
 
 export interface ServerToClientEvents {
   'assign:id': (id: string) => void;
+  'assign:session': (session: { token: string }) => void;
   'room:snapshot': (room: GameState) => void;
   'room:error': (error: { message: string }) => void;
   'prompt:deliver': (prompt: PrivatePrompt) => void;

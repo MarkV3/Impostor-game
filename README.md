@@ -84,3 +84,5 @@ The local browser tests and `npm run check` own port 8080; stop any manually run
 See [the architecture guide](docs/architecture.md) for module responsibilities, unchanged game rules, and existing prototype limitations.
 
 Rooms and scores are stored in memory. Keep your computer awake and both the game and Cloudflare connector running; restarting the server clears active games.
+
+If a phone briefly loses its connection, it keeps its place and reconnects automatically. Refreshing the same tab also restores the player, prompt, submitted answer, vote, and score. Keep the original tab open: closing it or clearing browser storage loses its recovery token. The game continues to wait for disconnected players to return. Hosting logs report disconnect reasons and successful session recovery.
