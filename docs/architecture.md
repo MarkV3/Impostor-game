@@ -26,7 +26,7 @@ src/
   styles/round.css          Table, card scene, responsive layouts, and motion
 server/
   index.cjs                 Process startup, logging, and shutdown
-  config.cjs                Local address, port, public domain, build path
+  config.cjs                Hosting address, port, public URL, build path
   app.cjs                   HTTP and Socket.IO server assembly
   http/staticFiles.cjs      Built frontend, browser routes, health endpoint
   transport/socketHandlers.cjs  Socket events and host assignment
@@ -39,7 +39,7 @@ shared/
   types.ts                  Game state, players, answers, votes, phases
   protocol.ts               Typed client/server event payloads
   presentation.json         Shared verdict, voter, and score presentation offsets
-  prompts.json              Original 285 prompt pairs
+  prompts.json              Curated 108 prompt pairs
 scripts/
   dev.mjs                   Starts and stops local frontend/server together
   host.mjs                  Starts the built game and existing Cloudflare tunnel
@@ -83,7 +83,9 @@ stateDiagram-v2
 
 ## Hosting and maintenance
 
-Production has one server on `127.0.0.1:8080`, serving `dist/` and `/socket.io/`. Cloudflare forwards `simpleapp.qzz.io` to that address. Local development uses Vite on `127.0.0.1:5173`, proxying Socket.IO to the same backend. The browser always connects to its own origin; there is no separate server URL to configure in frontend code.
+Production has one server serving `dist/` and `/socket.io/`. On Render, `render.yaml` creates a free Node web service in Frankfurt; the server binds to `0.0.0.0` on Render's supplied `PORT`, and Render provides public HTTPS. See [the Render guide](render.md) for deployment and updates. The `PUBLIC_URL` override or Render's `RENDER_EXTERNAL_URL` supplies the address used by logs and public checks.
+
+Local hosting defaults to `127.0.0.1:8080`; Cloudflare can forward `simpleapp.qzz.io` to that address with the existing connector. Local development uses Vite on `127.0.0.1:5173`, proxying Socket.IO to the same backend. The browser always connects to its own origin, and the QR code uses that origin; there is no separate server URL to configure in frontend code.
 
 The server stays in CommonJS JavaScript so it runs directly under Node. The frontend and shared contracts use strict TypeScript. Formatting is managed by Prettier. React, icons, QR code generation, and Tailwind CSS are bundled locally; the game has no runtime CDN requirement.
 

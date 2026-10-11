@@ -10,7 +10,9 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: publicRun ? 'https://simpleapp.qzz.io' : 'http://127.0.0.1:8080',
+    baseURL: publicRun
+      ? process.env.PUBLIC_URL || process.env.RENDER_EXTERNAL_URL || 'https://simpleapp.qzz.io'
+      : 'http://127.0.0.1:8080',
     browserName: 'chromium',
     channel: 'chrome',
     trace: 'retain-on-failure',

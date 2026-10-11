@@ -9,8 +9,8 @@ function getConfig(env = process.env) {
   }
   return {
     port,
-    host: '127.0.0.1',
-    publicUrl: PUBLIC_URL,
+    host: env.HOST || (env.RENDER === 'true' ? '0.0.0.0' : '127.0.0.1'),
+    publicUrl: (env.PUBLIC_URL || env.RENDER_EXTERNAL_URL || PUBLIC_URL).replace(/\/+$/, ''),
     distDirectory: path.resolve(__dirname, '../dist'),
   };
 }

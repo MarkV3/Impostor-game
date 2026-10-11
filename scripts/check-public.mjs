@@ -12,9 +12,7 @@ function receive(socket, event, accept = () => true) {
     const timer = setTimeout(() => {
       socket.off(event, listener);
       reject(
-        new Error(
-          `Timed out waiting for ${event}. Check the Cloudflare route and WebSocket connection.`,
-        ),
+        new Error(`Timed out waiting for ${event}. Check the deployment and WebSocket connection.`),
       );
     }, 20_000);
     const listener = (data) => {
@@ -48,7 +46,7 @@ async function get(route) {
     if (body.includes('1033'))
       throw new Error('Cloudflare error 1033: start the configured connector with npm run host.');
     throw new Error(
-      `Public ${route || '/'} returned HTTP ${response.status}. Check docs/hosting.md.`,
+      `Public ${route || '/'} returned HTTP ${response.status}. Check docs/render.md or docs/hosting.md.`,
     );
   }
   return response;

@@ -19,9 +19,11 @@ httpServer.listen(config.port, config.host, () => {
   console.log('Game server: http://' + config.host + ':' + config.port);
   console.log('Public player URL: ' + config.publicUrl);
   console.log('Public host URL: ' + config.publicUrl + '/host');
-  console.log(
-    'Cloudflare must route this hostname to http://' + config.host + ':' + config.port + '.',
-  );
+  if (process.env.RENDER === 'true') {
+    console.log('Render serves the game over HTTPS. No local Cloudflare connector is needed.');
+  } else {
+    console.log('For local public hosting, run npm run host to start the Cloudflare connector.');
+  }
 });
 
 function shutdown() {

@@ -2,7 +2,9 @@
 
 A real-time party game: players answer prompts on their phones while a shared screen reveals answers, runs voting, and displays scores. One player receives a different prompt and tries to avoid detection.
 
-The public address is **https://simpleapp.qzz.io**. The game runs on your computer and Cloudflare forwards this domain to it.
+For remote hosting with your computer switched off, follow the [Render setup guide](docs/render.md). The included `render.yaml` creates one free Node web service in Frankfurt. Once deployed, use the HTTPS address assigned by Render.
+
+The existing **https://simpleapp.qzz.io** address uses Cloudflare to forward traffic to your computer until its DNS routing is changed. The local hosting instructions below remain available.
 
 ## Start the game
 
@@ -77,12 +79,12 @@ The local browser tests and `npm run check` own port 8080; stop any manually run
 
 - [`src/`](src/): React browser app, display/player components, connection hook, and styles.
 - [`server/`](server/): HTTP hosting, Socket.IO handlers, rooms, game phases, prompts, and scoring.
-- [`shared/`](shared/): Game types, event contracts, and the original prompt dataset.
+- [`shared/`](shared/): Game types, event contracts, and the curated question bank.
 - [`scripts/`](scripts/): Development and Cloudflare startup helpers.
 - [`tests/`](tests/): Game, server, and multiplayer browser checks.
 
 See [the architecture guide](docs/architecture.md) for module responsibilities, unchanged game rules, and existing prototype limitations.
 
-Rooms and scores are stored in memory. Keep your computer awake and both the game and Cloudflare connector running; restarting the server clears active games.
+Rooms and scores are stored in memory; restarting or redeploying the server clears active games. With Render, your computer can be switched off. For local Cloudflare hosting, keep your computer awake and both the game and connector running.
 
 If a phone briefly loses its connection, it keeps its place and reconnects automatically. Refreshing the same tab also restores the player, prompt, submitted answer, vote, and score. Keep the original tab open: closing it or clearing browser storage loses its recovery token. The game continues to wait for disconnected players to return. Hosting logs report disconnect reasons and successful session recovery.

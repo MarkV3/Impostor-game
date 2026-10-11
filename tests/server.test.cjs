@@ -375,11 +375,27 @@ test('refreshing before joining does not invalidate the replacement session toke
   assert.equal(restored.room.players.length, 4);
 });
 
-test('configuration keeps a single local origin and validates its port', () => {
+test('configuration supports local and Render hosting and validates its port', () => {
   assert.equal(getConfig({}).port, 8080);
   assert.equal(getConfig({}).host, '127.0.0.1');
   assert.equal(getConfig({}).publicUrl, 'https://simpleapp.qzz.io');
   assert.equal(getConfig({ PORT: '9000' }).port, 9000);
+  const render = getConfig({
+    RENDER: 'true',
+    PORT: '10000',
+    RENDER_EXTERNAL_URL: 'https://impostor-prompt.onrender.com',
+  });
+  assert.equal(render.host, '0.0.0.0');
+  assert.equal(render.port, 10000);
+  assert.equal(render.publicUrl, 'https://impostor-prompt.onrender.com');
+  const overrides = getConfig({
+    RENDER: 'true',
+    HOST: '127.0.0.1',
+    PUBLIC_URL: 'https://game.example.com/',
+    RENDER_EXTERNAL_URL: 'https://impostor-prompt.onrender.com',
+  });
+  assert.equal(overrides.host, '127.0.0.1');
+  assert.equal(overrides.publicUrl, 'https://game.example.com');
   for (const PORT of ['0', '-1', '65536', 'not-a-number', '1.5']) {
     assert.throws(() => getConfig({ PORT }), /PORT must/);
   }
