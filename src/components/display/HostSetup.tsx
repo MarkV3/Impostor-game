@@ -38,6 +38,9 @@ const HostSetup: React.FC = () => {
   };
   return (
     <main className="host-setup">
+      <a className="app-picker-link" href="/apps/">
+        ← All apps · Poker practice
+      </a>
       <div className="game-brand">
         <GameMark />
         <span>
