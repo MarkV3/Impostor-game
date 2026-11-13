@@ -6,6 +6,7 @@ const CONTENT_TYPES = {
   '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.ico': 'image/x-icon',
@@ -54,14 +55,27 @@ function createStaticHandler(distDirectory) {
       sendText(req, res, 404, 'Not found.');
       return;
     }
+    if (pathname === '/poker' || pathname === '/apps') {
+      res.writeHead(308, { Location: pathname + '/', 'Cache-Control': 'no-cache' });
+      res.end();
+      return;
+    }
+
     const file = path.resolve(distDirectory, '.' + pathname);
     if (!file.startsWith(distDirectory + path.sep) && file !== distDirectory) {
       sendText(req, res, 404, 'Not found.');
       return;
     }
 
-    // Extensionless routes (including /host) belong to the browser application.
-    const asset = path.extname(pathname) ? file : indexFile;
+    // Keep independent apps separate from the party game's SPA fallback.
+    const independentApp = pathname.startsWith('/poker/') || pathname.startsWith('/apps/');
+    const asset =
+      pathname === '/poker/' || pathname === '/apps/'
+        ? path.join(file, 'index.html')
+        : independentApp || path.extname(pathname)
+          ? file
+          : indexFile;
+    const revalidate = asset === indexFile || independentApp;
     try {
       const stat = await fs.promises.stat(asset);
       if (!stat.isFile()) {
@@ -71,7 +85,7 @@ function createStaticHandler(distDirectory) {
       res.writeHead(200, {
         'Content-Type': CONTENT_TYPES[path.extname(asset)] || 'application/octet-stream',
         'Content-Length': stat.size,
-        'Cache-Control': asset === indexFile ? 'no-cache' : 'public, max-age=31536000, immutable',
+        'Cache-Control': revalidate ? 'no-cache' : 'public, max-age=31536000, immutable',
         'X-Content-Type-Options': 'nosniff',
       });
       if (req.method === 'HEAD') {

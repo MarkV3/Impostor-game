@@ -1453,3 +1453,20 @@ button:disabled {
     scroll-behavior: auto !important;
   }
 }
+
+/* App navigation is shown before joining or creating a room. */
+.app-picker-link {
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: 1rem;
+  color: #b7b1ab;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+.app-picker-link:hover {
+  color: #f3e9d6;
+}
+.app-picker-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}

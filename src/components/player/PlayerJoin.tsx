@@ -15,6 +15,9 @@ const PlayerJoin: React.FC = () => {
   return (
     <main className="phone-screen">
       <div className="phone-body">
+        <a className="app-picker-link" href="/apps/">
+          ← All apps · Poker practice
+        </a>
         <header className="phone-join-heading">
           <div className="game-brand">
             <GameMark />

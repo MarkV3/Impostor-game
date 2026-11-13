@@ -1,0 +1,2714 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hold’em Practice Desk</title>
+    <meta name="theme-color" content="#183e34" />
+    <meta
+      name="description"
+      content="Practise beginner Texas Hold’em decisions with explanations, online or offline."
+    />
+    <link rel="manifest" href="/poker/manifest.webmanifest" />
+    <link rel="icon" href="/poker/icon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        --ink: #172d2a;
+        --muted: #687771;
+        --paper: #f4f5ef;
+        --white: #fff;
+        --line: #dce3d9;
+        --green: #183e34;
+        --accent: #d3ed83;
+        --bad: #b04438;
+        --good: #17633e;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          15px/1.5 system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+      }
+      button,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      select:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #9975db;
+        outline-offset: 3px;
+      }
+      button:disabled {
+        cursor: default;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+        background: #ffffffba;
+      }
+      .wrap {
+        max-width: 1280px;
+        margin: auto;
+        padding: 22px 30px;
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .mark {
+        background: var(--green);
+        color: var(--accent);
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+        display: grid;
+        place-items: center;
+        font-size: 27px;
+      }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        font-weight: 750;
+        color: var(--muted);
+      }
+      h1 {
+        font-size: 22px;
+        line-height: 1.2;
+        margin: 3px 0;
+      }
+      h2 {
+        font-size: 21px;
+        margin: 0 0 8px;
+      }
+      h3 {
+        font-size: 15px;
+        margin: 0 0 9px;
+      }
+      p {
+        margin: 8px 0;
+      }
+      .plain {
+        background: transparent;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 9px 13px;
+        color: var(--ink);
+      }
+      .stats {
+        display: flex;
+        gap: 24px;
+        text-align: right;
+      }
+      .stats b {
+        font-size: 22px;
+        display: block;
+        line-height: 1.2;
+      }
+      .stats small {
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .intro {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: center;
+        margin: 8px 0 20px;
+      }
+      .intro p {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 4px 0;
+      }
+      .toolbar {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .tabs {
+        display: flex;
+        padding: 4px;
+        background: #e7ebe2;
+        border-radius: 12px;
+        gap: 3px;
+      }
+      .tabs button {
+        border: 0;
+        background: none;
+        border-radius: 8px;
+        padding: 9px 17px;
+        color: #52645b;
+      }
+      .tabs button.active {
+        background: var(--white);
+        box-shadow: 0 2px 4px #19382b12;
+        color: var(--ink);
+        font-weight: 700;
+      }
+      select {
+        padding: 10px 30px 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: white;
+        color: var(--ink);
+        max-width: 100%;
+      }
+      .select-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 315px;
+        gap: 22px;
+        align-items: start;
+      }
+      .panel {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .panelpad {
+        padding: 19px;
+      }
+      .table-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--line);
+        align-items: center;
+      }
+      .chip {
+        font-size: 11px;
+        border-radius: 20px;
+        padding: 5px 10px;
+        background: #eef2e8;
+        color: #4b654f;
+        font-weight: 700;
+      }
+      .table {
+        position: relative;
+        height: 400px;
+        background: radial-gradient(ellipse at 50% 55%, #285746, #133c32);
+        margin: 0;
+        overflow: hidden;
+        border-bottom: 1px solid #234b3e;
+      }
+      .table:before {
+        content: '';
+        position: absolute;
+        inset: 45px 43px 50px;
+        border: 1px solid #75a78c55;
+        border-radius: 45%;
+        box-shadow:
+          0 0 0 13px #0e30271f,
+          0 0 0 14px #81ad8d22;
+      }
+      .table:after {
+        content: 'PRACTICE / NO REAL MONEY';
+        position: absolute;
+        bottom: 16px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: #b3d7bd65;
+        letter-spacing: 2.5px;
+        font-size: 9px;
+      }
+      .seat {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        min-width: 74px;
+        z-index: 2;
+        color: #e9f3e8;
+        font-size: 10px;
+      }
+      .seat .disc {
+        width: 31px;
+        height: 31px;
+        border-radius: 50%;
+        background: #345c4d;
+        border: 1px solid #658873;
+        margin: auto auto 3px;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .seat.hero .disc {
+        background: var(--accent);
+        color: #14362b;
+        border: 2px solid white;
+      }
+      .seat.folded {
+        opacity: 0.4;
+      }
+      .seat .state {
+        font-size: 10px;
+        color: #d1e2c9;
+        white-space: nowrap;
+      }
+      .seat.hero .state {
+        color: var(--accent);
+      }
+      .dealer {
+        display: inline-grid;
+        place-items: center;
+        background: #fff;
+        color: #233e33;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        font-size: 9px;
+        margin-left: 4px;
+        font-weight: bold;
+      }
+      .center {
+        position: absolute;
+        left: 12%;
+        right: 12%;
+        top: 117px;
+        text-align: center;
+        color: #eef8e9;
+        z-index: 1;
+      }
+      .pot-label {
+        font-size: 10px;
+        color: #b9d3bc;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .pot-value {
+        font-size: 25px;
+        font-weight: 750;
+        line-height: 1.4;
+      }
+      .cards {
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+        margin: 9px 0;
+      }
+      .card {
+        background: #fcfdf8;
+        color: #19372b;
+        width: 48px;
+        height: 67px;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 5px #00150f30;
+        line-height: 1.05;
+        border: 1px solid #cbd9cd;
+        font-weight: 750;
+        font-size: 21px;
+      }
+      .card .suit {
+        font-size: 23px;
+      }
+      .card.red {
+        color: #bc4a41;
+      }
+      .card.ghost {
+        background: #204b3b55;
+        border: 1px dashed #a4c5ad70;
+        box-shadow: none;
+        color: #8cac94;
+      }
+      .seat.hero .disc,
+      .seat.hero .state {
+        display: none;
+      }
+      .hero-cards {
+        position: absolute;
+        bottom: 64px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+      }
+      .hero-cards .card {
+        width: 44px;
+        height: 60px;
+      }
+      .board-note {
+        font-size: 11px;
+        color: #c1d7bd;
+      }
+      .situation {
+        padding: 19px 22px;
+      }
+      .fact-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .fact {
+        background: #f1f4ed;
+        border-radius: 7px;
+        padding: 5px 9px;
+        font-size: 12px;
+      }
+      .prompt {
+        font-size: 18px;
+        font-weight: 730;
+        margin: 4px 0;
+      }
+      .read {
+        color: #586a5f;
+        font-size: 13px;
+        margin: 8px 0 13px;
+        padding-left: 11px;
+        border-left: 3px solid #d4e3c7;
+      }
+      .choices {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+        margin-top: 15px;
+      }
+      .choice {
+        display: flex;
+        text-align: left;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 14px;
+        background: white;
+        border: 1px solid #cfdbcc;
+        border-radius: 10px;
+        color: var(--ink);
+        font-weight: 650;
+        min-height: 52px;
+      }
+      .choice:hover:not(:disabled) {
+        border-color: #547859;
+        background: #f4f9eb;
+      }
+      .choice kbd {
+        font: 11px system-ui;
+        background: #eef1e9;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #71816e;
+      }
+      .choice.correct {
+        border-color: var(--good);
+        background: #e9f5e9;
+        color: var(--good);
+      }
+      .choice.wrong {
+        border-color: var(--bad);
+        background: #fff0ec;
+        color: var(--bad);
+      }
+      .choice:disabled:not(.correct):not(.wrong) {
+        opacity: 0.48;
+      }
+      .feedback {
+        margin-top: 16px;
+        background: #f2f7e9;
+        border: 1px solid #d5e5c5;
+        border-radius: 12px;
+        padding: 16px;
+      }
+      .feedback.bad {
+        background: #fff7f1;
+        border-color: #e9d5c5;
+      }
+      .feedback h3 {
+        font-size: 17px;
+      }
+      .feedback p {
+        font-size: 14px;
+      }
+      .feedback .rule {
+        font-weight: 700;
+      }
+      .math {
+        font:
+          13px/1.7 ui-monospace,
+          SFMono-Regular,
+          monospace;
+        background: #ffffffa8;
+        padding: 10px;
+        border-radius: 7px;
+        white-space: pre-line;
+      }
+      .foot-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .next {
+        border: 0;
+        background: var(--green);
+        color: white;
+        border-radius: 9px;
+        padding: 12px 21px;
+        font-weight: 700;
+      }
+      .subtle {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      details {
+        margin-top: 12px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 650;
+        font-size: 13px;
+      }
+      .history {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .history li {
+        position: relative;
+        padding: 7px 0 7px 13px;
+        border-left: 2px solid #e2e8dd;
+        font-size: 12px;
+      }
+      .history li.hero-log {
+        border-left-color: #85ab56;
+        background: #f6f9ef;
+      }
+      .history b {
+        font-size: 11px;
+        color: #63755f;
+        margin-right: 5px;
+      }
+      .roundtitle {
+        font-size: 10px;
+        letter-spacing: 1px;
+        color: #7d8b78;
+        text-transform: uppercase;
+        margin: 14px 0 3px;
+      }
+      .context-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 13px;
+        margin: 12px 0;
+      }
+      .context-grid small {
+        font-size: 10px;
+        color: var(--muted);
+        display: block;
+      }
+      .context-grid strong {
+        font-size: 14px;
+      }
+      .divider {
+        border-top: 1px solid var(--line);
+        margin: 16px 0;
+      }
+      .mini-progress {
+        height: 5px;
+        background: #e7eddf;
+        border-radius: 9px;
+        overflow: hidden;
+        margin: 9px 0;
+      }
+      .mini-progress i {
+        display: block;
+        height: 100%;
+        background: #89ab48;
+      }
+      .notice {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 15px 0;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .empty {
+        padding: 36px;
+        text-align: center;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: #0c241b88;
+        z-index: 10;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+      .modal-content {
+        background: var(--paper);
+        border-radius: 18px;
+        padding: 26px;
+        max-width: 780px;
+        width: 100%;
+        max-height: 85vh;
+        overflow: auto;
+      }
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .rules-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .rule-card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 15px;
+      }
+      .rule-card p,
+      .rule-card li {
+        font-size: 13px;
+      }
+      .rule-card ul {
+        padding-left: 18px;
+      }
+      .coverage-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+      }
+      a {
+        color: #2d633a;
+      }
+      .hinttext {
+        background: #f1f4eb;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 13px;
+      }
+      .checklabel {
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      footer {
+        text-align: center;
+        font-size: 11px;
+        color: #7b8776;
+        padding: 15px 0 30px;
+      }
+      @media (max-width: 950px) {
+        .wrap {
+          padding: 18px;
+        }
+        .layout {
+          grid-template-columns: minmax(0, 1fr) 270px;
+          gap: 14px;
+        }
+        .tabs button {
+          padding: 8px 12px;
+        }
+        .table:before {
+          inset: 50px 20px 55px;
+        }
+        .seat {
+          min-width: 63px;
+        }
+        .stats {
+          gap: 14px;
+        }
+        .table {
+          height: 400px;
+        }
+      }
+      @media (max-width: 740px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .sidebar .panel {
+          margin-top: 0 !important;
+        }
+        .table {
+          height: 390px;
+        }
+        .stats {
+          gap: 10px;
+        }
+        .stats b {
+          font-size: 18px;
+        }
+        h1 {
+          font-size: 18px;
+        }
+        .wrap {
+          padding: 14px;
+        }
+        .intro {
+          align-items: start;
+        }
+        .intro h2 {
+          font-size: 20px;
+        }
+        .toolbar {
+          gap: 8px;
+        }
+        .tabs {
+          width: 100%;
+          justify-content: space-between;
+        }
+        .tabs button {
+          padding: 8px 11px;
+        }
+        .select-wrap {
+          flex: 1;
+        }
+        .rules-grid {
+          grid-template-columns: 1fr;
+        }
+        .situation {
+          padding: 16px;
+        }
+        .seat .state {
+          font-size: 9px;
+        }
+        .choices {
+          gap: 8px;
+        }
+        .choice {
+          padding: 12px 10px;
+          font-size: 13px;
+        }
+      }
+      @media (max-width: 440px) {
+        .sidebar {
+          grid-template-columns: 1fr;
+        }
+        .top .plain {
+          padding: 7px;
+          font-size: 12px;
+        }
+        .mark {
+          display: none;
+        }
+        .stats {
+          gap: 9px;
+        }
+        .stats small {
+          font-size: 9px;
+        }
+        .table-head {
+          padding: 12px;
+        }
+        .table {
+          height: 385px;
+        }
+        .table:before {
+          inset: 55px 12px 63px;
+        }
+        .center {
+          left: 7%;
+          right: 7%;
+          top: 120px;
+        }
+        .card {
+          width: 41px;
+          height: 59px;
+          font-size: 20px;
+        }
+        .card .suit {
+          font-size: 20px;
+        }
+        .seat {
+          min-width: 55px;
+          font-size: 9px;
+        }
+        .seat .disc {
+          width: 26px;
+          height: 26px;
+        }
+        .cards {
+          gap: 5px;
+        }
+        .intro .plain {
+          white-space: nowrap;
+          font-size: 12px;
+        }
+        .foot-actions {
+          align-items: flex-start;
+        }
+        .checklabel {
+          font-size: 11px;
+        }
+      }
+      .app-nav {
+        max-width: 1280px;
+        margin: auto;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px 30px;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+      }
+      .app-nav a {
+        font-weight: 650;
+        text-decoration: none;
+      }
+      .app-nav .install-button {
+        margin-left: auto;
+        background: var(--green);
+        color: #fff;
+        border: 0;
+        border-radius: 8px;
+        padding: 8px 12px;
+      }
+      .app-nav small {
+        color: var(--muted);
+        flex-basis: 100%;
+      }
+      .app-nav [hidden] {
+        display: none !important;
+      }
+      @media (max-width: 740px) {
+        .app-nav {
+          padding: 10px 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="app-nav" aria-label="Switch apps">
+      <a href="/apps/">← All apps</a><span aria-hidden="true">·</span><a href="/">Impostor game</a
+      ><button class="install-button" id="installTrainer">Install trainer</button
+      ><button class="plain" id="updateTrainer" hidden>Update available · reload</button
+      ><small id="offlineStatus" role="status">Preparing offline practice…</small>
+    </nav>
+    <header>
+      <div class="wrap top">
+        <div class="brand">
+          <div class="mark">♠</div>
+          <div>
+            <div class="eyebrow">Learn the decision</div>
+            <h1>Hold’em Practice Desk</h1>
+          </div>
+        </div>
+        <div class="stats">
+          <div><b id="accuracy">—</b><small>ACCURACY</small></div>
+          <div><b id="streak">0</b><small>STREAK</small></div>
+          <div><b id="attempts">0</b><small>ANSWERED</small></div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <div class="intro">
+        <div>
+          <div class="eyebrow">A little structure. A better next move.</div>
+          <h2>Your seat. Your decision.</h2>
+          <p>Designed situations, shuffled fairly. An explanation after every answer.</p>
+        </div>
+        <button class="plain" id="rulesBtn">Quick rules ↗</button>
+      </div>
+      <div class="toolbar">
+        <nav class="tabs" aria-label="Betting stage">
+          <button data-stage="mix" class="active">Mix it up</button
+          ><button data-stage="pre">Pre-flop</button><button data-stage="flop">Flop</button
+          ><button data-stage="turn">Turn</button><button data-stage="river">River</button>
+        </nav>
+        <label class="select-wrap"
+          >Focus
+          <select id="focus">
+            <option value="all">All situations</option>
+            <option value="position">Position & starting hands</option>
+            <option value="pressure">Raises & all-ins</option>
+            <option value="made">Completed hands</option>
+            <option value="draw">Draws & prices</option>
+            <option value="danger">Dangerous boards</option>
+            <option value="missed">Review mistakes</option>
+          </select></label
+        ><label class="select-wrap"
+          >Units
+          <select id="units">
+            <option value="money">€ · blinds 0.05 / 0.10</option>
+            <option value="bb">Big blinds</option>
+          </select></label
+        >
+      </div>
+      <div class="layout">
+        <section class="panel" id="mainPanel">
+          <div class="table-head">
+            <span class="chip" id="stageLabel">Pre-flop</span
+            ><span class="subtle" id="caseLabel"></span>
+          </div>
+          <div class="table" id="table" aria-label="Poker table"></div>
+          <div class="situation">
+            <div class="fact-row" id="facts"></div>
+            <div class="prompt" id="prompt">What is your next move?</div>
+            <p class="read" id="read"></p>
+            <details id="hint">
+              <summary>Show a small hint</summary>
+              <p class="hinttext" id="hintText"></p>
+            </details>
+            <div class="choices" id="choices"></div>
+            <section id="feedback" class="hidden" aria-live="polite"></section>
+            <div class="foot-actions">
+              <label class="checklabel"
+                ><input type="checkbox" id="showHand" checked /> Show my hand’s name</label
+              ><button class="next" id="nextBtn">Skip situation →</button>
+            </div>
+          </div>
+        </section>
+        <aside class="sidebar">
+          <section class="panel panelpad">
+            <div class="eyebrow">The situation</div>
+            <div class="context-grid" id="context"></div>
+            <div class="divider"></div>
+            <h3>Action before your decision</h3>
+            <div id="history"></div>
+          </section>
+          <section class="panel panelpad" style="margin-top: 16px">
+            <div class="eyebrow">Deliberate practice</div>
+            <p style="font-size: 13px">
+              Cases rotate without repeating within each stage. Missed lessons come back in review.
+            </p>
+            <div class="mini-progress"><i id="progressBar"></i></div>
+            <div class="subtle" id="progressText"></div>
+            <button class="plain" style="width: 100%; margin-top: 12px" id="coverageBtn">
+              See lesson coverage
+            </button>
+            <details>
+              <summary>About this trainer</summary>
+              <p class="notice">
+                A practice tool for our conservative beginner playbook, not a poker solver. The
+                supplied opponent reads are part of each question. It covers the playbook’s decision
+                families, not every possible poker situation. 4–9 players, fixed blinds, normally
+                75–150 BB. No real money, accounts, or network needed. Progress stays in this
+                browser when browser storage is available.
+              </p>
+              <button class="plain" id="resetBtn">Reset progress</button>
+            </details>
+          </section>
+        </aside>
+      </div>
+      <footer>Keyboard: 1–5 choose an answer · Enter next · H hint. Money is fictional.</footer>
+    </main>
+    <div
+      id="modal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-content">
+        <div class="modal-head">
+          <h2 id="modalTitle">Quick rules</h2>
+          <button class="plain" id="closeModal">Close ✕</button>
+        </div>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+    <script>
+      'use strict';
+      const $ = (id) => document.getElementById(id),
+        RANKS = '23456789TJQKA',
+        SUITS = 'shdc',
+        SYMBOL = { s: '♠', h: '♥', d: '♦', c: '♣' },
+        STAGE = { pre: 'Pre-flop', flop: 'Flop', turn: 'Turn', river: 'River' };
+      const choose = (a) => a[Math.floor(Math.random() * a.length)];
+      const shuffle = (a) => {
+        a = [...a];
+        for (let i = a.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      };
+      const split = (s) => s.trim().split(/\s+/).filter(Boolean);
+      function handFrom(code) {
+        if (code[0] === code[1]) return [code[0] + 's', code[1] + 'h'];
+        return [code[0] + 's', code[1] + (code.endsWith('s') ? 's' : 'h')];
+      }
+      function handCode(h) {
+        let [a, b] = [...h].sort((x, y) => RANKS.indexOf(y[0]) - RANKS.indexOf(x[0]));
+        return a[0] + b[0] + (a[0] === b[0] ? '' : a[1] === b[1] ? 's' : 'o');
+      }
+      function tier(h) {
+        let c = handCode(h),
+          r = c.slice(0, 2),
+          s = c.endsWith('s');
+        if (['AA', 'KK', 'QQ', 'AK'].includes(r)) return 'A';
+        if (['JJ', 'TT', '99', '88', 'AQ'].includes(r) || (s && ['AJ', 'AT', 'KQ'].includes(r)))
+          return 'B';
+        if (
+          ['77', '66', '55', '44', '33', '22', 'AJ', 'AT', 'KQ', 'KJ', 'QJ'].includes(r) ||
+          (s &&
+            [
+              'A9',
+              'A8',
+              'A7',
+              'A6',
+              'A5',
+              'A4',
+              'A3',
+              'A2',
+              'KJ',
+              'KT',
+              'QJ',
+              'QT',
+              'JT',
+              'T9',
+              '98',
+            ].includes(r))
+        )
+          return 'C';
+        return 'D';
+      }
+      function positions(n) {
+        return {
+          4: ['CO', 'BTN', 'SB', 'BB'],
+          5: ['HJ', 'CO', 'BTN', 'SB', 'BB'],
+          6: ['UTG', 'HJ', 'CO', 'BTN', 'SB', 'BB'],
+          7: ['UTG', 'UTG+1', 'HJ', 'CO', 'BTN', 'SB', 'BB'],
+          8: ['UTG', 'UTG+1', 'MP', 'HJ', 'CO', 'BTN', 'SB', 'BB'],
+          9: ['UTG', 'UTG+1', 'MP', 'MP+1', 'HJ', 'CO', 'BTN', 'SB', 'BB'],
+        }[n];
+      }
+      function late(pos, n) {
+        return pos === 'BTN' || (pos === 'CO' && n >= 5);
+      }
+      function cmp(a, b) {
+        for (let i = 0; i < Math.max(a.length, b.length); i++) {
+          let d = (a[i] || 0) - (b[i] || 0);
+          if (d) return d;
+        }
+        return 0;
+      }
+      function five(cards) {
+        let rs = cards.map((c) => RANKS.indexOf(c[0]) + 2),
+          sorted = [...rs].sort((a, b) => b - a),
+          count = {};
+        rs.forEach((r) => (count[r] = (count[r] || 0) + 1));
+        let groups = Object.entries(count)
+            .map(([r, n]) => [n, +r])
+            .sort((a, b) => b[0] - a[0] || b[1] - a[1]),
+          u = [...new Set(sorted)];
+        if (u[0] === 14) u.push(1);
+        let st = 0;
+        for (let i = 0; i <= u.length - 5; i++)
+          if (u[i] - u[i + 4] === 4) {
+            st = u[i];
+            break;
+          }
+        let fl = cards.every((c) => c[1] === cards[0][1]);
+        if (st && fl) return [8, st];
+        if (groups[0][0] === 4) return [7, groups[0][1], groups[1][1]];
+        if (groups[0][0] === 3 && groups[1][0] === 2) return [6, groups[0][1], groups[1][1]];
+        if (fl) return [5, ...sorted];
+        if (st) return [4, st];
+        if (groups[0][0] === 3) return [3, groups[0][1], ...groups.slice(1).map((x) => x[1])];
+        if (groups[0][0] === 2 && groups[1][0] === 2) return [2, ...groups.map((x) => x[1])];
+        if (groups[0][0] === 2) return [1, groups[0][1], ...groups.slice(1).map((x) => x[1])];
+        return [0, ...sorted];
+      }
+      function evaluate(cards) {
+        if (cards.length < 5) return null;
+        let best = null;
+        for (let a = 0; a < cards.length - 4; a++)
+          for (let b = a + 1; b < cards.length - 3; b++)
+            for (let c = b + 1; c < cards.length - 2; c++)
+              for (let d = c + 1; d < cards.length - 1; d++)
+                for (let e = d + 1; e < cards.length; e++) {
+                  let v = five([cards[a], cards[b], cards[c], cards[d], cards[e]]);
+                  if (!best || cmp(v, best) > 0) best = v;
+                }
+        return best;
+      }
+      const HANDNAMES = [
+        'High card',
+        'One pair',
+        'Two pairs',
+        'Three of a kind',
+        'Straight',
+        'Flush',
+        'Full house',
+        'Four of a kind',
+        'Straight flush',
+      ];
+      function handName(s) {
+        if (s.stage === 'pre')
+          return `${s.hand[0][0] === s.hand[1][0] ? 'Pair of ' + ({ A: 'aces', K: 'kings', Q: 'queens', J: 'jacks', T: 'tens' }[s.hand[0][0]] || s.hand[0][0] + 's') : s.hand.map((c) => (c[0] === 'T' ? '10' : c[0])).join('–') + (s.hand[0][1] === s.hand[1][1] ? ' suited' : '')} · Group ${tier(s.hand) === 'D' ? 'outside the list' : tier(s.hand)}`;
+        let v = evaluate([...s.hand, ...s.board]);
+        return v[0] === 8 && v[1] === 14 ? 'Royal flush' : HANDNAMES[v[0]];
+      }
+      const families = [];
+      function family(id, stage, tag, label, make) {
+        families.push({ id, stage, tag, label, make });
+      }
+      const pools = {
+        A: ['AA', 'KK', 'QQ', 'AKs', 'AKo'],
+        B: ['JJ', 'TT', '99', '88', 'AQs', 'AQo', 'AJs', 'ATs', 'KQs'],
+        C: [
+          '77',
+          '66',
+          '55',
+          '44',
+          '33',
+          '22',
+          'AJo',
+          'ATo',
+          'KQo',
+          'KJo',
+          'QJo',
+          'A9s',
+          'A5s',
+          'A2s',
+          'KJs',
+          'KTs',
+          'QJs',
+          'QTs',
+          'JTs',
+          'T9s',
+          '98s',
+        ],
+        D: ['A9o', 'K8o', 'Q7s', 'J4o', 'T6o', '92o', '72s', '86o', '54s'],
+      };
+      // All 169 starting-hand classes are eligible, grouped by the same chart.
+      Object.keys(pools).forEach((k) => (pools[k] = []));
+      for (let hi = 0; hi < 13; hi++)
+        for (let lo = 0; lo <= hi; lo++)
+          for (let suffix of hi === lo ? [''] : ['s', 'o']) {
+            let code = RANKS[hi] + RANKS[lo] + suffix;
+            pools[tier(handFrom(code))].push(code);
+          }
+      function preBase(n, pos, code) {
+        return {
+          stage: 'pre',
+          n,
+          hero: pos,
+          hand: handFrom(code),
+          board: [],
+          stack: 100,
+          oppStack: 100,
+          events: [],
+          read: 'No special opponent read. Use the beginner chart, not a guess about their cards.',
+          rule: '',
+          why: '',
+          hint: '',
+          current: 0,
+          own: pos === 'SB' ? 0.5 : pos === 'BB' ? 1 : 0,
+        };
+      }
+      function event(s, round, pos, type, amount) {
+        s.events.push({ round, pos, type, amount });
+      }
+      function preFoldBefore(s, exceptions = {}) {
+        for (let pos of positions(s.n)) {
+          if (pos === s.hero) break;
+          let x = exceptions[pos];
+          event(s, 'pre', pos, x?.[0] || 'fold', x?.[1]);
+        }
+      }
+      function finishPre(s) {
+        let amounts = { SB: 0.5, BB: 1 };
+        for (let e of s.events) if (e.amount !== undefined) amounts[e.pos] = e.amount;
+        s.pot = Object.values(amounts).reduce((a, b) => a + b, 0);
+        s.current = Math.max(...Object.values(amounts));
+        s.own = amounts[s.hero] || 0;
+        s.call = s.current - s.own;
+        return s;
+      }
+      function addPre(id, tag, label, make) {
+        family(id, 'pre', tag, label, () => finishPre(make()));
+      }
+      for (let t of ['A', 'B', 'C', 'D'])
+        for (let seat of ['early', 'late', 'small']) {
+          addPre('open-' + t + '-' + seat, 'position', 'First in · ' + t + ' · ' + seat, () => {
+            let n = choose([5, 6, 8, 9]),
+              pos =
+                seat === 'early' ? positions(n)[0] : seat === 'late' ? choose(['BTN', 'CO']) : 'SB',
+              s = preBase(n, pos, choose(pools[t]));
+            preFoldBefore(s);
+            let play = t === 'A' || t === 'B' || (t === 'C' && seat !== 'early');
+            s.answer = play ? 'raise' : 'fold';
+            s.size = 3;
+            s.rule = play
+              ? 'First in: raise your permitted starting hands to 3 BB.'
+              : 'Outside your seat’s opening list: fold.';
+            s.why =
+              t === 'C'
+                ? 'Group C is reserved for late seats, or the small blind when everyone folded.'
+                : 'Groups A and B can open from any non-blind seat; unlisted hands are folded.';
+            s.hint = 'Find your starting-hand group, then check your seat.';
+            return s;
+          });
+        }
+      for (let pos of ['CO', 'BTN'])
+        addPre('four-' + pos, 'position', 'Four players · ' + pos, () => {
+          let s = preBase(4, pos, choose(pools.C));
+          preFoldBefore(s);
+          s.answer = pos === 'BTN' ? 'raise' : 'fold';
+          s.size = 3;
+          s.rule = 'At a four-player table, only the button uses the late-seat list.';
+          s.why =
+            'The other non-blind seat uses Groups A and B. This is the chart’s cautious four-player default.';
+          s.hint = 'At four players, is your seat actually late under this chart?';
+          return s;
+        });
+      for (let t of ['A', 'B', 'C', 'D'])
+        addPre('limpers-' + t, 'position', 'Unraised callers · ' + t, () => {
+          let s = preBase(choose([6, 8, 9]), 'BTN', choose(pools[t])),
+            ps = positions(s.n),
+            count = choose([1, 2, 3]),
+            ex = {};
+          ps.slice(0, count).forEach((p) => (ex[p] = ['call', 1]));
+          preFoldBefore(s, ex);
+          s.answer = ['A', 'B'].includes(t) ? 'raise' : 'fold';
+          s.size = 3 + count;
+          s.rule = 'After 1 BB callers: raise Groups A/B to 3 BB + 1 BB per caller.';
+          s.why = `There are ${count} callers. The default raise is ${3 + count} BB. Group C and unlisted hands fold in this simplified plan.`;
+          s.hint = 'The rule changes once someone has entered by calling.';
+          return s;
+        });
+      for (let t of ['C', 'D'])
+        addPre('bb-free-' + t, 'position', 'Big blind · free check', () => {
+          let s = preBase(6, 'BB', choose(pools[t]));
+          preFoldBefore(s, { BTN: ['call', 1], SB: ['call', 1] });
+          s.answer = 'check';
+          s.rule = 'When nobody raised, the big blind can check for free.';
+          s.why = 'You already paid the big blind. Don’t fold when staying costs nothing.';
+          s.hint = 'How much extra must you pay?';
+          return s;
+        });
+      for (let seat of ['late', 'blind'])
+        for (let callers of [0, 1])
+          addPre('reraise-A-' + seat + callers, 'pressure', 'Re-raise sizing · ' + seat, () => {
+            let s = preBase(6, seat === 'late' ? 'BTN' : 'BB', choose(pools.A)),
+              ex = { UTG: ['raise', 3] };
+            if (callers) ex.HJ = ['call', 3];
+            preFoldBefore(s, ex);
+            s.answer = 'raise';
+            s.size = (seat === 'late' ? 3 : 4) * 3 + callers * 3;
+            s.rule =
+              'Group A re-raises: 3× outside blinds, 4× from a blind, plus one original raise per caller.';
+            s.why = `The first raise is 3 BB${callers ? ', with one caller' : ''}. Your raise-to size is ${s.size} BB.`;
+            s.hint = 'Use the first raiser’s total, not just their extra chips.';
+            return s;
+          });
+      for (let pos of ['BTN', 'CO', 'UTG+1', 'SB', 'BB'])
+        addPre('call-B-' + pos, 'pressure', 'Facing one raise · ' + pos, () => {
+          let s = preBase(9, pos, choose(pools.B));
+          preFoldBefore(s, { UTG: ['raise', choose([2, 3, 4])] });
+          s.answer = late(pos, 9) || pos === 'BB' ? 'call' : 'fold';
+          s.rule =
+            'Group B calls a normal 2–4 BB first raise only from a late seat or the big blind.';
+          s.why =
+            'This avoids difficult calls from early seats and the small blind. It is deliberately conservative.';
+          s.hint = 'A good opening hand is not an automatic call against a raise.';
+          return s;
+        });
+      for (let t of ['C', 'D', 'B'])
+        addPre('raised-fold-' + t, 'pressure', 'Fold to raised price · ' + t, () => {
+          let s = preBase(6, 'BTN', choose(pools[t]));
+          preFoldBefore(s, { UTG: ['raise', t === 'B' ? 8 : 3] });
+          s.answer = 'fold';
+          s.rule =
+            t === 'B'
+              ? 'Against a first raise above 4 BB, use only Group A.'
+              : 'Groups C and unlisted hands fold to a raise.';
+          s.why =
+            'The cheap-entry list is not a licence to pay a raised price. Follow the tighter response chart.';
+          s.hint = 'Check both the size and your group.';
+          return s;
+        });
+      for (let t of ['AAKK', 'QQAK', 'B'])
+        for (let size of [10, 18])
+          addPre('raised-after-open-' + t + size, 'pressure', 'Your open gets re-raised', () => {
+            let code = choose(
+                t === 'AAKK' ? ['AA', 'KK'] : t === 'QQAK' ? ['QQ', 'AKs', 'AKo'] : pools.B,
+              ),
+              s = preBase(6, 'BTN', code);
+            preFoldBefore(s);
+            event(s, 'pre', 'BTN', 'raise', 3);
+            event(s, 'pre', 'SB', 'fold');
+            event(s, 'pre', 'BB', 'raise', size);
+            s.answer = t === 'AAKK' ? 'allin' : t === 'QQAK' && size <= 12 ? 'call' : 'fold';
+            s.rule =
+              'After your open: AA/KK can commit; QQ/AK call a first re-raise to at most 12 BB; other hands fold.';
+            s.why = `The opponent’s total is ${size} BB. The QQ/AK limit is the total raise-to amount, not the additional call.`;
+            s.hint = 'Was this the first re-raise? Is their total at most 12 BB?';
+            return s;
+          });
+      for (let t of ['AAKK', 'QQAK'])
+        addPre('fourbet-' + t, 'pressure', 'Opponent raises again', () => {
+          let s = preBase(6, 'BTN', choose(t === 'AAKK' ? ['AA', 'KK'] : ['QQ', 'AKs']));
+          preFoldBefore(s, { UTG: ['raise', 3] });
+          event(s, 'pre', 'BTN', 'raise', 9);
+          event(s, 'pre', 'SB', 'fold');
+          event(s, 'pre', 'BB', 'fold');
+          event(s, 'pre', 'UTG', 'raise', 25);
+          s.answer = t === 'AAKK' ? 'allin' : 'fold';
+          s.rule = 'If you already re-raised and they raise again, continue only with AA/KK.';
+          s.why =
+            'This is the playbook’s cautious commitment rule for normal-sized stacks, not a universal poker law.';
+          s.hint = 'You already made a re-raise. Their next raise is a different situation.';
+          return s;
+        });
+      for (let t of ['AAKK', 'QQAK', 'B'])
+        addPre('allin-' + t, 'pressure', 'Large pre-flop all-in', () => {
+          let s = preBase(
+            6,
+            'BTN',
+            choose(t === 'AAKK' ? ['AA', 'KK'] : t === 'QQAK' ? ['QQ', 'AKs'] : pools.B),
+          );
+          preFoldBefore(s, { UTG: ['allin', 100] });
+          s.answer = t === 'AAKK' ? 'call' : 'fold';
+          s.rule =
+            'Against a roughly 100 BB pre-flop all-in, the beginner default calls only AA/KK.';
+          s.why =
+            'This lesson is about a full normal stack, not a 5–15 BB short-stack shove. QQ/AK are not automatic calls here.';
+          s.hint = 'Look at the amount at risk: this is 100 BB, not a tiny remaining stack.';
+          return s;
+        });
+      // Purpose-built post-flop fixtures. Every card layout is explicit and validated.
+      const fixtures = [];
+      function post(id, stage, tag, label, hand, board, answer, rule, why, opt = {}) {
+        fixtures.push({
+          id,
+          stage,
+          tag,
+          label,
+          hand: split(hand),
+          board: split(board),
+          answer,
+          rule,
+          why,
+          ...opt,
+        });
+      }
+      post(
+        'full-flop',
+        'flop',
+        'made',
+        'Full house on the flop',
+        'As Kd',
+        'Ah Ad Kc',
+        'bet',
+        'Full house: build the pot, starting around two-thirds pot.',
+        'You have aces full of kings, the best hand possible on this flop. No outs calculation is needed.',
+        { cat: 6 },
+      );
+      post(
+        'full-flop-raise',
+        'flop',
+        'made',
+        'Full house facing a bet',
+        'As Kd',
+        'Ah Ad Kc',
+        'raise',
+        'An exceptionally strong full house can raise for payment.',
+        'This is the best possible hand on this flop. Raise to about three times the opponent’s total bet.',
+        { facing: 6, cat: 6 },
+      );
+      post(
+        'quads-turn',
+        'turn',
+        'made',
+        'Four of a kind on the turn',
+        '7s 7d',
+        'Kc 7h 2s 7c',
+        'bet',
+        'Four of a kind: bet for payment, around two-thirds pot.',
+        'All four sevens are yours. You have the best possible hand now. Don’t check automatically just because it is powerful.',
+        { cat: 7 },
+      );
+      post(
+        'quads-turn-raise',
+        'turn',
+        'made',
+        'Four of a kind facing a bet',
+        '7s 7d',
+        'Kc 7h 2s 7c',
+        'raise',
+        'With the best possible hand, raise an opponent’s bet.',
+        'You are not paying to improve. Your aim is to get more chips in against a weaker hand.',
+        { facing: 12, cat: 7, pot: 24 },
+      );
+      post(
+        'quads-allin',
+        'turn',
+        'pressure',
+        'Best hand facing all-in',
+        '7s 7d',
+        'Kc 7h 2s 7c',
+        'call',
+        'With the best possible hand on the turn, accept the all-in.',
+        'You hold all four sevens. There is no hand that beats you on this turn. A possible unlucky river is not a reason to fold.',
+        { facing: 70, pot: 24, oppStack: 70, cat: 7 },
+      );
+      post(
+        'royal-river',
+        'river',
+        'made',
+        'Royal flush',
+        'As Ks',
+        'Qs Js Ts 4d 2c',
+        'bet',
+        'With a royal flush, bet for payment.',
+        'You have the highest possible hand. Start around two-thirds pot; the opponent read does not justify a giant shove.',
+        { cat: 8 },
+      );
+      post(
+        'sf-flop',
+        'flop',
+        'made',
+        'Straight flush on the flop',
+        '9s 8s',
+        '7s 6s 5s',
+        'bet',
+        'Straight flush: build the pot with a normal strong-hand bet.',
+        'Your nine-high straight flush is the best possible hand on this flop.',
+        { cat: 8 },
+      );
+      post(
+        'sf-river-call',
+        'river',
+        'pressure',
+        'Straight flush facing all-in',
+        '9s 8s',
+        '7s 6s 5s 2d Kc',
+        'call',
+        'Accept an all-in with the best possible hand.',
+        'No higher straight flush is possible on these shared cards.',
+        { facing: 65, oppStack: 65, cat: 8 },
+      );
+      post(
+        'full-turn',
+        'turn',
+        'made',
+        'Full house on the turn',
+        'Qs Qh',
+        'Qd 8c 8s 2d',
+        'bet',
+        'A strong full house bets around two-thirds pot.',
+        'You have queens full of eights. Weaker hands can pay you. Reassess if the opponent makes a huge raise.',
+        { cat: 6 },
+      );
+      post(
+        'full-river',
+        'river',
+        'made',
+        'Full house on the river',
+        'Ks Kh',
+        'Kd 9c 9s 4d 2c',
+        'raise',
+        'Raise for payment when your full house is exceptionally strong.',
+        'Kings full of nines beats all other full houses on this board. Only the very specific pair of remaining nines could beat you.',
+        {
+          facing: 10,
+          pot: 30,
+          cat: 6,
+          read: 'The opponent bets many weaker hands here and calls raises with trips and smaller full houses.',
+        },
+      );
+      post(
+        'flush-flop',
+        'flop',
+        'made',
+        'High flush on the flop',
+        'As Js',
+        '9s 6s 2s',
+        'bet',
+        'A strong flush bets around two-thirds pot.',
+        'You have the highest flush. On this flop, no full house or straight flush is possible.',
+        { cat: 5 },
+      );
+      post(
+        'flush-turn',
+        'turn',
+        'made',
+        'High flush on the turn',
+        'Ah Jh',
+        'Kh 8h 3c 2h',
+        'bet',
+        'Bet a strong completed flush for payment.',
+        'You do not need another heart. A hand you already beat can call you.',
+        { cat: 5 },
+      );
+      post(
+        'flush-river',
+        'river',
+        'made',
+        'High flush facing a bet',
+        'As Js',
+        'Ks 8s 4d 2s 7c',
+        'raise',
+        'Raise a strong flush when worse flushes can pay.',
+        'You have the highest flush; there is no paired board or possible straight flush.',
+        {
+          facing: 10,
+          pot: 30,
+          cat: 5,
+          read: 'The opponent bets and calls raises with lower flushes.',
+        },
+      );
+      post(
+        'straight-flop',
+        'flop',
+        'made',
+        'Straight on the flop',
+        '9s 8h',
+        '7d 6c 5s',
+        'bet',
+        'A completed straight starts around two-thirds pot.',
+        'You have the highest straight possible on this flop. Worse hands and draws can call.',
+        { cat: 4 },
+      );
+      post(
+        'straight-turn',
+        'turn',
+        'made',
+        'Straight on the turn',
+        'As Qh',
+        'Kd Jc 4s Td',
+        'bet',
+        'Bet your completed straight for payment.',
+        'Ace-high straight. No flush or full house is currently possible.',
+        { cat: 4 },
+      );
+      post(
+        'straight-river',
+        'river',
+        'made',
+        'Straight facing a bet',
+        'As Qh',
+        'Kd Jc 4s Td 2c',
+        'raise',
+        'Raise a strongest straight when worse hands will pay.',
+        'You have the highest straight. The read says weaker hands can call a raise.',
+        {
+          facing: 8,
+          pot: 24,
+          cat: 4,
+          read: 'Opponent bets two pairs and calls sensible raises with them.',
+        },
+      );
+      post(
+        'set-flop',
+        'flop',
+        'made',
+        'Three of a kind from a pocket pair',
+        '8s 8h',
+        'Kd 8c 3s',
+        'bet',
+        'Three of a kind on a safe board: bet around two-thirds pot.',
+        'A king, weaker pairs, or draws may pay you. You do not need to improve first.',
+        { cat: 3 },
+      );
+      post(
+        'set-raise',
+        'flop',
+        'made',
+        'Three of a kind against a bet',
+        '8s 8h',
+        'Kd 8c 3s',
+        'raise',
+        'Raise strong three of a kind on a board with few ways to beat you.',
+        'No straight or flush is possible yet. A pair of kings is possible, but that alone is not a reason to fold.',
+        { facing: 6, cat: 3 },
+      );
+      post(
+        'trips-turn',
+        'turn',
+        'made',
+        'Three of a kind using a paired board',
+        'As Qh',
+        'Qd Qc 7s 2d',
+        'bet',
+        'Strong trips: bet for payment on this quiet board.',
+        'You have three queens with an ace alongside them. Weaker queens and pairs can call.',
+        { cat: 3 },
+      );
+      post(
+        'twopair-flop',
+        'flop',
+        'made',
+        'Two pairs on the flop',
+        'As Jh',
+        'Ad Jc 4s',
+        'bet',
+        'Two pairs: use the strong-hand default of about two-thirds pot.',
+        'You paired both your cards. Weaker aces and draws can pay you.',
+        { cat: 2 },
+      );
+      post(
+        'twopair-turn-call',
+        'turn',
+        'made',
+        'Two pairs facing an ordinary bet',
+        'As Jh',
+        'Ad Jc 4s 2d',
+        'call',
+        'Two pairs usually continue against an ordinary bet.',
+        'You have a good completed hand. Calling keeps you in without automatically making a huge pot.',
+        { facing: 10, pot: 24, cat: 2 },
+      );
+      post(
+        'top-flop',
+        'flop',
+        'made',
+        'Good pair on the flop',
+        'As Qh',
+        'Qd 7c 2s',
+        'bet',
+        'Good pair: bet about half pot when worse hands can call.',
+        'QJ, QT, and weaker pairs can pay you. You are not drawing to a queen—you already have a useful pair.',
+        { cat: 1 },
+      );
+      post(
+        'overpair-flop',
+        'flop',
+        'made',
+        'Pair higher than the shared cards',
+        'Ks Kh',
+        'Jd 7c 2s',
+        'bet',
+        'A pair higher than every shared card is a good pair here.',
+        'Use about half pot. You want weaker pairs to call, not just stronger hands.',
+        { cat: 1 },
+      );
+      post(
+        'top-turn-call',
+        'turn',
+        'made',
+        'Good pair against a modest bet',
+        'As Qh',
+        'Qd 7c 2s 3d',
+        'call',
+        'A good pair can call a modest bet from one opponent.',
+        'The turn did not introduce a clear new threat. The read supplies weaker hands this opponent bets.',
+        {
+          facing: 8,
+          pot: 24,
+          cat: 1,
+          read: 'Opponent bets QJ and QT as well as stronger hands. One opponent remains.',
+        },
+      );
+      post(
+        'top-river-value',
+        'river',
+        'made',
+        'Good pair on the river',
+        'As Qh',
+        'Qd 7c 2s 3d 9c',
+        'bet',
+        'Bet a good pair when the opponent will call with worse.',
+        'QJ and QT can call. Having no cards left to improve does not mean your chance of winning is zero.',
+        { cat: 1, read: 'Opponent calls half-pot bets with QJ, QT, and sometimes a smaller pair.' },
+      );
+      post(
+        'top-river-call',
+        'river',
+        'made',
+        'Good pair facing a small river bet',
+        'As Qh',
+        'Qd 7c 2s 3d 9c',
+        'call',
+        'Call a small river bet when this opponent bets plausible weaker hands.',
+        'You can beat QJ and QT now. This is a completed-hand judgement, not an outs calculation.',
+        {
+          facing: 6,
+          pot: 24,
+          cat: 1,
+          read: 'Opponent frequently bets QJ and QT for this small size.',
+        },
+      );
+      for (let stage of ['flop', 'turn', 'river']) {
+        let extra = stage === 'flop' ? '' : stage === 'turn' ? ' 3d' : ' 3d 6c';
+        post(
+          'weak-' + stage,
+          stage,
+          'made',
+          'Weak pair · ' + stage,
+          '9s 9h',
+          'Kd Jc 4s' + extra,
+          'check',
+          'Weak pair: check instead of building the pot.',
+          'You have a pair, but kings and jacks make better pairs. No opponent read supports a bluff.',
+          { cat: 1 },
+        );
+        post(
+          'nothing-' + stage,
+          stage,
+          'made',
+          'Missed hand · ' + stage,
+          'As Qh',
+          'Jd 8c 4s' + extra,
+          'check',
+          'With nothing useful and no worthwhile draw, check.',
+          'You do not have to keep betting because you started with good cards.',
+          { cat: 0 },
+        );
+        post(
+          'nothing-bet-' + stage,
+          stage,
+          'made',
+          'Missed hand facing a bet',
+          'As Qh',
+          'Jd 8c 4s' + extra,
+          'fold',
+          'With no useful hand or worthwhile draw, fold to a bet.',
+          'Do not pay just to see what the opponent has. Pairing an ace or queen is not guaranteed to rescue you.',
+          { facing: 12, pot: 24, cat: 0 },
+        );
+      }
+      post(
+        'missed-river',
+        'river',
+        'draw',
+        'Missed flush draw on the river',
+        'As Js',
+        'Kh 8s 3s 2d 7c',
+        'fold',
+        'A missed draw has no more cards to rescue it.',
+        'The river is already dealt. Skip the rescue bluff and fold to the bet.',
+        { facing: 10, pot: 24, cat: 0 },
+      );
+      post(
+        'missed-river-check',
+        'river',
+        'draw',
+        'Missed draw gets a free check',
+        'As Js',
+        'Kh 8s 3s 2d 7c',
+        'check',
+        'Check a missed draw when nobody has bet.',
+        'There are no more cards coming. Our beginner plan does not attempt a rescue bluff.',
+        { cat: 0 },
+      );
+      post(
+        'pair-raised',
+        'flop',
+        'pressure',
+        'One pair gets raised',
+        'As Qh',
+        'Qd 7c 2s',
+        'fold',
+        'When your good pair is raised, fold by default while learning.',
+        'A raise is different from a call. This conservative rule avoids expensive guesses with one pair.',
+        {
+          own: 6,
+          facing: 24,
+          pot: 12,
+          cat: 1,
+          read: 'Opponent mostly checks and calls. They just raised your half-pot bet.',
+        },
+      );
+      post(
+        'pair-bigbet',
+        'turn',
+        'pressure',
+        'One pair faces a large bet',
+        'As Qh',
+        'Qd 7c 2s 3d',
+        'fold',
+        'With one pair, fold to bets larger than about two-thirds pot by default.',
+        'This is a full-pot bet. You have no read showing frequent weak bets or bluffs.',
+        { facing: 24, pot: 24, cat: 1 },
+      );
+      post(
+        'multiway-raise',
+        'flop',
+        'pressure',
+        'A bet and a raise ahead',
+        'As Qh',
+        'Qd 7c 2s',
+        'fold',
+        'With one pair, fold when one player bets and another raises ahead of you.',
+        'You are facing strength from two opponents, not just a single modest bet.',
+        { multi: true, facing: 24, pot: 12, cat: 1 },
+      );
+      post(
+        'multiway-value',
+        'flop',
+        'made',
+        'Good pair against several players',
+        'As Qh',
+        'Qd 7c 2s',
+        'bet',
+        'Bet about half pot when weaker hands can call, even with several opponents.',
+        'The supplied read supports a value bet. Several opponents is a reason for care, not an automatic check.',
+        {
+          multi: true,
+          cat: 1,
+          read: 'Both opponents call modest bets with weaker queens and small pairs. Both checked.',
+        },
+      );
+      post(
+        'overpair-ace',
+        'turn',
+        'danger',
+        'A higher shared card arrives',
+        'Ks Kh',
+        'Jd 7c 2s Ah',
+        'check',
+        'An ace changes the value of pocket kings. Check this worrying turn.',
+        'Kings are no longer higher than every shared card. The read gives little reason to build a pot.',
+        {
+          cat: 1,
+          read: 'Opponent often calls the flop with an ace and folds most weaker pairs to another bet.',
+        },
+      );
+      post(
+        'straight-fourflush',
+        'river',
+        'danger',
+        'Straight on a four-heart board',
+        'As Qd',
+        'Kh Jh Th 4h 2c',
+        'fold',
+        'A completed straight is not automatically strong on this board.',
+        'Any heart makes a flush that beats your straight. You have no heart and face a large bet.',
+        {
+          facing: 24,
+          pot: 24,
+          cat: 4,
+          read: 'Opponent rarely bluffs large river bets and often arrives here with a heart.',
+        },
+      );
+      post(
+        'flush-paired',
+        'river',
+        'danger',
+        'Flush on a paired board',
+        'As Js',
+        'Ks 8s 4d 8d 2s',
+        'fold',
+        'A flush can lose to a full house on a paired board.',
+        'The paired eights allow full houses. The read makes this big raise a reason to fold, not automatically re-raise.',
+        {
+          own: 12,
+          facing: 60,
+          pot: 24,
+          cat: 5,
+          read: 'Reliable read: this opponent makes this huge river raise only with a full house or better.',
+        },
+      );
+      post(
+        'small-flush',
+        'river',
+        'danger',
+        'Small flush faces a big bet',
+        '7s 6s',
+        'As Ks 3s 2s Qd',
+        'fold',
+        'A small flush is vulnerable when a single higher card makes a bigger flush.',
+        'Your seven is the fifth spade in your best flush; an opponent’s jack, ten, nine, or eight of spades beats it.',
+        {
+          facing: 24,
+          pot: 24,
+          cat: 5,
+          read: 'Opponent rarely bluffs big bets and bets higher spades this way.',
+        },
+      );
+      post(
+        'low-fullhouse',
+        'flop',
+        'danger',
+        'Not all full houses are equal',
+        '2s 2h',
+        'Kd Kc 2d',
+        'call',
+        'A low full house is strong, but not the best possible hand.',
+        'You have twos full of kings. K2 makes kings full of twos; KK makes four kings. Against a modest bet, continue by calling.',
+        {
+          facing: 6,
+          pot: 12,
+          cat: 6,
+          read: 'Opponent bets both ordinary kings and stronger hands. No reason to fold, but don’t assume you are unbeatable.',
+        },
+      );
+      post(
+        'board-quads',
+        'river',
+        'danger',
+        'Four of a kind belongs to everyone',
+        'Qs Jh',
+        '7s 7h 7d 7c Kd',
+        'fold',
+        'When all four matching cards are shared, compare the fifth card.',
+        'Your best hand is four sevens with a king. Any ace beats you, and other hands only tie. The read says the opponent has an ace.',
+        {
+          facing: 12,
+          pot: 24,
+          cat: 7,
+          read: 'Reliable read: this opponent bets here only when holding an ace.',
+        },
+      );
+      post(
+        'board-quads-ace',
+        'river',
+        'danger',
+        'Shared quads, best fifth card',
+        'As Jh',
+        '7s 7h 7d 7c Kd',
+        'call',
+        'With an ace alongside shared quads, you cannot lose this showdown.',
+        'You make 7777A. Another ace ties; no hand beats you. Calling accepts the all-in.',
+        { facing: 60, pot: 24, oppStack: 60, cat: 7 },
+      );
+      post(
+        'shared-pair',
+        'flop',
+        'danger',
+        'A shared pair is not your trips',
+        'As 9h',
+        'Kd Kc 7s',
+        'check',
+        'A pair on the board belongs to everyone. Check a weak hand.',
+        'You have a pair of kings with an ace alongside it—not three kings. Do not bet as though you hold a king.',
+        { cat: 1 },
+      );
+      post(
+        'shared-twopair',
+        'river',
+        'danger',
+        'Shared two pairs are not a personal monster',
+        '8s 6h',
+        'Kd Kc 7s 7h 2d',
+        'fold',
+        'Read the best five cards, not just the category name.',
+        'Everyone can use KK77. Your eight is only the fifth card; the opponent’s ace wins.',
+        {
+          facing: 12,
+          pot: 24,
+          cat: 2,
+          read: 'Reliable read: the opponent holds an ace and bets it here.',
+        },
+      );
+      post(
+        'low-straight',
+        'river',
+        'danger',
+        'A higher straight is possible',
+        '7s 6h',
+        '9d 8c 5s Tc Jd',
+        'fold',
+        'A straight can lose to a higher straight.',
+        'You make a jack-high straight using your seven. Any queen makes a queen-high straight on this board.',
+        {
+          facing: 24,
+          pot: 24,
+          cat: 4,
+          read: 'Reliable read: this opponent makes this large bet only with a queen.',
+        },
+      );
+      post(
+        'trips-low-kicker',
+        'turn',
+        'danger',
+        'Trips with a weak side card',
+        'Qs Jh',
+        'Qd Qc 7s 2d',
+        'call',
+        'Three matching cards do not guarantee the best hand.',
+        'Another queen with an ace or king beats your queen-jack hand. Against this ordinary bet, call rather than automatically raising.',
+        {
+          facing: 8,
+          pot: 24,
+          cat: 3,
+          read: 'Opponent bets weaker pairs as well as queens; you have no reason to assume a raise gets paid by worse.',
+        },
+      );
+      // Draw drills use explicit clean-outs assumptions, avoiding hidden opponent guesses.
+      for (let stage of ['flop', 'turn'])
+        for (let kind of ['flush', 'straight', 'inside'])
+          for (let ratio of [0.25, 0.5, 1]) {
+            let outs = { flush: 9, straight: 8, inside: 4 }[kind],
+              hand = { flush: 'As Js', straight: '9s 8h', inside: '9s 8h' }[kind],
+              board =
+                { flush: 'Kh 7s 2s', straight: '7d 6c Ks', inside: '6d 5c Ks' }[kind] +
+                (stage === 'turn' ? ' 3d' : '');
+            let chance = outs / (stage === 'flop' ? 47 : 46),
+              answer = chance > ratio / (1 + 2 * ratio) + 0.01 ? 'call' : 'fold';
+            post(
+              'draw-' + stage + kind + ratio,
+              stage,
+              'draw',
+              kind + ' draw · one card',
+              hand,
+              board,
+              answer,
+              'Price only the next card when more betting can follow.',
+              'Treat the listed outs as clean winning cards for this drill. Ignore extra future winnings, extra pair outs, and bluffs.',
+              {
+                pot: 24,
+                facing: 24 * ratio,
+                outs,
+                cardsToCome: 1,
+                cat: 0,
+                read: `Assume you are behind a pair. Exactly ${outs} clean winning outs. More betting can follow; this call buys only the next card.`,
+              },
+            );
+          }
+      for (let kind of ['flush', 'straight', 'inside'])
+        for (let ratio of [0.25, 0.5, 1]) {
+          let outs = { flush: 9, straight: 8, inside: 4 }[kind],
+            chance = 1 - (((47 - outs) / 47) * (46 - outs)) / 46,
+            hand = kind === 'flush' ? 'As Js' : '9s 8h',
+            board = { flush: 'Kh 7s 2s', straight: '7d 6c Ks', inside: '6d 5c Ks' }[kind];
+          post(
+            'allindraw-' + kind + ratio,
+            'flop',
+            'draw',
+            kind + ' draw · both cards guaranteed',
+            hand,
+            board,
+            chance > ratio / (1 + 2 * ratio) + 0.01 ? 'call' : 'fold',
+            'Use both remaining cards only when the call closes all betting.',
+            'This opponent is all-in and there are no other active opponents. Your call guarantees the turn and river.',
+            {
+              pot: 60,
+              facing: 60 * ratio,
+              oppStack: 60 * ratio,
+              outs,
+              cardsToCome: 2,
+              cat: 0,
+              read: `All-in: no more betting. Assume exactly ${outs} clean winning outs, with no later redraw against you.`,
+            },
+          );
+        }
+      post(
+        'draw-check',
+        'flop',
+        'draw',
+        'Take a free card',
+        'As Js',
+        'Kh 7s 2s',
+        'check',
+        'When nobody bets, you can take a free card.',
+        'This version of the beginner plan checks draws rather than introducing drawing-hand bluffs.',
+        { cat: 0 },
+      );
+      post(
+        'pair-draw-twoouts',
+        'turn',
+        'draw',
+        'A pair trying to catch a higher pair',
+        '8s 8h',
+        'Kd 7c 2s 3d',
+        'fold',
+        'Outs are not only for straights and flushes.',
+        'Against the supplied kings, only the two remaining eights rescue you. That is far below the price.',
+        {
+          facing: 12,
+          pot: 24,
+          outs: 2,
+          cardsToCome: 1,
+          cat: 1,
+          read: 'Practice assumption: the opponent has exactly KK. Only the two remaining eights win. No other rescue cards.',
+        },
+      );
+      post(
+        'set-full-draw',
+        'turn',
+        'draw',
+        'Three of a kind trying to beat a flush',
+        '8s 8h',
+        'Ks 8d 3s 2s',
+        'call',
+        'When three of a kind is behind a flush, count full-house and four-of-a-kind cards.',
+        'The remaining eight, three kings, three threes, and three twos give ten winning cards. They do not overlap.',
+        {
+          facing: 6,
+          pot: 24,
+          outs: 10,
+          cardsToCome: 1,
+          cat: 3,
+          read: 'Practice assumption: opponent has As Qs, a flush. Exactly 10 clean rescue cards remain; one river card to come.',
+        },
+      );
+      post(
+        'draw-combo',
+        'turn',
+        'draw',
+        'Do not count the same card twice',
+        '9s 8s',
+        '7s 6s Kh 2d',
+        'call',
+        'A straight-and-flush draw has 15 outs, not 17.',
+        'Nine spades plus eight straight cards, minus the two spades already counted: 9 + 8 − 2 = 15.',
+        {
+          facing: 12,
+          pot: 24,
+          outs: 15,
+          cardsToCome: 1,
+          cat: 0,
+          read: 'Assume opponent has one pair, no spade. Exactly 15 clean winning outs; ignore pairing your own cards.',
+        },
+      );
+      post(
+        'draw-low-flush',
+        'turn',
+        'danger',
+        'Do not pay for a likely losing flush',
+        '7s 6s',
+        'As Ks 3d 2h',
+        'fold',
+        'Improving is not the same as winning.',
+        'Another spade makes you a flush, but the known queen of spades makes the opponent a higher flush. The usual nine-outs shortcut does not apply.',
+        {
+          facing: 6,
+          pot: 24,
+          cat: 0,
+          read: 'Practice assumption: opponent has Qs Qh. You are considering whether to chase a spade.',
+        },
+      );
+
+      post(
+        'quads-flop',
+        'flop',
+        'made',
+        'Four of a kind on the flop',
+        '7s 7d',
+        '7h 7c Kd',
+        'bet',
+        'Four of a kind: bet for payment, around two-thirds pot.',
+        'You have all four sevens. Your aim is to get called, not to improve.',
+        { cat: 7 },
+      );
+      post(
+        'quads-river',
+        'river',
+        'made',
+        'Four of a kind on the river',
+        '7s 7d',
+        'Kc 7h 2s 7c 4d',
+        'bet',
+        'Four of a kind: bet for payment on the river.',
+        'There are no more cards coming. Weaker completed hands can pay you.',
+        { cat: 7 },
+      );
+      post(
+        'sf-turn',
+        'turn',
+        'made',
+        'Straight flush on the turn',
+        '9s 8s',
+        '7s 6s 5s Kd',
+        'bet',
+        'Straight flush: use a normal strong-hand bet to build the pot.',
+        'You have the best possible hand, but that does not mean the opponent will pay an enormous shove.',
+        { cat: 8 },
+      );
+      post(
+        'royal-flop',
+        'flop',
+        'made',
+        'Royal flush on the flop',
+        'As Ks',
+        'Qs Js Ts',
+        'bet',
+        'Royal flush: bet for payment rather than count outs.',
+        'You cannot improve this hand. The question is how much a weaker hand will call.',
+        { cat: 8 },
+      );
+      post(
+        'twopair-river',
+        'river',
+        'made',
+        'Two pairs on the river',
+        'As Jh',
+        'Ad Jc 4s 2d 9c',
+        'bet',
+        'Two pairs: bet around two-thirds pot if weaker hands can call.',
+        'There is no completed flush or possible straight. This opponent pays with weaker aces.',
+        { cat: 2, read: 'Opponent calls ordinary river bets with AQ, AT, and weaker aces.' },
+      );
+      post(
+        'set-river',
+        'river',
+        'made',
+        'Three of a kind on the river',
+        '8s 8h',
+        'Kd 8c 3s 2d 6h',
+        'bet',
+        'Three of a kind: bet for payment on this quiet river.',
+        'You still have a strong completed hand. Two pairs and kings can call.',
+        { cat: 3 },
+      );
+      post(
+        'weakpair-bet-flop',
+        'flop',
+        'made',
+        'Weak pair faces a bet',
+        '9s 9h',
+        'Kd Jc 4s',
+        'fold',
+        'Weak pair: usually fold when someone bets.',
+        'Kings and jacks can make higher pairs. There is no special read to justify paying.',
+        { facing: 6, pot: 12, cat: 1 },
+      );
+      post(
+        'weakpair-bet-turn',
+        'turn',
+        'made',
+        'Weak pair faces another bet',
+        '9s 9h',
+        'Kd Jc 4s 2d',
+        'fold',
+        'A weak pair is not a reason to pay another bet.',
+        'The new card did not improve your pair or supply a worthwhile draw.',
+        { facing: 12, pot: 24, cat: 1 },
+      );
+      post(
+        'weakpair-bet-river',
+        'river',
+        'made',
+        'Weak pair faces a river bet',
+        '9s 9h',
+        'Kd Jc 4s 2d 6h',
+        'fold',
+        'Weak pair: fold without a read that supports a call.',
+        'You do not calculate rescue outs on the river. The hand is complete.',
+        { facing: 12, pot: 24, cat: 1 },
+      );
+      post(
+        'multiway-caution',
+        'turn',
+        'made',
+        'Several opponents, no clear payment',
+        'As Qh',
+        'Qd 7c 2s Kh',
+        'check',
+        'Check a pair when several opponents remain and worse hands are unlikely to pay.',
+        'The king adds a higher pair possibility. There is no stated value target for another bet.',
+        {
+          multi: true,
+          cat: 1,
+          read: 'Both opponents checked. They usually fold worse pairs to a turn bet and often reach this turn holding a king.',
+        },
+      );
+
+      function makePost(f) {
+        let s = {
+          ...f,
+          hand: [...f.hand],
+          board: [...f.board],
+          n: choose([4, 5, 6, 8, 9]),
+          hero: f.multi ? 'BTN' : choose(['BTN', 'BB']),
+          stack: 100,
+          oppStack: f.oppStack || 100,
+          events: [],
+          own: f.own || 0,
+          potBefore: f.pot || 12,
+        };
+        s.pot = s.potBefore;
+        s.current = f.facing || 0;
+        s.call = s.current - s.own;
+        s.size =
+          s.answer === 'raise'
+            ? 3 * s.current
+            : s.answer === 'bet'
+              ? s.potBefore * ([1, 0].includes(evaluate([...s.hand, ...s.board])[0]) ? 0.5 : 2 / 3)
+              : 0;
+        s.read =
+          f.read ||
+          'One opponent remains. They can call ordinary bets with weaker hands. No unusual bluffing read.';
+        s.hint = f.outs
+          ? 'Is your call buying one card or both cards? Compare winning chance with the price.'
+          : f.tag === 'danger'
+            ? 'Look at the shared cards. What hand could beat yours?'
+            : 'Are you trying to improve, or trying to get paid with a hand you already have?';
+        let villain = s.hero === 'BTN' ? 'BB' : 'BTN',
+          active = f.multi ? ['BTN', 'SB', 'BB'] : [s.hero, villain];
+        for (let p of positions(s.n)) if (!active.includes(p)) event(s, 'earlier', p, 'fold');
+        s.priorNote = `Independent ${STAGE[s.stage].toLowerCase()} snapshot. Opening pot: ${s.potBefore} BB. Previous betting is summarized by this opening pot; inactive seats folded earlier. Stacks shown are the chips remaining at the start of this street.`;
+        if (f.multi && f.facing) {
+          event(s, s.stage, 'SB', 'bet', 6);
+          event(s, s.stage, 'BB', 'raise', s.current);
+          s.pot += 6 + s.current;
+        } else if (f.own) {
+          if (s.hero === 'BTN') event(s, s.stage, villain, 'check');
+          event(s, s.stage, s.hero, 'bet', s.own);
+          event(s, s.stage, villain, 'raise', s.current);
+          s.pot += s.own + s.current;
+        } else {
+          if (f.multi) event(s, s.stage, 'SB', 'check');
+          if (s.current) {
+            if (s.hero === 'BB') event(s, s.stage, s.hero, 'check');
+            event(s, s.stage, villain, s.current === s.oppStack ? 'allin' : 'bet', s.current);
+          } else if (s.hero === 'BTN') event(s, s.stage, villain, 'check');
+          s.pot += s.current;
+        }
+        return s;
+      }
+      fixtures.forEach((f) => family(f.id, f.stage, f.tag, f.label, () => makePost(f)));
+      function vary(s) {
+        let p = shuffle([...SUITS]),
+          map = Object.fromEntries([...SUITS].map((x, i) => [x, p[i]])),
+          names = { s: 'spade', h: 'heart', d: 'diamond', c: 'club' },
+          byName = Object.fromEntries([...SUITS].map((x) => [names[x], names[map[x]]]));
+        s.hand = s.hand.map((c) => c[0] + map[c[1]]);
+        s.board = s.board.map((c) => c[0] + map[c[1]]);
+        for (let field of ['read', 'rule', 'why', 'hint', 'label'])
+          if (s[field])
+            s[field] = s[field]
+              .replace(/\b([2-9TJQKA])([shdc])\b/g, (_, r, suit) => r + map[suit])
+              .replace(/\b(spade|heart|diamond|club)(s)?\b/gi, (word, name, plural) => {
+                let v = byName[name.toLowerCase()] + (plural || '');
+                return word[0] === word[0].toUpperCase() ? v[0].toUpperCase() + v.slice(1) : v;
+              });
+        return s;
+      }
+      function build(f, variation = true) {
+        let s = f.make();
+        s.family = f.id;
+        s.label = f.label;
+        s.tag = f.tag;
+        if (variation) s = vary(s);
+        return s;
+      }
+      function cleanStats() {
+        return { total: 0, correct: 0, streak: 0, best: 0, seen: {}, results: {}, missed: [] };
+      }
+      let stats;
+      try {
+        stats = JSON.parse(localStorage.getItem('holdem-desk-v1')) || cleanStats();
+        if (!stats.results || !stats.seen) stats = cleanStats();
+      } catch {
+        stats = cleanStats();
+      }
+      let state = {
+        stage: 'mix',
+        focus: 'all',
+        units: 'money',
+        current: null,
+        answered: false,
+        bags: {},
+        stageBag: [],
+        session: 0,
+      };
+      function save() {
+        try {
+          localStorage.setItem('holdem-desk-v1', JSON.stringify(stats));
+        } catch {}
+      }
+      function fmt(n) {
+        return state.units === 'bb' ? `${Number(n.toFixed(2))} BB` : '€' + (n * 0.1).toFixed(2);
+      }
+      function eligible() {
+        return families.filter(
+          (f) =>
+            (state.stage === 'mix' || f.stage === state.stage) &&
+            (state.focus === 'all' || state.focus === 'missed'
+              ? state.focus !== 'missed' || stats.missed.includes(f.id)
+              : f.tag === state.focus),
+        );
+      }
+      function pickFamily() {
+        let all = eligible();
+        if (!all.length) return null;
+        let stages = [...new Set(all.map((f) => f.stage))];
+        if (!state.stageBag.length || state.stageBag.some((s) => !stages.includes(s)))
+          state.stageBag = shuffle(stages);
+        let stage = state.stageBag.pop(),
+          key = state.stage + '|' + state.focus + '|' + stage,
+          allowed = all.filter((f) => f.stage === stage);
+        if (state.bags[key])
+          state.bags[key] = state.bags[key].filter((id) => allowed.some((f) => f.id === id));
+        if (!state.bags[key]?.length) state.bags[key] = shuffle(allowed.map((f) => f.id));
+        return families.find((f) => f.id === state.bags[key].pop());
+      }
+      function newCase() {
+        let f = pickFamily();
+        if (!f) {
+          state.current = null;
+          $('mainPanel').innerHTML =
+            '<div class="empty"><h2>No cases in this selection</h2><p>Try another stage or focus. Review mistakes fills after an incorrect answer.</p><button class="plain" id="returnAll">Return to mixed practice</button></div>';
+          $('returnAll').onclick = () => location.reload();
+          return;
+        }
+        state.current = build(f);
+        state.answered = false;
+        state.session++;
+        render();
+      }
+      function card(c) {
+        return `<span class="card ${'hd'.includes(c[1]) ? 'red' : ''}" aria-label="${c[0]} of ${{ s: 'spades', h: 'hearts', d: 'diamonds', c: 'clubs' }[c[1]]}"><span>${c[0] === 'T' ? '10' : c[0]}</span><span class="suit">${SYMBOL[c[1]]}</span></span>`;
+      }
+      function tableHTML(s) {
+        let ps = positions(s.n),
+          btn = ps.indexOf('BTN'),
+          ordered = [...ps.slice(btn), ...ps.slice(0, btn)],
+          last = {};
+        s.events.forEach((e) => (last[e.pos] = e));
+        let heroIndex = ordered.indexOf(s.hero),
+          seats = ordered
+            .map((p, i) => {
+              let angle = Math.PI / 2 + ((i - heroIndex) * 2 * Math.PI) / s.n,
+                x = 50 + 43 * Math.cos(angle),
+                y = 49 + 40 * Math.sin(angle),
+                e = last[p],
+                fold = e?.type === 'fold',
+                label = p === s.hero ? 'YOU' : p;
+              return `<div class="seat ${p === s.hero ? 'hero' : ''} ${fold ? 'folded' : ''}" style="left:${x}%;top:${y}%"><div class="disc">${label}</div><div>${p === s.hero ? 'YOU · ' : ''}${p}${p === 'BTN' ? '<span class="dealer">D</span>' : ''}</div><div class="state">${p === s.hero ? 'Your decision' : fold ? 'Folded' : e ? eventShort(e) : 'Waiting'}</div></div>`;
+            })
+            .join('');
+        let cards =
+          s.board.map(card).join('') +
+          Array.from(
+            { length: 5 - s.board.length },
+            () => '<span class="card ghost">·</span>',
+          ).join('');
+        return (
+          seats +
+          `<div class="center"><div class="pot-label">Pot now · includes bets in front</div><div class="pot-value">${fmt(s.pot)}</div><div class="cards">${cards}</div><div class="board-note">${s.stage === 'pre' ? 'Shared cards arrive after this round' : STAGE[s.stage] + ' · ' + (s.multi ? '2 opponents' : '1 opponent') + ' remaining'}</div></div><div class="hero-cards"><div class="cards">${s.hand.map(card).join('')}</div></div>`
+        );
+      }
+      function eventShort(e) {
+        return (
+          {
+            fold: 'Fold',
+            check: 'Check',
+            call: 'Call',
+            raise: 'Raise to',
+            bet: 'Bet',
+            allin: 'All-in',
+          }[e.type] + (e.amount !== undefined ? ' ' + fmt(e.amount) : '')
+        );
+      }
+      function options(s) {
+        let a = [{ key: 'fold', label: 'Fold' }];
+        if (!s.call) a.push({ key: 'check', label: 'Check' });
+        else a.push({ key: 'call', label: 'Call ' + fmt(s.call) });
+        let amount =
+            s.size ||
+            (s.stage === 'pre'
+              ? s.current > 1
+                ? 3 * s.current
+                : 3
+              : s.current
+                ? 3 * s.current
+                : (s.potBefore * 2) / 3),
+          kind = s.stage === 'pre' || s.current ? 'raise' : 'bet',
+          remaining = s.stack - s.own,
+          opponentAllIn =
+            (s.stage !== 'pre' && s.current === s.oppStack) ||
+            (s.stage === 'pre' && s.current >= 100);
+        if (!opponentAllIn && amount < s.stack)
+          a.push({
+            key: kind,
+            label: (kind === 'raise' ? 'Raise to ' : 'Bet ') + fmt(amount),
+            size: amount,
+          });
+        if (!opponentAllIn && s.call < remaining)
+          a.push({ key: 'allin', label: 'All-in ' + fmt(remaining) });
+        return a;
+      }
+      function renderStats() {
+        $('attempts').textContent = stats.total;
+        $('accuracy').textContent = stats.total
+          ? Math.round((100 * stats.correct) / stats.total) + '%'
+          : '—';
+        $('streak').textContent = stats.streak;
+        let n = Object.keys(stats.seen).length;
+        $('progressText').textContent =
+          `${n} / ${families.length} lesson families practised · ${stats.missed.length} to review`;
+        $('progressBar').style.width = (100 * n) / families.length + '%';
+      }
+      function render() {
+        let s = state.current;
+        $('stageLabel').textContent = STAGE[s.stage];
+        $('caseLabel').textContent = 'Decision ' + state.session + ' · ' + s.n + ' seats';
+        $('table').innerHTML = tableHTML(s);
+        $('facts').innerHTML =
+          `<span class="fact">You: ${s.hero}${late(s.hero, s.n) ? ' · late seat' : s.hero === 'SB' ? ' · small blind' : s.hero === 'BB' ? ' · big blind' : ' · tighter seat'}</span><span class="fact">${s.call ? 'To call: ' + fmt(s.call) : 'Free to check: ' + (s.stage === 'pre' && s.hero !== 'BB' ? 'no' : 'yes')}</span><span class="fact" id="handFact">${handName(s)}</span>`;
+        $('handFact').classList.toggle('hidden', !$('showHand').checked);
+        $('read').textContent = s.read;
+        $('prompt').textContent = 'What is your next move?';
+        $('hint').open = false;
+        $('hintText').textContent = s.hint;
+        $('feedback').className = 'hidden';
+        $('feedback').innerHTML = '';
+        $('nextBtn').textContent = 'Skip situation →';
+        $('choices').innerHTML = options(s)
+          .map(
+            (a, i) =>
+              `<button class="choice" data-answer="${a.key}"><span>${a.label}</span><kbd>${i + 1}</kbd></button>`,
+          )
+          .join('');
+        document
+          .querySelectorAll('[data-answer]')
+          .forEach((b) => (b.onclick = () => answer(b.dataset.answer)));
+        $('context').innerHTML =
+          `<div><small>TABLE / ACTIVE</small><strong>${s.n} / ${s.stage === 'pre' ? s.n - s.events.filter((e) => e.type === 'fold').length : s.multi ? 3 : 2}</strong></div><div><small>YOUR CHIPS LEFT</small><strong>${fmt(s.stack - s.own)}</strong></div><div><small>BLINDS</small><strong>${fmt(0.5)} / ${fmt(1)}</strong></div><div><small>${s.stage === 'pre' ? 'STARTING STACKS' : 'OPPONENT AT STREET START'}</small><strong>${fmt(s.stage === 'pre' ? 100 : s.oppStack)}</strong></div>`;
+        let html =
+          '<p class="subtle">' +
+          (s.stage === 'pre'
+            ? 'SB posts ' + fmt(0.5) + ' · BB posts ' + fmt(1) + '.'
+            : 'Blinds were posted earlier and are already included in the opening pot.') +
+          '</p>';
+        for (let st of ['earlier', 'pre', 'flop', 'turn', 'river']) {
+          let es = s.events.filter((e) => e.round === st);
+          if (!es.length && st !== s.stage) continue;
+          if (st !== 'pre' && s.priorNote)
+            html += `<details><summary>Earlier-street context</summary><p class="notice">${s.priorNote}</p></details>`;
+          html += `<div class="roundtitle">${st === 'earlier' ? 'Before this street' : STAGE[st]}</div><ol class="history">${es.map((e) => `<li class="${e.pos === s.hero ? 'hero-log' : ''}"><b>${e.pos === s.hero ? 'YOU · ' : ''}${e.pos}</b> ${eventShort(e)}</li>`).join('')}<li><b>${s.stage === st ? 'YOU · ' + s.hero : ''}</b>${s.stage === st ? 'Decision now' : st === 'earlier' ? 'Other players remain in the hand' : 'Round complete'}</li></ol>`;
+        }
+        $('history').innerHTML = html;
+        renderStats();
+      }
+      function explanation(s) {
+        let extra = '';
+        if (s.outs) {
+          let chance =
+              s.cardsToCome === 2
+                ? 1 - (((47 - s.outs) / 47) * (46 - s.outs)) / 46
+                : s.outs / (s.stage === 'flop' ? 47 : 46),
+            price = s.call / (s.pot + s.call);
+          extra = `<div class="math">${s.outs} clean outs · ${s.cardsToCome === 2 ? 'both cards guaranteed' : 'one card priced'}
+Chance to win in this drill ≈ ${(chance * 100).toFixed(1)}%
+Price = ${fmt(s.call)} ÷ ${fmt(s.pot + s.call)} = ${(price * 100).toFixed(1)}%
+${chance > price + 0.01 ? 'Chance exceeds price by more than 1 point → call.' : chance > price ? 'Tiny edge (within 1 percentage point) → conservative fold.' : 'Chance is below price → fold.'}</div>`;
+        }
+        let target = options(s).find((a) => a.key === s.answer);
+        return `<p class="rule">${target?.label || s.answer}</p><p>${s.rule}</p><p>${s.why}</p>${extra}<details><summary>Why not the other actions?</summary><p>${alternatives(s)}</p></details><p class="subtle">Lesson: ${s.label}. These answers follow the supplied beginner defaults and opponent read; other real-game choices can be reasonable.</p>`;
+      }
+      function alternatives(s) {
+        if (s.answer === 'check')
+          return 'Checking costs nothing. Betting would build a pot without a stated reason; folding would give up a free chance to continue.';
+        if (s.answer === 'fold')
+          return 'Calling pays for a situation the stated rule rejects. Raising or going all-in adds risk without the strength, price, or opponent read required by this lesson.';
+        if (s.answer === 'call')
+          return 'Folding gives up a worthwhile continuation under the supplied assumptions. Raising or shoving is not required: a call accepts the price without unnecessarily increasing the pot.';
+        if (s.answer === 'allin')
+          return 'This normal-stack AA/KK commitment lesson permits putting the chips in. Folding or merely calling does not follow the specific pre-flop rule being practised.';
+        if (s.answer === 'raise')
+          return 'Calling misses the prescribed raise for this strong hand. Folding gives up too much. A giant shove is not needed when the normal raise can get paid.';
+        return 'Checking skips a stated opportunity to get called by weaker hands. A giant shove may drive those hands away. Use the normal value-bet size.';
+      }
+      function answer(key) {
+        if (state.answered || !state.current) return;
+        let s = state.current;
+        state.answered = true;
+        let ok = key === s.answer;
+        stats.total++;
+        stats.correct += +ok;
+        stats.streak = ok ? stats.streak + 1 : 0;
+        stats.best = Math.max(stats.best, stats.streak);
+        stats.seen[s.family] = true;
+        stats.results[s.family] ||= { right: 0, wrong: 0 };
+        stats.results[s.family][ok ? 'right' : 'wrong']++;
+        if (!ok && !stats.missed.includes(s.family)) stats.missed.push(s.family);
+        if (ok && state.focus === 'missed')
+          stats.missed = stats.missed.filter((x) => x !== s.family);
+        save();
+        document.querySelectorAll('[data-answer]').forEach((b) => {
+          b.disabled = true;
+          if (b.dataset.answer === s.answer) b.classList.add('correct');
+          if (!ok && b.dataset.answer === key) b.classList.add('wrong');
+        });
+        $('feedback').className = 'feedback' + (ok ? '' : ' bad');
+        $('feedback').innerHTML =
+          `<h3>${ok ? '✓ Correct for this playbook' : 'A useful one to practise'}</h3>` +
+          explanation(s);
+        $('nextBtn').textContent = 'Next situation →';
+        $('caseLabel').textContent = 'Decision ' + state.session + ' · ' + s.label;
+        renderStats();
+      }
+      function openModal(title, html) {
+        $('modalTitle').textContent = title;
+        $('modalBody').innerHTML = html;
+        $('modal').classList.remove('hidden');
+        $('closeModal').focus();
+      }
+      function rules() {
+        openModal(
+          'Your beginner playbook',
+          `<p class="subtle">Training defaults for 4–9 players, fixed blinds, normally around 100 BB. Not a solver or a promise of profit.</p><div class="rules-grid"><div class="rule-card"><h3>1 · Starting cards</h3><p><b>A:</b> AA, KK, QQ, AK.</p><p><b>B:</b> JJ, TT, 99, 88, AQ, AJs, ATs, KQs.</p><p><b>C:</b> 77–22, AJ, AT, KQ, KJ, QJ, A9s–A2s, KJs, KTs, QJs, QTs, JTs, T9s, 98s.</p><p>“s” means same suit. Use the highest matching group.</p></div><div class="rule-card"><h3>2 · Before the flop</h3><p>First in: A/B anywhere; add C in late seats or SB after all folds. Raise 3 BB. 5–9 players: BTN/CO are late. Four players: BTN only.</p><p>After 1 BB callers: A/B raise 3 BB + 1 per caller. Others fold; BB checks free.</p><p>Against 2–4 BB raise: A re-raises; B calls only late/BB. Others fold. Above 4 BB use A only.</p></div><div class="rule-card"><h3>3 · Raises & commitment</h3><p>Re-raise to 3× the original total; 4× in blinds. Add one original raise per caller.</p><p>Your open gets raised: AA/KK can commit; QQ/AK call a first re-raise to ≤12 BB. Other hands fold.</p><p>After you already re-raised: only AA/KK continue to another raise. Against a full 75–150 BB shove: AA/KK only. Short-stack shove charts are outside this trainer.</p></div><div class="rule-card"><h3>4 · Completed hands</h3><p>Good pair: about ½ pot if worse can call. Two pairs or better: about ⅔ pot if the board is safe. Raise strong hands for payment when appropriate.</p><p>With one pair, default-fold to a raise or a bet above ⅔ pot. Weak pair or nothing: check/fold.</p><p>Look for higher straights, higher flushes, full houses, and shared hands. A category name alone is not enough.</p></div><div class="rule-card"><h3>5 · Draws & prices</h3><p>Only count cards likely to win. Flush: 9 outs; either-end straight: 8; inside straight: 4.</p><p>One card: outs × 2. Both cards guaranteed with betting closed: outs × 4 (roughly). More accurate numbers appear in feedback.</p><p>Required chance = call ÷ pot after call. If the edge is 1 percentage point or less, this beginner trainer folds rather than chasing a borderline price. Quarter-pot bet: 17%; third: 20%; half: 25%; two-thirds: 29%; full: 33%.</p></div><div class="rule-card"><h3>6 · How practice works</h3><p>Designed lesson families rotate without repetition inside each stage. Suits and selected starting cards vary while the lesson stays valid. Mixed mode balances stages.</p><p>Opponent reads and clean-outs assumptions are part of the question. Actions are graded, not your ability to guess an unseen hand.</p><p>Review mistakes repeats missed families. A correct review clears that family. Reset requires confirmation.</p></div></div><p class="notice">Reference reading: <a href="https://www.pokerstars.com/poker/learn/lesson/pre-flop-essentials/" target="_blank" rel="noopener">Pre-flop foundations</a> · <a href="https://www.pokerstars.com/poker/learn/lesson/value-betting/" target="_blank" rel="noopener">Betting for payment</a> · <a href="https://www.pokerstars.com/poker/learn/lesson/pot-odds/" target="_blank" rel="noopener">Calling prices</a>. The precise charts and conservative grading rules are our teaching simplification. Draw drills assume no fees and fold edges of at most one percentage point; that margin is a learning guardrail, not an optimal rule.</p>`,
+        );
+      }
+      function coverage() {
+        let groups = [
+          ['position', 'Position & starting hands'],
+          ['pressure', 'Raises & all-ins'],
+          ['made', 'Completed hands'],
+          ['draw', 'Draws & prices'],
+          ['danger', 'Dangerous boards'],
+        ];
+        openModal(
+          'Designed lesson coverage',
+          `<p class="subtle">${families.length} deliberate lesson families. All 169 starting-hand classes feed the opening groups. Suits, eligible hands, and table sizes vary. This is coverage of the playbook, not every possible deal or betting history.</p>` +
+            groups
+              .map(([tag, label]) => {
+                let fs = families.filter((f) => f.tag === tag);
+                return (
+                  `<h3 style="margin-top:20px">${label} · ${fs.filter((f) => stats.seen[f.id]).length}/${fs.length}</h3>` +
+                  fs
+                    .map(
+                      (f) =>
+                        `<div class="coverage-item"><span>${f.label} <small>· ${STAGE[f.stage]}</small></span><span>${stats.seen[f.id] ? '✓' : '○'}</span></div>`,
+                    )
+                    .join('')
+                );
+              })
+              .join(''),
+        );
+      }
+      function init() {
+        document.querySelectorAll('[data-stage]').forEach(
+          (b) =>
+            (b.onclick = () => {
+              state.stage = b.dataset.stage;
+              document
+                .querySelectorAll('[data-stage]')
+                .forEach((x) => x.classList.toggle('active', x === b));
+              state.stageBag = [];
+              restorePanel();
+              newCase();
+            }),
+        );
+        $('focus').onchange = () => {
+          state.focus = $('focus').value;
+          state.stageBag = [];
+          restorePanel();
+          newCase();
+        };
+        $('units').onchange = () => {
+          state.units = $('units').value;
+          if (state.current) {
+            let answered = state.answered;
+            render();
+            if (answered) {
+              state.answered = false;
+              renderAnsweredWithoutScoring();
+            }
+          }
+        };
+        $('rulesBtn').onclick = rules;
+        $('coverageBtn').onclick = coverage;
+        $('closeModal').onclick = () => {
+          $('modal').classList.add('hidden');
+          $('rulesBtn').focus();
+        };
+        $('modal').onclick = (e) => {
+          if (e.target === $('modal')) $('closeModal').click();
+        };
+        $('resetBtn').onclick = () => {
+          if (confirm('Clear all saved practice results and mistakes?')) {
+            stats = cleanStats();
+            save();
+            state.bags = {};
+            state.stageBag = [];
+            restorePanel();
+            newCase();
+          }
+        };
+        bindPanel();
+        document.addEventListener('keydown', (e) => {
+          if (
+            ['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement?.tagName) &&
+            e.key !== 'Escape'
+          )
+            return;
+          if (!$('modal').classList.contains('hidden')) {
+            if (e.key === 'Escape') $('closeModal').click();
+            return;
+          }
+          if (e.key >= '1' && e.key <= '5') {
+            let b = document.querySelectorAll('[data-answer]')[+e.key - 1];
+            if (b && !b.disabled) b.click();
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (state.current) newCase();
+          } else if (e.key.toLowerCase() === 'h') $('hint').open = !$('hint').open;
+        });
+        newCase();
+      }
+      const panelTemplate = $('mainPanel').innerHTML;
+      function bindPanel() {
+        $('nextBtn').onclick = () => {
+          newCase();
+          $('mainPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+        $('showHand').onchange = () => {
+          if ($('handFact')) $('handFact').classList.toggle('hidden', !$('showHand').checked);
+        };
+      }
+      function restorePanel() {
+        if (!$('table')) {
+          $('mainPanel').innerHTML = panelTemplate;
+          bindPanel();
+        }
+      }
+      function renderAnsweredWithoutScoring() {
+        state.answered = true;
+        let s = state.current;
+        document.querySelectorAll('[data-answer]').forEach((b) => {
+          b.disabled = true;
+          if (b.dataset.answer === s.answer) b.classList.add('correct');
+        });
+        $('feedback').className = 'feedback';
+        $('feedback').innerHTML = '<h3>Answer explained</h3>' + explanation(s);
+        $('nextBtn').textContent = 'Next situation →';
+      }
+      window.Trainer = {
+        families,
+        fixtures,
+        build,
+        evaluate,
+        five,
+        tier,
+        positions,
+        late,
+        options,
+        cmp,
+        makePost,
+        handFrom,
+        handCode,
+        openModal,
+      };
+      init();
+    </script>
+    <script src="/poker/install.js"></script>
+  </body>
+</html>

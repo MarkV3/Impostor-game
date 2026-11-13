@@ -6,6 +6,18 @@ For remote hosting with your computer switched off, follow the [Render setup gui
 
 The existing **https://simpleapp.qzz.io** address uses Cloudflare to forward traffic to your computer until its DNS routing is changed. The local hosting instructions below remain available.
 
+## Poker practice and app picker
+
+The same server also hosts **Hold’em Practice Desk**, a single-player beginner poker trainer:
+
+- **`/apps/`** — choose between the party game and poker practice.
+- **`/poker/`** — poker trainer, with 137 designed lesson families and mistake review.
+- **`/`** and **`/host`** — join and host the Impostor game.
+
+The join and host setup screens link to the app picker. No extra Render service, environment variable, database, or domain is required. The existing Vite build copies `public/` into `dist/`.
+
+See [Android installation and offline practice](docs/poker.md). Scores stay in browser storage on each device; they do not sync between devices. The poker service worker controls only `/poker/`, so multiplayer traffic and the app picker remain online features.
+
 ## Start the game
 
 Install Node.js **22.9 or newer** (Node 24 is used for verification). In a terminal in this repository:
