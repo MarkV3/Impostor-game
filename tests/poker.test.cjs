@@ -183,3 +183,59 @@ test('every lesson explains both outcomes and cannot double-count an answer', ()
     );
   }
 });
+
+test('stage filters and rotation draw each eligible lesson once before repeating', () => {
+  const { context } = trainer();
+  vm.runInContext(
+    `{
+    for (const stage of ['pre', 'flop', 'turn', 'river']) {
+      for (const focus of ['all', 'position', 'pressure', 'made', 'draw', 'danger']) {
+        state.stage = stage;
+        state.focus = focus;
+        state.stageBag = [];
+        state.bags = {};
+        const candidates = eligible();
+        if (!candidates.length) {
+          if (pickFamily() !== null) throw Error('empty filter returned a case');
+          continue;
+        }
+        const seen = new Set();
+        for (let i = 0; i < candidates.length; i++) {
+          const next = pickFamily();
+          if (!next || next.stage !== stage) throw Error('stage filter lost a case');
+          if (focus !== 'all' && next.tag !== focus) throw Error('topic filter mismatch');
+          if (seen.has(next.id)) throw Error('lesson repeated before rotation completed');
+          seen.add(next.id);
+        }
+        if (!pickFamily()) throw Error('rotation failed to refill');
+      }
+    }
+    state.stage = 'mix';
+    state.focus = 'all';
+    state.stageBag = [];
+    state.bags = {};
+    for (let round = 0; round < 40; round++) {
+      const stages = new Set();
+      for (let i = 0; i < 4; i++) {
+        const next = pickFamily();
+        if (!next) throw Error('mixed practice lost a case');
+        stages.add(next.stage);
+      }
+      if (stages.size !== 4) throw Error('mixed practice did not balance stages');
+    }
+    state.stage = 'mix';
+    state.focus = 'missed';
+    state.stageBag = [];
+    state.bags = {};
+    stats.missed = ['quads-turn', 'full-flop'];
+    const first = pickFamily();
+    if (!first) throw Error('review was empty');
+    stats.missed = stats.missed.filter(id => id !== first.id);
+    const second = pickFamily();
+    if (!second || second.id === first.id) throw Error('review repeated a cleared mistake');
+    stats.missed = [];
+    if (pickFamily() !== null) throw Error('empty review returned a case');
+  }`,
+    context,
+  );
+});

@@ -2356,7 +2356,8 @@
         if (state.bags[key])
           state.bags[key] = state.bags[key].filter((id) => allowed.some((f) => f.id === id));
         if (!state.bags[key]?.length) state.bags[key] = shuffle(allowed.map((f) => f.id));
-        return families.find((f) => f.id === state.bags[key].pop());
+        const nextID = state.bags[key].pop();
+        return families.find((f) => f.id === nextID);
       }
       function newCase() {
         let f = pickFamily();
